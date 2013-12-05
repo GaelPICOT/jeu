@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <!--Hello from Facelets-->
+<!--        <form method="post" action="../servlet/FormConnectServlet">
+            Entrez votre adresse email: <input type="text" name="email" /> <br />
+            Entrez votre mot de passe: <input type="password" name="password" /> <br />
+            <input type="submit" value="Se connecter" />
+        </form>-->
+        <h:form>
+            Entrez votre adresse email: <h:inputText value="#{UserView.user.mail}"/> <br />
+            Entrez votre mot de passe: <h:inputSecret value="#{UserView.user.hashPassword}" /> <br />
+            <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />
+        </h:form>
+        <h:link value="Retour à l'acceuil" outcome="/index.xhtml"/> <br /> 
+    </h:body>
+</html>
