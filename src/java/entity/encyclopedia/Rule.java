@@ -12,6 +12,7 @@ import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -26,6 +27,16 @@ public class Rule extends SemanticNode implements Serializable, SemanticRessourc
     private Copyright copyright;
     @ManyToMany
     private List<Image> images;
+    @Lob
+    private String rule;
+
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
+    }
 
     public List<Image> getImages() {
         return images;
