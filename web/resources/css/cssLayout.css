@@ -23,6 +23,27 @@
     width: 620px;
 }
 
+#leftPaie {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 45%;
+}
+
+#rightPaie {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 45%;
+    margin-bottom: 10px;
+}
+
+#bottomPaie {
+    clear: both;
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+}
 
 #bottom {
     position: relative;
