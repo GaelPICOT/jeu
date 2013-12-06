@@ -79,6 +79,10 @@ public class User implements Serializable {
     public void setAdresses(List<Adress> adresses) {
         this.adresses = adresses;
     }
+    
+    public void addAdress(Adress adress){
+        this.adresses.add(adress);
+    }
 
     public String getMail() {
         return mail;
