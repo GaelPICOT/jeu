@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Etape 1 paiement</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <div id="topLeft">
+                <h:graphicImage value="../img/logoEcom.png" />
+            </div>
+        
+            <div id="topRight">
+                Compte -> Adresse -> Paiement -> Confirmation
+            </div> 
+        </div>
+        <div>
+            <div id="leftPaie">
+                <h2>Commander sans compte</h2>
+                <h:form>
+                    <h:commandButton action="null" value="Valider" />
+                </h:form>
+            </div>
+            <div id="rightPaie">
+                <h2>Connectez vous</h2>
+                <h:form>
+                    Entrez votre adresse email: <h:inputText required="true" id="mail" value="#{UserView.user.mail}">
+                        <f:validateRequired for="mail"/></h:inputText>
+                        <h:message showSummary="true" showDetail="false" id="mailErreur" for="mail" styleClass="erreurSaisie"/><br />
+                    Entrez votre mot de passe: <h:inputSecret required="true" id="password" value="#{UserView.user.hashPassword}">
+                        <f:validateRequired for="password"/></h:inputSecret>
+                        <h:message showSummary="true" showDetail="false" id="passwordErreur" for="password" styleClass="erreurSaisie"/><br />
+                    <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />    
+                </h:form>
+                <h2>Creez votre compte</h2>
+                <h:form>
+                    Prénom: <h:inputText required="true" id="prenom" value="#{UserView.user.prenom}">
+                        <f:validateRequired for="prenom"/></h:inputText>
+                        <h:message showSummary="true" showDetail="false" id="prenomErreur" for="prenom" styleClass="erreurSaisie"/><br />
+                    Nom: <h:inputText required="true" id="nom" value="#{UserView.user.nom}">
+                        <f:validateRequired for="nom"/></h:inputText>
+                        <h:message showSummary="true" showDetail="false" id="nomErreur" for="nom" styleClass="erreurSaisie"/><br />
+                    Entrez votre adresse email: <h:inputText required="true" id="mail2" value="#{UserView.user.mail}">
+                        <f:validateRequired for="mail2"/></h:inputText>
+                        <h:message showSummary="true" showDetail="false" id="mail2Erreur" for="mail2" styleClass="erreurSaisie"/><br />
+                    Confirmez votre adresse email: <h:inputText value="a" /> <br />
+                    Entrez votre mot de passe: <h:inputSecret required="true" id="password2" value="#{UserView.user.hashPassword}">
+                        <f:validateRequired for="password2"/></h:inputSecret>
+                        <h:message showSummary="true" showDetail="false" id="password2Erreur" for="password2" styleClass="erreurSaisie"/><br />
+                    Confirmez votre mot de passe: <h:inputSecret value="a" /> <br />
+                    <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" />
+                </h:form>
+            </div>
+        </div>
+        <div id="bottomPaie">
+            <h:form>
+                <h:commandButton action="/index.xhtml" value="retour à l'index" />
+            </h:form>
+        </div>
+    </h:body>
+
+</html>
