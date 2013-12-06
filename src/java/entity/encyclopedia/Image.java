@@ -32,6 +32,22 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
     @ManyToOne
     private Copyright copyright;
 
+    public List<Productible> getProductibles() {
+        return productibles;
+    }
+
+    public void setProductibles(List<Productible> productibles) {
+        this.productibles = productibles;
+    }
+
+    public Copyright getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(Copyright copyright) {
+        this.copyright = copyright;
+    }
+
     public String getName() {
         return name;
     }

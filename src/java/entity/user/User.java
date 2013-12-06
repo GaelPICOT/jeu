@@ -32,9 +32,9 @@ public class User implements Serializable {
     private Long id;
     
     @Column(nullable=false)
-    private String nom;
+    private String name;
     @Column(nullable=false)
-    private String prenom;
+    private String firstName;
     @Column(nullable=false)
     private String mail;
     @Column(nullable=false)
@@ -88,20 +88,20 @@ public class User implements Serializable {
         this.mail = mail;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName () {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName (String nom) {
+        this.name = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setFirstName(String prenom) {
+        this.firstName = prenom;
     }
 
     public String getHashPassword() {
