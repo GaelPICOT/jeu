@@ -6,7 +6,6 @@
 
 package entity.encyclopedia;
 
-import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;

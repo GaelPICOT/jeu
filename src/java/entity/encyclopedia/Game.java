@@ -21,6 +21,17 @@ public class Game extends Productible implements Serializable, SemanticRessource
     private static final long serialVersionUID = 1L;
     @ManyToMany
     private List<Category> categories;
+    @ManyToMany
+    private List<Theme> themes;
+
+    public List<Theme> getThemes() {
+        return themes;
+    }
+
+    public void setThemes(List<Theme> themes) {
+        this.themes = themes;
+    }
+    
 
     public List<Category> getCategories() {
         return categories;
