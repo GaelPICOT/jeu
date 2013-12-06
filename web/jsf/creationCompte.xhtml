@@ -17,10 +17,10 @@
         </div>
         <div id="content" class="center_content">
             <h:form>
-                <label>Prénom: </label><h:inputText required="true" id="prenom" value="#{UserView.user.prenom}">
+                <label>Prénom: </label><h:inputText required="true" id="prenom" value="#{UserView.user.firstName}">
                     <f:validateRequired for="prenom"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="prenomErreur" for="prenom" styleClass="erreurSaisie"/><br />
-                <label>Nom: </label><h:inputText required="true" id="nom" value="#{UserView.user.nom}">
+                <label>Nom: </label><h:inputText required="true" id="nom" value="#{UserView.user.name}">
                     <f:validateRequired for="nom"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="nomErreur" for="nom" styleClass="erreurSaisie"/><br />
                 <label>Entrez votre adresse email: </label><h:inputText required="true" id="mail2" value="#{UserView.user.mail}">
