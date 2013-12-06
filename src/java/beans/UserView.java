@@ -56,9 +56,14 @@ public class UserView {
         for(int i = 0; i < userList.size(); i++) {
             if(userList.get(i).getMail().equals(user.getMail()) && userList.get(i).getHashPassword().equals(user.getHashPassword())) {
                 user = userList.get(i);
-                return "compteConnecte";
+                return "index";
             }
         }
-        return "connexionCompte";
+        return "index";
+    }
+    
+    public String disconnect() {
+        user = null;
+        return "index";
     }
 }

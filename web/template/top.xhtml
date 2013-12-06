@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Haut de page</title>
     </h:head>
@@ -12,22 +13,42 @@
         </div>
         
         <div id="topRight">
-            <table>
-                <tr>
-                    <td>
-                        <h:form>
-                            <h:inputText value="#{UserView.user.mail}"/>
-                            <h:inputSecret value="#{UserView.user.hashPassword}" />
-                            <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />
-                        </h:form>
-                    </td>
-                    <td>
-                        <h:form>
-                            <h:commandButton action="jsf/creationCompte.xhtml" value="Créer un compte" />
-                        </h:form>
-                    </td>
-                </tr>
-            </table>
+            <c:if test="#{empty UserView.user.mail}">
+                <table>
+                    <tr>
+                        <td>
+                            <h:form>
+                                mail : <h:inputText value="#{UserView.user.mail}"/>
+                                mot de passe : <h:inputSecret value="#{UserView.user.hashPassword}" />
+                                <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />
+                            </h:form>
+                        </td>
+                        <td>
+                            <h:form>
+                                <h:commandButton action="jsf/creationCompte.xhtml" value="Créer un compte" />
+                            </h:form>
+                        </td>
+                    </tr>
+                </table>
+            </c:if>
+            <!-- otherwise ne marche pas-->
+            <!--<c:otherwise>-->
+            <c:if test="#{not empty UserView.user.mail}">
+                <table>
+                    <tr>
+                        <td>
+                            <h:outputText value="Bonjour #{UserView.user.firstName}"/>
+                        </td>
+                        <td>
+                            <h:form>
+                                <h:commandButton action="#{UserView.disconnect}" value="Deconnexion" />
+                            </h:form>
+                        </td>
+                    </tr>
+                </table>
+            </c:if>
+            <!--</c:otherwise>-->
+            
         </div>  
         <div id="topCenter">
             <table>
