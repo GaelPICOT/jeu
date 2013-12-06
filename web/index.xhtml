@@ -14,7 +14,7 @@
     <h:body>
 
         <div id="top">
-            <ui:include src="/template/top.xhtml"/>
+            <ui:include src="template/top.xhtml"/>
         </div>
         <div>
             <div id="left">
@@ -32,7 +32,7 @@
         <div id="bottom">
             <ui:insert name="bottom">Bottom</ui:insert>
             <h:form>
-                <h:commandButton action="jsf/paieEtape1.xhtml" value="test page paiement" />
+                <h:link outcome="jsf/paieEtape1.xhtml" value="test page paiement" />
             </h:form>
         </div>
 

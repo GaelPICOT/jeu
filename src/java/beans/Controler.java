@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author kieffera
  */
-@ManagedBean
+@ManagedBean(name="Controler")
 @RequestScoped
 public class Controler {
 
@@ -17,5 +17,9 @@ public class Controler {
      * Creates a new instance of Controler
      */
     public Controler() {
+    }
+    
+    public String getTestPaie(){
+        return "jsf/paieEtape1";
     }
 }
