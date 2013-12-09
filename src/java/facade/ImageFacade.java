@@ -4,7 +4,7 @@
  */
 package facade;
 
-import entity.encyclopedia.Accessory;
+import entity.encyclopedia.Image;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author inilog
  */
 @Stateless
-public class AccessoryFacade extends AbstractFacade<Accessory> {
+public class ImageFacade extends AbstractFacade<Image> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class AccessoryFacade extends AbstractFacade<Accessory> {
         return em;
     }
 
-    public AccessoryFacade() {
-        super(Accessory.class);
+    public ImageFacade() {
+        super(Image.class);
     }
     
 }

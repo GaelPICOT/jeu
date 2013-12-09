@@ -1,17 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entity.semantic;
 
 import entity.ModarateStatu;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 /**
@@ -19,17 +20,18 @@ import javax.persistence.ManyToOne;
  * @author inilog
  */
 @Entity
-public class PureSemanticTriple implements Serializable, Triple {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class TripleEntity implements Serializable, Triple {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Predicate predicate;
     @ManyToOne
     private SemanticNode sujet;
-    @ManyToOne
-    private SemanticNode objet;
+    @ManyToOne(fetch=FetchType.LAZY)
+    private SemanticNode objetSem;
     private ModarateStatu moderate;
 
     public ModarateStatu getModerate() {
@@ -41,24 +43,28 @@ public class PureSemanticTriple implements Serializable, Triple {
     }
 
     @Override
-    public SemanticNode getSujet() {
-        return sujet;
+    public SemanticRessource getSujet() {
+        if (sujet instanceof SemanticRessource)
+            return (SemanticRessource)sujet;
+        else
+            return null;
     }
 
     @Override
-    public void setSujet(SemanticNode sujet) {
-        this.sujet = sujet;
+    public void setSujet(SemanticRessource sujet) {
+        if (sujet instanceof SemanticNode)
+            this.sujet = (SemanticNode)sujet;
     }
 
 
     @Override
     public SemanticNode getObjet() {
-        return objet;
+        return objetSem;
     }
 
     @Override
     public void setObjet(SemanticNode objet) {
-        this.objet = objet;
+        this.objetSem = objet;
     }
 
     @Override
@@ -89,10 +95,10 @@ public class PureSemanticTriple implements Serializable, Triple {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PureSemanticTriple)) {
+        if (!(object instanceof TripleEntity)) {
             return false;
         }
-        PureSemanticTriple other = (PureSemanticTriple) object;
+        TripleEntity other = (TripleEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

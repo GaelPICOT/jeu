@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Anthony
+ * @author inilog
  */
 @Stateless
 public class PersonFacade extends AbstractFacade<Person> {

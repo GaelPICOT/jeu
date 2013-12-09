@@ -4,17 +4,17 @@
  */
 package facade;
 
-import entity.semantic.PureSemanticTriple;
+import entity.encyclopedia.Theme;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Anthony
+ * @author inilog
  */
 @Stateless
-public class PureSemanticTripleFacade extends AbstractFacade<PureSemanticTriple> {
+public class ThemeFacade extends AbstractFacade<Theme> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class PureSemanticTripleFacade extends AbstractFacade<PureSemanticTriple>
         return em;
     }
 
-    public PureSemanticTripleFacade() {
-        super(PureSemanticTriple.class);
+    public ThemeFacade() {
+        super(Theme.class);
     }
     
 }

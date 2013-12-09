@@ -4,17 +4,17 @@
  */
 package facade;
 
-import entity.semantic.subtriple.TripleSAccessory;
+import entity.semantic.TripleEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Anthony
+ * @author inilog
  */
 @Stateless
-public class TripleSAccessoryFacade extends AbstractFacade<TripleSAccessory> {
+public class TripleEntityFacade extends AbstractFacade<TripleEntity> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class TripleSAccessoryFacade extends AbstractFacade<TripleSAccessory> {
         return em;
     }
 
-    public TripleSAccessoryFacade() {
-        super(TripleSAccessory.class);
+    public TripleEntityFacade() {
+        super(TripleEntity.class);
     }
     
 }

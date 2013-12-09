@@ -9,8 +9,8 @@ package entity.semantic;
  * @author inilog
  */
 public interface Triple {
-    public void setSujet(SemanticNode sujet);
-    public SemanticNode getSujet();
+    public void setSujet(SemanticRessource sujet);
+    public SemanticRessource getSujet();
     public void setObjet(SemanticNode sujet);
     public SemanticNode getObjet();
     public Predicate getPredicate();

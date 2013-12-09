@@ -4,17 +4,17 @@
  */
 package facade;
 
-import entity.semantic.subtriple.TripleSAccessoryOGame;
+import entity.encyclopedia.Licence;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Anthony
+ * @author inilog
  */
 @Stateless
-public class TripleSAccessoryOGameFacade extends AbstractFacade<TripleSAccessoryOGame> {
+public class LicenceFacade extends AbstractFacade<Licence> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class TripleSAccessoryOGameFacade extends AbstractFacade<TripleSAccessory
         return em;
     }
 
-    public TripleSAccessoryOGameFacade() {
-        super(TripleSAccessoryOGame.class);
+    public LicenceFacade() {
+        super(Licence.class);
     }
     
 }
