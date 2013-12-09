@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,39 +27,48 @@
         <div>
             <div id="leftPaie">
                 <h2>Vos adresses</h2>
+                <!--Voir si ça fonctionne après insertion d'une adresse-->
+                <c:forEach var="item" items="#{UserView.user.adresses}">
+                    <div>
+                        <h:outputText value="Nom : #{item.name}" />
+                        <h:outputText value="Prénom : #{item.firstname}" />
+                        <h:outputText value="Adresse : #{item.adress}" />
+                        <h:outputText value="Complément d'adresse : #{item.complement}" />
+                        <h:outputText value="Ville : #{item.city}" />
+                        <h:outputText value="Code postal : #{item.zipCode}" />
+                        <h:outputText value="Téléphone : #{item.phoneNumber}" />
+                        <h:outputText value="Code d'acces : #{item.accessCode}" />
+                    </div>
+                </c:forEach>
                 <h:form>
                     
                     <h:commandButton action="null" value="Valider" />
                 </h:form>
             </div>
             <div id="rightPaie">
-                <h2>Connectez vous</h2>
+                <h2>Entrez une nouvelle adresse</h2>
                 <h:form>
-                    <label>Entrez votre adresse email: </label><h:inputText required="true" id="mail" value="#{UserView.user.mail}">
-                        <f:validateRequired for="mail"/></h:inputText>
-                        <h:message showSummary="true" showDetail="false" id="mailErreur" for="mail" styleClass="erreurSaisie"/><br />
-                        <label>Entrez votre mot de passe: </label><h:inputSecret required="true" id="password" value="#{UserView.user.hashPassword}">
-                        <f:validateRequired for="password"/></h:inputSecret>
-                        <h:message showSummary="true" showDetail="false" id="passwordErreur" for="password" styleClass="erreurSaisie"/><br />
-                    <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />    
-                </h:form>
-                <h2>Creez votre compte</h2>
-                <h:form>
-                    <label>Prénom: </label><h:inputText required="true" id="prenom" value="#{UserView.user.firstName}">
-                        <f:validateRequired for="prenom"/></h:inputText>
-                        <h:message showSummary="true" showDetail="false" id="prenomErreur" for="prenom" styleClass="erreurSaisie"/><br />
-                    <label>Nom: </label><h:inputText required="true" id="nom" value="#{UserView.user.name}">
-                        <f:validateRequired for="nom"/></h:inputText>
-                        <h:message showSummary="true" showDetail="false" id="nomErreur" for="nom" styleClass="erreurSaisie"/><br />
-                    <label>Entrez votre adresse email: </label><h:inputText required="true" id="mail2" value="#{UserView.user.mail}">
-                        <f:validateRequired for="mail2"/></h:inputText>
-                        <h:message showSummary="true" showDetail="false" id="mail2Erreur" for="mail2" styleClass="erreurSaisie"/><br />
-                    <label>Confirmez votre adresse email: </label><h:inputText value="a" /> <br />
-                    <label>Entrez votre mot de passe: </label><h:inputSecret required="true" id="password2" value="#{UserView.user.hashPassword}">
-                        <f:validateRequired for="password2"/></h:inputSecret>
-                        <h:message showSummary="true" showDetail="false" id="password2Erreur" for="password2" styleClass="erreurSaisie"/><br />
-                    <label>Confirmez votre mot de passe: </label><h:inputSecret value="a" /> <br />
-                    <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" />
+                    <h:inputText required="true" id="nom" value="#{AdressView.adress.name}">
+                    <f:validateRequired for="nom"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="nomErreur" for="nom" styleClass="erreurSaisie"/><br />
+                    <h:inputText required="true" id="prenom" value="#{AdressView.adress.firstname}">
+                    <f:validateRequired for="prenom"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="prenomErreur" for="prenom" styleClass="erreurSaisie"/><br />
+                    <h:inputText required="true" id="adresse" value="#{AdressView.adress.adress}">
+                    <f:validateRequired for="adresse"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="adresseErreur" for="adresse" styleClass="erreurSaisie"/><br />
+                    <h:inputText value="#{AdressView.adress.complement}" /><br/>
+                    <h:inputText required="true" id="ville" value="#{AdressView.adress.city}">
+                    <f:validateRequired for="ville"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="villeErreur" for="ville" styleClass="erreurSaisie"/><br />
+                    <h:inputText required="true" id="cp" value="#{AdressView.adress.zipCode}">
+                    <f:validateRequired for="cp"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="cpErreur" for="cp" styleClass="erreurSaisie"/><br />
+                    <h:inputText required="true" id="tel" value="#{AdressView.adress.phoneNumber}">
+                    <f:validateRequired for="tel"/></h:inputText>
+                    <h:message showSummary="true" showDetail="false" id="telErreur" for="tel" styleClass="erreurSaisie"/><br />
+                    <h:inputText value="#{AdressView.adress.accessCode}" /><br/>
+                    <h:commandButton action="#{AdressView.createAdress}" value="Enregistrer et continuer" />
                 </h:form>
             </div>
         </div>

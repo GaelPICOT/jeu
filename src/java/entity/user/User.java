@@ -96,16 +96,16 @@ public class User implements Serializable {
         return name;
     }
 
-    public void setName (String nom) {
-        this.name = nom;
+    public void setName (String name) {
+        this.name = name;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String prenom) {
-        this.firstName = prenom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getHashPassword() {

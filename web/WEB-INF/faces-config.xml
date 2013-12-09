@@ -28,4 +28,9 @@
         <managed-bean-class>beans.Controler</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>adressView</managed-bean-name>
+        <managed-bean-class>beans.AdressView</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

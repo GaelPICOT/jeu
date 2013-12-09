@@ -7,11 +7,16 @@ package beans;
 import entity.user.User;
 //import entity.user.UserStatu; 
 import facade.UserFacade;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+//import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 //import org.apache.log4j.Logger;
 
 /**
@@ -19,8 +24,8 @@ import javax.faces.bean.ManagedBean;
  * @author Anthony
  */
 @ManagedBean(name="UserView")
-@RequestScoped
-//@SessionScoped
+//@RequestScoped
+@SessionScoped
 public class UserView {
     @EJB
     private UserFacade userFacade;
@@ -63,7 +68,9 @@ public class UserView {
     }
     
     public String disconnect() {
-        user = null;
+        ((HttpSession) FacesContext.getCurrentInstance()
+         .getExternalContext()
+         .getSession(true)).invalidate();
         return "index";
     }
 }
