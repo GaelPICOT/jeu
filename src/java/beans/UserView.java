@@ -7,6 +7,7 @@ package beans;
 import entity.user.User;
 //import entity.user.UserStatu; 
 import facade.UserFacade;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -26,7 +27,7 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name="UserView")
 //@RequestScoped
 @SessionScoped
-public class UserView {
+public class UserView implements Serializable {
     @EJB
     private UserFacade userFacade;
     private User user;

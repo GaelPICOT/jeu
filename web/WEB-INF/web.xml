@@ -9,25 +9,33 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
+<!--    <servlet>
         <servlet-name>FormCreateServlet</servlet-name>
         <servlet-class>servlet.FormCreateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FormConnectServlet</servlet-name>
         <servlet-class>servlet.FormConnectServlet</servlet-class>
+    </servlet>-->
+    <servlet>
+        <servlet-name>GWTService</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+<!--    <servlet-mapping>
         <servlet-name>FormCreateServlet</servlet-name>
         <url-pattern>/servlet/FormCreateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FormConnectServlet</servlet-name>
         <url-pattern>/servlet/FormConnectServlet</url-pattern>
+    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
