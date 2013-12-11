@@ -17,6 +17,8 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -75,9 +77,13 @@ public class MainEntryPoint implements EntryPoint {
 //        ContentPanel eastPanel = new ContentPanel();
 //        eastPanel.setStyleName("container");
         
-        SplitLayoutPanel splitLayoutPanel = new SplitLayoutPanel();
-        SplitLayoutPanel splitLayoutPanel2 = new SplitLayoutPanel();
-        HorizontalPanel horizontalPanel = new HorizontalPanel();
+        DockPanel dockPanel = new DockPanel();
+        dockPanel.setSize("100%", "100%");
+//        dockPanel.setVerticalAlignment(HasAlignment.ALIGN_MIDDLE);
+        dockPanel.setHorizontalAlignment(HasAlignment.ALIGN_CENTER);
+        DockPanel dockPanel2 = new DockPanel();
+        dockPanel2.setWidth("100%");
+//        HorizontalPanel horizontalPanel = new HorizontalPanel();
 //        horizontalPanel.setWidth("100%");
 //        BorderLayout 
         
@@ -112,14 +118,15 @@ public class MainEntryPoint implements EntryPoint {
                 service.disconnect(callback);
             }
         });
+//        discButton.
 //        discButton.setStyleName("discButton");
 //
-        splitLayoutPanel2.addWest(homeButton, 200);
-        splitLayoutPanel2.addEast(discButton, 200);
+        dockPanel2.add(homeButton, DockPanel.WEST);
+        dockPanel2.add(discButton, DockPanel.EAST);
         
-        splitLayoutPanel.addNorth(splitLayoutPanel2, 30);
+        dockPanel.add(dockPanel2, DockPanel.NORTH);
         
-        splitLayoutPanel.addSouth(new Label("Pied de page"), 30);
+
         
         Command cmd = new Command() {
             public void execute() {
@@ -153,11 +160,15 @@ public class MainEntryPoint implements EntryPoint {
         menu.addItem("Vente", salesMenu);
         menu.addItem("Administration", administrationMenu);
         
-        splitLayoutPanel.add(menu);
+        dockPanel.add(menu, DockPanel.CENTER);
+        
+        Label footer = new Label("Pied de page");
+        
+        dockPanel.add(footer, DockPanel.SOUTH);
         
         
         
-        RootPanel.get().add(splitLayoutPanel);
+        RootPanel.get().add(dockPanel);
         
 //        homeButton.setWidth("50%");
 //        westPanel.add(homeButton);
