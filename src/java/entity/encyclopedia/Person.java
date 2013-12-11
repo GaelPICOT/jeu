@@ -6,8 +6,6 @@
 
 package entity.encyclopedia;
 
-import entity.semantic.PureSemanticRessource;
-import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +17,7 @@ import javax.persistence.ManyToMany;
  * @author inilog
  */
 @Entity
-public class Person extends SemanticNode implements Serializable, SemanticRessource {
+public class Person extends Actor implements Serializable, SemanticRessource {
     private static final long serialVersionUID = 1L;
     private String firstName;
     private String Name;

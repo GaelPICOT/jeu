@@ -20,9 +20,17 @@ public class Copyright extends SemanticNode implements Serializable, SemanticRes
     @ManyToOne
     private Licence licence;
     @ManyToOne
-    private Person autorCopyRight;
+    private Actor autorCopyRight;
     @ManyToOne
     private Copyright copyright;
+
+    public Actor getAutorCopyRight() {
+        return autorCopyRight;
+    }
+
+    public void setAutorCopyRight(Actor autorCopyRight) {
+        this.autorCopyRight = autorCopyRight;
+    }
 
     public Copyright getCopyright() {
         return copyright;
@@ -38,14 +46,6 @@ public class Copyright extends SemanticNode implements Serializable, SemanticRes
 
     public void setLicence(Licence licence) {
         this.licence = licence;
-    }
-
-    public Person getAutorCopyRight() {
-        return autorCopyRight;
-    }
-
-    public void setAutorCopyRight(Person autorCopyRight) {
-        this.autorCopyRight = autorCopyRight;
     }
     
     @Override
