@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import entity.encyclopedia.Release;
+import entity.user.User;
 import javax.persistence.ManyToOne;
 
 /**
@@ -27,6 +28,25 @@ public class Product implements Serializable {
     @ManyToOne
     private Release productibleType;
     private int prix;
+    @ManyToOne
+    private User vendor;
+    private int stock;
+
+    public User getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(User vendor) {
+        this.vendor = vendor;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
     public int getPrix() {
         return prix;
