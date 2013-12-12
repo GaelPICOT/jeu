@@ -31,6 +31,24 @@ public class Product implements Serializable {
     @ManyToOne
     private User vendor;
     private int stock;
+    private boolean showcase;
+    private int reduction;
+
+    public boolean isShowcase() {
+        return showcase;
+    }
+
+    public void setShowcase(boolean showcase) {
+        this.showcase = showcase;
+    }
+
+    public int getReduction() {
+        return reduction;
+    }
+
+    public void setReduction(int reduction) {
+        this.reduction = reduction;
+    }
 
     public User getVendor() {
         return vendor;
