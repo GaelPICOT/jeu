@@ -12,8 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import entity.encyclopedia.Release;
+import entity.user.Comment;
 import entity.user.User;
+import java.util.List;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,6 +24,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Product implements Serializable {
+    @OneToMany(mappedBy = "toComment")
+    private List<Comment> comments;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +38,14 @@ public class Product implements Serializable {
     private int stock;
     private boolean showcase;
     private int reduction;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public boolean isShowcase() {
         return showcase;
