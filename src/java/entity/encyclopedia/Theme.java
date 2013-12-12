@@ -5,6 +5,7 @@
 package entity.encyclopedia;
 
 import entity.semantic.SemanticNode;
+import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import javax.persistence.ManyToOne;
  * @author inilog
  */
 @Entity
-public class Theme   extends SemanticNode implements Serializable {
+public class Theme   extends SemanticNode implements Serializable, SemanticRessource {
     @ManyToMany(mappedBy = "themes")
     private List<Game> games;
     private static final long serialVersionUID = 1L;
@@ -57,6 +58,10 @@ public class Theme   extends SemanticNode implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public String getURI() {
+        return SemanticRessource.BASEURI + "theme#" + getId();
     }
     
     

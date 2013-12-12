@@ -7,6 +7,7 @@
 package entity.encyclopedia;
 
 import entity.semantic.SemanticNode;
+import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.ManyToOne;
  * @author inilog
  */
 @Entity
-public class Category extends SemanticNode implements Serializable {
+public class Category extends SemanticNode implements Serializable, SemanticRessource {
     @ManyToMany(mappedBy = "categories")
     private List<Game> games;
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,9 @@ public class Category extends SemanticNode implements Serializable {
 
     public void setParent(Category parent) {
         this.parent = parent;
+    }
+    public String getURI() {
+        return SemanticRessource.BASEURI + "category#" + getId();
     }
     
 }
