@@ -6,7 +6,7 @@
 
 package facade;
 
-import entity.semantic.PureSemanticRessource;
+import entity.option.AffichagePage;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author picotg
  */
 @Stateless
-public class PureSemanticRessourceFacade extends AbstractFacade<PureSemanticRessource> {
+public class AffichagePageFacade extends AbstractFacade<AffichagePage> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class PureSemanticRessourceFacade extends AbstractFacade<PureSemanticRess
         return em;
     }
 
-    public PureSemanticRessourceFacade() {
-        super(PureSemanticRessource.class);
+    public AffichagePageFacade() {
+        super(AffichagePage.class);
     }
     
 }
