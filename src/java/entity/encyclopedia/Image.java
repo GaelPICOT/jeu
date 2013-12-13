@@ -31,6 +31,15 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
     private String description;
     @ManyToOne
     private Copyright copyright;
+    private String URL;
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
 
     public List<Productible> getProductibles() {
         return productibles;
@@ -83,10 +92,6 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
     @Override
     public String getURI() {
         return SemanticRessource.BASEURI + "image#" + getId();
-    }
-    
-    public String getURL() {
-        return "http://localhost:8080/webEcom/image/" + getId();
     }
     
 }

@@ -6,6 +6,7 @@
 
 package entity.encyclopedia;
 
+import entity.ecom.Product;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,11 +27,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name="AppliRelease")
 public class Release extends SemanticNode implements Serializable, SemanticRessource {
+    @OneToMany(mappedBy = "productibleType")
+    private List<Product> products;
     private static final long serialVersionUID = 1L;
     @ManyToOne
     private Copyright copyright;
     @ManyToMany
     private List<Image> images;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public List<Image> getImages() {
         return images;
