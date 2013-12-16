@@ -13,6 +13,8 @@
     <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/> -->
 
     <entry-point class="org.yournamehere.client.AjoutJeu"/>
+    
+    <inherits name='entity.user.User'/>
     <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
     <!--<entry-point class="org.yournamehere.client.MainEntryPoint"/>-->
 
