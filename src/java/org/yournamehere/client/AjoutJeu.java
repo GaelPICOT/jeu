@@ -26,6 +26,7 @@ import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
+import com.google.gwt.user.client.ui.TextArea;
 import entity.encyclopedia.Copyright;
 import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -82,7 +83,7 @@ public class AjoutJeu implements EntryPoint {
         form.add(fieldName);
         
         final TextBox gameNameValue = new TextBox();
-        final TextBox gameDescriptionValue = new TextBox();
+        final TextArea gameDescriptionValue = new TextArea();
         final ListBox gameCopyrightValue = new ListBox();
         fieldValue.add(gameNameValue);
         fieldValue.add(gameDescriptionValue);
