@@ -71,28 +71,27 @@ public class AjoutJeu implements EntryPoint {
         
         Label gameNameLabel = new Label("Nom du jeu: ");
         Label gameDescriptionLabel = new Label("Description du jeu: ");
-        Label gameCopyrightLabel = new Label("Description du jeu: ");
         Button createGame = new Button("Creer jeu");
 
         
         fieldName.add(gameNameLabel);
         fieldName.add(gameDescriptionLabel);
-        fieldName.add(gameCopyrightLabel);
-        fieldName.add(createGame);
 
         form.add(fieldName);
         
         final TextBox gameNameValue = new TextBox();
         final TextArea gameDescriptionValue = new TextArea();
-        final ListBox gameCopyrightValue = new ListBox();
         fieldValue.add(gameNameValue);
         fieldValue.add(gameDescriptionValue);
-        fieldValue.add(gameCopyrightValue);
         
 
         
         form.add(fieldValue);
         
+        
+        form.add(new CopyrightComponent());
+        
+        form.add(createGame);
         
         body.add(form, DockPanel.CENTER);
         
@@ -108,27 +107,8 @@ public class AjoutJeu implements EntryPoint {
                 }
         };
         
-        AsyncCallback<List<CopyrightClient>> callbackCopyright;
-        callbackCopyright = new AsyncCallback<List<CopyrightClient>>() {
-            
-            @Override
-            public void onFailure(Throwable caught) {
-                System.out.println("error load copyright");
-                Window.alert("erreur lors du chargement copyright\n"+caught);
-            }
-            
-            @Override
-            public void onSuccess(List<CopyrightClient> result) {
-                List<CopyrightClient> listCopyright;
-                listCopyright = result;
-                if (result != null)
-                for (CopyrightClient cr : listCopyright) {
-                    gameCopyrightValue.addItem(cr.getCopychaine());
-                }
-            }
-        };
         
-        service.getCopyright(callbackCopyright);
+  
         
         
         createGame.addClickHandler(new ClickHandler() {
