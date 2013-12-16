@@ -73,13 +73,11 @@ public class AjoutJeu implements EntryPoint {
         Label gameCopyrightLabel = new Label("Description du jeu: ");
         Button createGame = new Button("Creer jeu");
 
-        final Label label = new Label("");
         
         fieldName.add(gameNameLabel);
         fieldName.add(gameDescriptionLabel);
         fieldName.add(gameCopyrightLabel);
         fieldName.add(createGame);
-        fieldName.add(label);
 
         form.add(fieldName);
         
@@ -100,7 +98,6 @@ public class AjoutJeu implements EntryPoint {
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("game created");
-                        label.setText(result);
                         Window.alert("jeu créé");
                 }
 

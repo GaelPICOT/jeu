@@ -62,20 +62,18 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 //    private UserFacade userFacade;
 //    private User user;
     
-    public String createAccessory(String name, String description) {
+    public void createAccessory(String name, String description) {
         accessory = new Accessory();
         accessory.setName(name);
         accessory.setDescription(description);
         accessoryFacade.create(accessory);
-        return null;
     }
     
-    public String createGame(String name, String description) {
+    public void createGame(String name, String description) {
         game = new Game();
         game.setName(name);
         game.setDescription(description);
         gameFacade.create(game);
-        return name + ";" + description;
     }
     @Override
     public List<CopyrightClient> getCopyright() {
