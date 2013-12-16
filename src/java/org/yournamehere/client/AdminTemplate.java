@@ -48,7 +48,7 @@ public class AdminTemplate {
 		discButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 //				System.out.println("Deconnexion");
-//                                service.disconnect(callback);
+                                service.disconnect(callback);
 			}
 		});
 		// discButton.getElement().setId("discButton");

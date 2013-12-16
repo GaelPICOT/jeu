@@ -27,46 +27,45 @@
         <div>
             <div id="leftPaie">
                 <h2>Vos adresses</h2>
-                <!--Voir si ça fonctionne après insertion d'une adresse-->
-                <c:forEach var="item" items="#{UserView.user.adresses}">
-                    <div>
-                        <h:outputText value="Nom : #{item.name}" />
-                        <h:outputText value="Prénom : #{item.firstname}" />
-                        <h:outputText value="Adresse : #{item.adress}" />
-                        <h:outputText value="Complément d'adresse : #{item.complement}" />
-                        <h:outputText value="Ville : #{item.city}" />
-                        <h:outputText value="Code postal : #{item.zipCode}" />
-                        <h:outputText value="Téléphone : #{item.phoneNumber}" />
-                        <h:outputText value="Code d'acces : #{item.accessCode}" />
-                    </div>
-                </c:forEach>
                 <h:form>
-                    
+                    <h:selectOneRadio value="#{AdressView.adress}" layout="pageDirection">
+                        <c:forEach var="item" items="#{UserView.user.adresses}">
+                            <f:selectItem itemValue="#{item}" itemLabel="#{item}"/>
+                        </c:forEach>
+                    </h:selectOneRadio>             
                     <h:commandButton action="null" value="Valider" />
                 </h:form>
             </div>
             <div id="rightPaie">
                 <h2>Entrez une nouvelle adresse</h2>
                 <h:form>
+                    <label class="form">Nom* : </label>
                     <h:inputText required="true" id="nom" value="#{AdressView.adress.name}">
                     <f:validateRequired for="nom"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="nomErreur" for="nom" styleClass="erreurSaisie"/><br />
+                    <label class="form">Prénom* : </label>
                     <h:inputText required="true" id="prenom" value="#{AdressView.adress.firstname}">
                     <f:validateRequired for="prenom"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="prenomErreur" for="prenom" styleClass="erreurSaisie"/><br />
+                    <label class="form">Adresse* : </label>
                     <h:inputText required="true" id="adresse" value="#{AdressView.adress.adress}">
                     <f:validateRequired for="adresse"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="adresseErreur" for="adresse" styleClass="erreurSaisie"/><br />
+                    <label class="form">Complément d'adresse : </label>
                     <h:inputText value="#{AdressView.adress.complement}" /><br/>
+                    <label class="form">Ville* : </label>
                     <h:inputText required="true" id="ville" value="#{AdressView.adress.city}">
                     <f:validateRequired for="ville"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="villeErreur" for="ville" styleClass="erreurSaisie"/><br />
+                    <label class="form">Code postal* : </label>
                     <h:inputText required="true" id="cp" value="#{AdressView.adress.zipCode}">
                     <f:validateRequired for="cp"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="cpErreur" for="cp" styleClass="erreurSaisie"/><br />
+                    <label class="form">Téléphone* : </label>
                     <h:inputText required="true" id="tel" value="#{AdressView.adress.phoneNumber}">
                     <f:validateRequired for="tel"/></h:inputText>
                     <h:message showSummary="true" showDetail="false" id="telErreur" for="tel" styleClass="erreurSaisie"/><br />
+                    <label class="form">Code d'accès : </label>
                     <h:inputText value="#{AdressView.adress.accessCode}" /><br/>
                     <h:commandButton action="#{AdressView.createAdress}" value="Enregistrer et continuer" />
                 </h:form>

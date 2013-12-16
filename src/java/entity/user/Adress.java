@@ -134,7 +134,7 @@ public class Adress implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.user.Adress[ id=" + id + " ]";
+        return ("Nom : " + this.firstname + "\nPrenom : " + this.name + "\nAdresse : " + this.adress + "\nComplement d'adresse : " + this.complement + "\nVille : " + this.city + "\nCode Postal : " + this.zipCode + "\nTelephone : " + this.phoneNumber + "\nCode d'acces : " + this.accessCode);
     }
     
 }
