@@ -13,6 +13,7 @@
     <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/> -->
 
     <entry-point class="org.yournamehere.client.AjoutJeu"/>
+    <inherits name='entity.user.User'/>
     <servlet path='/GWTService' class='org.yournamehere.server.sampleService.GWTServiceImpl' />
     <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
     <!--<entry-point class="org.yournamehere.client.MainEntryPoint"/>-->

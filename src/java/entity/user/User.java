@@ -6,6 +6,7 @@
 
 package entity.user;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import entity.ecom.Cart;
 import entity.ecom.Command;
 import java.io.Serializable;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="AppliUser")
-public class User implements Serializable {
+public class User implements Serializable, IsSerializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,6 +48,11 @@ public class User implements Serializable {
     private Cart cart;
     @OneToMany(mappedBy = "user")
     private List<Command> commands;
+
+    public User() {
+    }
+    
+    
 
     public Cart getCart() {
         return cart;
