@@ -7,6 +7,7 @@ package beans;
 import entity.user.Adress;
 import entity.user.User;
 import facade.AdressFacade;
+import facade.UserFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +25,8 @@ import javax.servlet.http.HttpSession;
 public class AdressView {
     @EJB
     private AdressFacade adressFacade;
+    @EJB
+    private UserFacade userFacade;
     private Adress adress;
     private User user;
 //    Logger logger = Logger.getLogger("metho");
@@ -48,12 +51,25 @@ public class AdressView {
     public Adress getAdress() {
         return adress;
     }
+    
+    public Adress setAdress() {
+        return adress;
+    }
 
     
     public String createAdress(){
         adressFacade.create(adress);
         if(this.user != null){
             this.user.addAdress(this.adress);
+            this.userFacade.edit(user);
+            return "paieEtape3";
+        }
+        return "paieEtape3";
+    }
+    
+    public String validAdress(){
+        if(this.user != null){
+            return "paieEtape3";
         }
         return "paieEtape2";
     }
