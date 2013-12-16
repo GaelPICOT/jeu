@@ -23,8 +23,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasAlignment;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
+import entity.encyclopedia.Copyright;
+import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
 //import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -67,12 +70,14 @@ public class AjoutJeu implements EntryPoint {
         
         Label gameNameLabel = new Label("Nom du jeu: ");
         Label gameDescriptionLabel = new Label("Description du jeu: ");
+        Label gameCopyrightLabel = new Label("Description du jeu: ");
         Button createGame = new Button("Creer jeu");
 
         final Label label = new Label("");
         
         fieldName.add(gameNameLabel);
         fieldName.add(gameDescriptionLabel);
+        fieldName.add(gameCopyrightLabel);
         fieldName.add(createGame);
         fieldName.add(label);
 
@@ -80,8 +85,10 @@ public class AjoutJeu implements EntryPoint {
         
         final TextBox gameNameValue = new TextBox();
         final TextBox gameDescriptionValue = new TextBox();
+        final ListBox gameCopyrightValue = new ListBox();
         fieldValue.add(gameNameValue);
         fieldValue.add(gameDescriptionValue);
+        fieldValue.add(gameCopyrightValue);
         
 
         
@@ -98,10 +105,33 @@ public class AjoutJeu implements EntryPoint {
                 }
 
                 public void onFailure(Throwable caught) {
-                        System.out.println("error while creating game");
+                        System.out.println("error while creating game\n"+caught);
                         Window.alert("erreur lors de la création du jeu");
                 }
         };
+        
+        AsyncCallback<List<CopyrightClient>> callbackCopyright;
+        callbackCopyright = new AsyncCallback<List<CopyrightClient>>() {
+            
+            @Override
+            public void onFailure(Throwable caught) {
+                System.out.println("error load copyright");
+                Window.alert("erreur lors du chargement copyright\n"+caught);
+            }
+            
+            @Override
+            public void onSuccess(List<CopyrightClient> result) {
+                List<CopyrightClient> listCopyright;
+                listCopyright = result;
+                if (result != null)
+                for (CopyrightClient cr : listCopyright) {
+                    gameCopyrightValue.addItem(cr.getCopychaine());
+                }
+            }
+        };
+        
+        service.getCopyright(callbackCopyright);
+        
         
         createGame.addClickHandler(new ClickHandler() {
                 @Override

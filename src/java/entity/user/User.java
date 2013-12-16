@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String name;
     @Column(nullable=false)
     private String firstName;
-    @Column(nullable=false)
+    @Column(nullable=false, unique=true)
     private String mail;
     @Column(nullable=false)
     private String hashPassword;

@@ -19,7 +19,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
-        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservice</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

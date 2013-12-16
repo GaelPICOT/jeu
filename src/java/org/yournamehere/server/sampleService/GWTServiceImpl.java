@@ -11,13 +11,18 @@ import javax.ejb.EJB;
 import beans.UserView;
 import com.google.gwt.user.client.Window;
 import entity.encyclopedia.Accessory;
+import entity.encyclopedia.Copyright;
 import entity.encyclopedia.Game;
 import facade.AccessoryFacade;
+import facade.CopyrightFacade;
 import facade.GameFacade;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import org.yournamehere.client.CopyrightClient;
 
 import org.yournamehere.client.sampleService.GWTService;
 
@@ -32,6 +37,10 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
     @EJB
     private GameFacade gameFacade;
     private Game game;
+    
+    @EJB
+    private CopyrightFacade copyrightFacade;
+    
     
     @EJB
     private AccessoryFacade accessoryFacade;
@@ -53,11 +62,12 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 //    private UserFacade userFacade;
 //    private User user;
     
-    public void createAccessory(String name, String description) {
+    public String createAccessory(String name, String description) {
         accessory = new Accessory();
         accessory.setName(name);
         accessory.setDescription(description);
         accessoryFacade.create(accessory);
+        return null;
     }
     
     public String createGame(String name, String description) {
@@ -67,8 +77,18 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
         gameFacade.create(game);
         return name + ";" + description;
     }
+    @Override
+    public List<CopyrightClient> getCopyright() {
+        List<Copyright> listCopyright = copyrightFacade.findAll();
+        List<CopyrightClient> listCopyrightClient = new ArrayList<CopyrightClient>();
+        if (listCopyright!=null)
+            for(Copyright cop : listCopyright) {
+                listCopyrightClient.add(new CopyrightClient(cop.toString()));
+            }
+        return listCopyrightClient;
+    }
 
-    public void disconnect() {
+    public String disconnect() {
 //        System.out.println("debut myMethod");
 //        UserView userView = new UserView();
 //        userFacade = new UserFacade();
@@ -97,5 +117,6 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
          .getSession(true)).invalidate();
         
 //        return "worked";
+        return null;
     }
 }
