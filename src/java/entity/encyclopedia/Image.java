@@ -8,6 +8,7 @@ import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -29,7 +30,7 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
     private String textAlt;
     @Lob
     private String description;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Copyright copyright;
     private String URL;
 

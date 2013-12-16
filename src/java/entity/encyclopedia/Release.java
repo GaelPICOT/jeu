@@ -11,6 +11,7 @@ import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -27,13 +28,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="AppliRelease")
 public class Release extends SemanticNode implements Serializable, SemanticRessource {
-    @OneToMany(mappedBy = "productibleType")
+    @OneToMany(mappedBy = "productibleType", cascade=CascadeType.PERSIST)
     private List<Product> products;
     private static final long serialVersionUID = 1L;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Copyright copyright;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)
     private List<Image> images;
+    @Lob
+    @Column(nullable=false)
+    private String descriptionDetails;
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(nullable=false)
+    private Productible productibleType;
 
     public List<Product> getProducts() {
         return products;
@@ -58,13 +65,6 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
     public void setCopyright(Copyright copyright) {
         this.copyright = copyright;
     }
-    
-    @Lob
-    @Column(nullable=false)
-    private String descriptionDetails;
-    @ManyToOne
-    @JoinColumn(nullable=false)
-    private Productible productibleType;
 
     public String getDescriptionDetails() {
         return descriptionDetails;

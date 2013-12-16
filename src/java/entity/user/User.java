@@ -6,11 +6,11 @@
 
 package entity.user;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
 import entity.ecom.Cart;
 import entity.ecom.Command;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="AppliUser")
-public class User implements Serializable, IsSerializable {
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,13 +40,13 @@ public class User implements Serializable, IsSerializable {
     private String mail;
     @Column(nullable=false)
     private String hashPassword;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<Adress> adresses;
     @Column(name = "USERTYPE")
     private UserStatu type;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     private Cart cart;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.PERSIST)
     private List<Command> commands;
 
     public User() {

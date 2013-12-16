@@ -7,6 +7,7 @@ package entity.encyclopedia;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -18,7 +19,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Actor extends SemanticNode implements Serializable, SemanticRessource {
     private static final long serialVersionUID = 1L;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Article histoire;
     @Lob
     private String description;

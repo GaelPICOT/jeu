@@ -5,4 +5,5 @@
 <module>
     <source>entity.semantic.SemanticNode</source>
     <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>

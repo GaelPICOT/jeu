@@ -10,6 +10,7 @@ import entity.ModarateStatu;
 import entity.user.User;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ import org.hibernate.search.annotations.Indexed;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Indexed
 public class SemanticNode implements Serializable {
-    @OneToMany(mappedBy = "sujet")
+    @OneToMany(mappedBy = "sujet", cascade=CascadeType.PERSIST)
     private List<TripleEntity> sujet;
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,7 +38,7 @@ public class SemanticNode implements Serializable {
     @DocumentId
     private Long id;
     private ModarateStatu moderate;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private User autor;
 
     public List<TripleEntity> getSujet() {

@@ -15,6 +15,8 @@ import entity.encyclopedia.Release;
 import entity.user.Comment;
 import entity.user.User;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,16 +26,16 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Product implements Serializable {
-    @OneToMany(mappedBy = "toComment")
+    @OneToMany(mappedBy = "toComment", cascade=CascadeType.PERSIST)
     private List<Comment> comments;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Release productibleType;
     private int prix;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private User vendor;
     private int stock;
     private boolean showcase;

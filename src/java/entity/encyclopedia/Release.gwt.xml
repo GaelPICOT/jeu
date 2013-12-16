@@ -7,4 +7,5 @@
     <inherits name='entity.ecom.Product'/>
     <inherits name='entity.semantic.SemanticNode'/>
     <inherits name='entity.semantic.SemanticRessource'/>
+    <inherits name='entity.encyclopedia.Productible'/>
 </module>

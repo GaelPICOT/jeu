@@ -8,6 +8,7 @@ import entity.user.Adress;
 import entity.user.User;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +23,19 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Command implements Serializable {
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private User user;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Adress adress;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date predictedDate;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date sendDate;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     private Cart content;
 
     public Cart getContent() {

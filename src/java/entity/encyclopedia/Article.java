@@ -10,6 +10,7 @@ import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -27,7 +28,7 @@ public class Article extends SemanticNode implements Serializable, SemanticResso
     @Lob
     @Column(nullable=false)
     private String texte;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)
     private List<Image> images;
 
     public List<Image> getImages() {

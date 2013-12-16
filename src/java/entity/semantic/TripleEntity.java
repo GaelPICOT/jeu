@@ -6,6 +6,7 @@ package entity.semantic;
 
 import entity.ModarateStatu;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,11 +27,11 @@ public class TripleEntity implements Serializable, Triple {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Predicate predicate;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private SemanticNode sujet;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     private SemanticNode objetSem;
     private ModarateStatu moderate;
 
