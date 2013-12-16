@@ -41,26 +41,15 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
     @EJB
     private CopyrightFacade copyrightFacade;
     
-    
     @EJB
     private AccessoryFacade accessoryFacade;
     private Accessory accessory;
-    /**
-     * Creates a new instance of BookView
-     */
-//    public GameView() {
-//        this.game = new Game();
-//    }
-    
-//    public Game getGame() {
-////        logger.info("getUser");
-//      return game;
-//    }
-    
 
-//    @EJB
-//    private UserFacade userFacade;
-//    private User user;
+    public User getUser() {
+        return((UserView)((HttpSession) FacesContext.getCurrentInstance()
+            .getExternalContext()
+            .getSession(true)).getAttribute("UserView")).getUser();
+    }
     
     public void createAccessory(String name, String description) {
         accessory = new Accessory();
@@ -75,6 +64,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
         game.setDescription(description);
         gameFacade.create(game);
     }
+    
     @Override
     public List<CopyrightClient> getCopyright() {
         List<Copyright> listCopyright = copyrightFacade.findAll();
