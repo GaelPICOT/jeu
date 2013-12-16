@@ -15,6 +15,10 @@ import java.io.Serializable;
 public class CopyrightClient implements Serializable {
     private String copychaine;
     
+    public CopyrightClient() {
+        this.copychaine = "";
+    }
+    
     public CopyrightClient(String copychaine) {
         this.copychaine = copychaine;
     }

@@ -29,7 +29,7 @@ public class AdressView {
     private UserFacade userFacade;
     private Adress adress;
     private User user;
-//    Logger logger = Logger.getLogger("metho");
+    private Long id;
     
     /**
      * Creates a new instance of UserView
@@ -51,15 +51,26 @@ public class AdressView {
     public Adress getAdress() {
         return adress;
     }
-    
-    public Adress setAdress() {
-        return adress;
+
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     
     public String createAdress(){
         adressFacade.create(adress);
-        if(this.user != null){
+        if(this.user.getId() != null){
             this.user.addAdress(this.adress);
             this.userFacade.edit(user);
             return "paieEtape3";
@@ -68,7 +79,8 @@ public class AdressView {
     }
     
     public String validAdress(){
-        if(this.user != null){
+        if(this.user.getId() != null){
+            adress = adressFacade.find(id);
             return "paieEtape3";
         }
         return "paieEtape2";

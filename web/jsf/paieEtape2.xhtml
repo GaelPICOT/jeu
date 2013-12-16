@@ -28,12 +28,12 @@
             <div id="leftPaie">
                 <h2>Vos adresses</h2>
                 <h:form>
-                    <h:selectOneRadio value="#{AdressView.adress}" layout="pageDirection">
+                    <h:selectOneRadio value="#{AdressView.id}" layout="pageDirection">
                         <c:forEach var="item" items="#{UserView.user.adresses}">
-                            <f:selectItem itemValue="#{item}" itemLabel="#{item}"/>
+                            <f:selectItem itemValue="#{item.id}" itemLabel="#{item}"/>
                         </c:forEach>
                     </h:selectOneRadio>             
-                    <h:commandButton action="null" value="Valider" />
+                    <h:commandButton action="#{AdressView.validAdress()}" value="Valider" />
                 </h:form>
             </div>
             <div id="rightPaie">

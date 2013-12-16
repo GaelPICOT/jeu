@@ -111,3 +111,24 @@
     margin-left: 15px;
     position: relative;
 }
+
+.radioButton{
+    float: left;
+}
+
+.radio{
+    display: block;
+    width: 100px;
+    margin-top: 5px;
+    float: left;
+    vertical-align: bottom;
+}
+
+#cheque{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: #FFFFDF;
+    display: inline-block;
+    margin-left: 5px;
+}
