@@ -97,7 +97,7 @@
   text-decoration : underline;
 }
 
-label
+.form
 {
     display: block;
     width: 200px;
@@ -106,3 +106,8 @@ label
     vertical-align: bottom;
 }
 
+.adress label{
+    float: right;
+    margin-left: 15px;
+    position: relative;
+}
