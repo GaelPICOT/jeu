@@ -11,6 +11,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * @author Anthony
  */
 public interface GWTServiceAsync {
-
     public void disconnect(AsyncCallback<String> callback);
+
+    public void createAccessory(String name, String description, AsyncCallback<String> asyncCallback);
+
+    public void createGame(String name, String description, AsyncCallback<String> asyncCallback);
 }

@@ -14,5 +14,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("sampleservice/gwtservice")
 public interface GWTService extends RemoteService {
 
-    public String disconnect();
+    public void createAccessory(String name, String description);
+    public String createGame(String name, String description);
+    public void disconnect();
 }
