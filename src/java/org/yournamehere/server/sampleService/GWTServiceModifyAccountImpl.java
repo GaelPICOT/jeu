@@ -38,7 +38,16 @@ public class GWTServiceModifyAccountImpl extends RemoteServiceServlet implements
         user.getCart().setList(new ArrayList<Product>());
 //        user.setCart(new Cart());
         user.setCommand(new ArrayList<Command>());
-        user.setAdresses(new ArrayList<Adress>());
+//        if(user.getAdresses().isEmpty()) {
+//            user.setAdresses(new ArrayList<Adress>());
+//        } else {
+            ArrayList<Adress> listAddress = new ArrayList<>();
+            for(Adress address : user.getAdresses()) {
+//                user.addAdress(address);
+                listAddress.add(address);
+            }
+            user.setAdresses(listAddress);
+//        }
         
         return user;
 //        return((UserView)((HttpSession) FacesContext.getCurrentInstance().getExternalContext()

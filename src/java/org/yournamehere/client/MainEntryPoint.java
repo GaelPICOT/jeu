@@ -18,7 +18,9 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.user.Adress;
 import entity.user.User;
+import java.util.ArrayList;
 import java.util.List;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
@@ -48,10 +50,10 @@ public class MainEntryPoint implements EntryPoint {
         
         final GWTServiceModifyAccountAsync service = GWT.create(GWTServiceModifyAccount.class);
         
-        final User user = new User();
+//        final User user = new User();
 //        String name = "";
 //        String firstName = "";
-        
+        final ArrayList<Adress> addresses = new ArrayList<Adress>();
         
         
         DockPanel page = new DockPanel();
@@ -116,6 +118,8 @@ public class MainEntryPoint implements EntryPoint {
 //        fieldValue.add(userOldPasswordValue);
 //        fieldValue.add(userNewPasswordValue);
 //        fieldValue.add(userConfirmNewPasswordValue);
+//        final Label temp = new Label();
+        final VerticalPanel addressesPanel = new VerticalPanel();
         
         AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
 
@@ -131,6 +135,16 @@ public class MainEntryPoint implements EntryPoint {
                 userNameValue.setText(result.getName());
                 userFirstNameValue.setText(result.getFirstName());
                 userMailValue.setText(result.getMail());
+//                if (result.getAdresses() != null) {
+                ArrayList<Adress> addressesTemp = (ArrayList<Adress>) result.getAdresses();
+                for (Adress address : addressesTemp) {
+                    addressesPanel.add(new AddressComponent(address));
+                    addresses.add(address);
+                }
+//                temp.setText("nombre d'adresses: " + addresses.size());
+////                    addresses.add(result.getAdresses().get(0));
+//                }
+//                addresses = new ArrayList<Adress>(result.getAdresses());
 //                Window.alert("success: " + result.getFirstName());
 //                Window.alert("success: ");
             }
@@ -142,8 +156,19 @@ public class MainEntryPoint implements EntryPoint {
         
 //        form.add(fieldValue);
         
+        HorizontalPanel bodyPanel = new HorizontalPanel();
+        bodyPanel.add(form);
+//        temp.setText("nombre d'adresses: " + addresses.size());
         
-        body.add(form, DockPanel.CENTER);
+//        for(Adress address : addresses) {
+//            Window.alert(address.toString());
+//            temp.setText(temp.getText() + "address: " + address.getAdress() + " " + address.getZipCode());
+//            addressesPanel.add(new AddressComponent(address));
+//        }
+//        bodyPanel.add(temp);
+        bodyPanel.add(addressesPanel);
+        
+        body.add(bodyPanel, DockPanel.CENTER);
         
 //        final AsyncCallback<Void> callback = new AsyncCallback<String>() {
 //                public void onSuccess(String result) {
