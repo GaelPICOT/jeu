@@ -9,6 +9,7 @@ package entity.user;
 import entity.ecom.Cart;
 import entity.ecom.Command;
 import java.io.Serializable;
+import java.util.ArrayList;
 //import java.util.List;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -158,6 +159,11 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "entity.user.User[ id=" + id + " ]";
+    }
+
+    public void setCommand(ArrayList<Command> commands) {
+        this.commands = commands;
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

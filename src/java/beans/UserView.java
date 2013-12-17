@@ -4,7 +4,13 @@
  */
 package beans;
 
+import entity.ecom.Cart;
+import entity.ecom.Product;
+import entity.user.Adress;
 import entity.user.User;
+import entity.user.UserStatu;
+import facade.AdressFacade;
+import facade.CartFacade;
 //import entity.user.UserStatu; 
 import facade.UserFacade;
 import java.io.Serializable;
@@ -31,6 +37,11 @@ public class UserView implements Serializable {
     @EJB
     private UserFacade userFacade;
     private User user;
+    
+    @EJB
+    private CartFacade cartFacade;
+    private Cart cart;
+    
 //    Logger logger = Logger.getLogger("metho");
     
     /**
@@ -51,7 +62,15 @@ public class UserView implements Serializable {
     public String createAccount(){
 //        logger.info("createAccount");
 //       this.messageFacade.create(message);
+        cart = new Cart();
+//        cart.setList(new ArrayList<Product>());
+        cartFacade.create(cart);
+//        user.setCart(cart);
+//        user.setAdresses(new ArrayList<Adress>());
+        user.setType(UserStatu.CLIENT);
         userFacade.create(user);
+        user.setCart(cart);
+        userFacade.edit(user);
         return "compteCree";
     }
     
