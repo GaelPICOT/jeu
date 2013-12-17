@@ -15,8 +15,8 @@
         <h:form>
             Entrez votre adresse email: <h:inputText value="#{UserView.user.mail}"/> <br />
             Entrez votre mot de passe: <h:inputSecret value="#{UserView.user.hashPassword}" /> <br />
-            <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />
+            <h:commandButton action="#{UserView.findAccount}" value="Se connecter" class="bouton"/>
         </h:form>
-        <h:link value="Retour à l'acceuil" outcome="/index.xhtml"/> <br /> 
+        <h:link value="Retour à l'acceuil" outcome="/index.xhtml" class="bouton"/> <br /> 
     </h:body>
 </html>

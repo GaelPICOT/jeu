@@ -20,12 +20,12 @@
                             <h:form>
                                 mail : <h:inputText value="#{UserView.user.mail}"/>
                                 mot de passe : <h:inputSecret value="#{UserView.user.hashPassword}" />
-                                <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />
+                                <h:commandButton action="#{UserView.findAccount}" value="Se connecter" styleClass="bouton"/>
                             </h:form>
                         </td>
                         <td>
                             <h:form>
-                                <h:commandButton action="jsf/creationCompte.xhtml" value="Créer un compte" />
+                                <h:commandButton action="jsf/creationCompte.xhtml" value="Créer un compte" styleClass="bouton"/>
                             </h:form>
                         </td>
                     </tr>
@@ -41,7 +41,7 @@
                         </td>
                         <td>
                             <h:form>
-                                <h:commandButton action="#{UserView.disconnect}" value="Deconnexion" />
+                                <h:commandButton action="#{UserView.disconnect}" value="Deconnexion" styleClass="bouton"/>
                             </h:form>
                         </td>
                     </tr>
@@ -64,12 +64,12 @@
                                 <f:selectItem itemLabel="Dans les articles" itemValue="" />
                 <!--                <f:selectItems value=""/>-->
                             </h:selectOneMenu>
-                            <h:commandButton value="Rechercher" action="null" />
+                            <h:commandButton value="Rechercher" action="null" styleClass="bouton"/>
                         </h:form>
                     </td>
                     <td>
                         <h:form>
-                            <h:commandButton value="Panier" action="null" />
+                            <h:commandButton value="Panier" action="null" styleClass="bouton"/>
                         </h:form>
                     </td>
                 </tr>
