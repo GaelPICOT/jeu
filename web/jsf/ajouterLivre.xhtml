@@ -11,9 +11,9 @@
              Nom du livre: <h:inputText value="#{BookView.book.name}"/> <br />
              Auteur: id dans la table dc voir cmt on le gère <br />
              Description: <h:inputText value="#{BookView.book.description}"/> <br />
-             <h:commandButton action="#{BookView.createBook}" value="Ajouter le livre" />
+             <h:commandButton action="#{BookView.createBook}" value="Ajouter le livre" class="bouton"/>
          </h:form>
-        <h:link value="Retour à l'acceuil" outcome="/index.xhtml"/>
+        <h:link value="Retour à l'acceuil" outcome="/index.xhtml" class="bouton"/>
     </h:body>
 </html>
 

@@ -10,9 +10,9 @@
         <h:form>
             Nom du jeu: <h:inputText value="#{GameView.game.name}"/> <br />
             Description: <h:inputText value="#{GameView.game.description}"/> <br />
-            <h:commandButton action="#{GameView.createGame}" value="Ajouter le jeu" />
+            <h:commandButton action="#{GameView.createGame}" value="Ajouter le jeu" class="bouton"/>
          </h:form>
-        <h:link value="Retour à l'acceuil" outcome="/index.xhtml"/>
+        <h:link value="Retour à l'acceuil" outcome="/index.xhtml" class="bouton"/>
     </h:body>
 </html>
 

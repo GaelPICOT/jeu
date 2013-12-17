@@ -33,7 +33,7 @@
                             <f:selectItem itemValue="#{item.id}" itemLabel="#{item}"/>
                         </c:forEach>
                     </h:selectOneRadio>             
-                    <h:commandButton action="#{AdressView.validAdress()}" value="Valider" />
+                    <h:commandButton action="#{AdressView.validAdress()}" value="Valider" class="bouton"/>
                 </h:form>
             </div>
             <div id="rightPaie">
@@ -67,13 +67,13 @@
                     <h:message showSummary="true" showDetail="false" id="telErreur" for="tel" styleClass="erreurSaisie"/><br />
                     <label class="form">Code d'accès : </label>
                     <h:inputText value="#{AdressView.adress.accessCode}" /><br/>
-                    <h:commandButton action="#{AdressView.createAdress}" value="Enregistrer et continuer" />
+                    <h:commandButton action="#{AdressView.createAdress}" value="Enregistrer et continuer" class="bouton"/>
                 </h:form>
             </div>
         </div>
         <div id="bottomPaie">
             <h:form>
-                <h:link outcome="/index.xhtml" value="retour a l'index" />
+                <h:link outcome="/index.xhtml" value="retour a l'index" class="bouton"/>
             </h:form>
         </div>
     </h:body>
