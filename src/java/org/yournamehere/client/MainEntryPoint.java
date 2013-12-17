@@ -49,25 +49,10 @@ public class MainEntryPoint implements EntryPoint {
         final GWTServiceModifyAccountAsync service = GWT.create(GWTServiceModifyAccount.class);
         
         final User user = new User();
+//        String name = "";
+//        String firstName = "";
         
-        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
-
-            @Override
-            public void onFailure(Throwable caught) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                Window.alert("fail");
-            }
-
-            @Override
-            public void onSuccess(User result) {
-                user.setName(result.getName());
-                user.setFirstName(result.getFirstName());
-                Window.alert("success: " + result.getFirstName());
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
         
-        service.getUser(callbackUser);
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
@@ -97,6 +82,26 @@ public class MainEntryPoint implements EntryPoint {
         fieldValue.add(gameNameValue);
         fieldValue.add(gameDescriptionValue);
         fieldValue.add(gameCopyrightValue);
+        
+        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("fail");
+            }
+
+            @Override
+            public void onSuccess(User result) {
+//                name = result.getName();
+//                firstname = result.getFirstName();
+                gameNameValue.setText(result.getName());
+                gameDescriptionValue.setText(result.getFirstName());
+                Window.alert("success: " + result.getFirstName());
+//                Window.alert("success: ");
+            }
+        };
+        
+        service.getUser(callbackUser);
         
 
         

@@ -6,7 +6,9 @@ package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import entity.encyclopedia.Actor;
 import entity.encyclopedia.Copyright;
+import entity.encyclopedia.Licence;
 import java.util.List;
 
 /**
@@ -16,5 +18,7 @@ import java.util.List;
 @RemoteServiceRelativePath("sampleservice/gwtservicecopyright")
 public interface GWTServiceCopyright extends RemoteService {
 
-    public List<Copyright> getCopyright();
+    public Copyright getCopyright(int licId, int ownerId);
+    public List<Licence> getLicence();
+    public List<Actor> getOwner();
 }
