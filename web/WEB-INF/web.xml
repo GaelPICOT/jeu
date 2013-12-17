@@ -19,7 +19,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceAddGame</servlet-name>
-        <servlet-class>org.yournamehere.server.GWTServiceAddGameImpl</servlet-class>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddGameImpl</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GWTServiceModifyAccount</servlet-name>
