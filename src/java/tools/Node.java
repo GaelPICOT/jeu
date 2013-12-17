@@ -24,4 +24,29 @@ public class Node {
     public boolean returnString(){
         return (nomClassRetour.equals("String"));
     }
+
+    public String getNomClass() {
+        return nomClass;
+    }
+
+    public void setNomClass(String nomClass) {
+        this.nomClass = nomClass;
+    }
+
+    public String getNomClassRetour() {
+        return nomClassRetour;
+    }
+
+    public void setNomClassRetour(String nomClassRetour) {
+        this.nomClassRetour = nomClassRetour;
+    }
+
+    public ArrayList getListeRetour() {
+        return listeRetour;
+    }
+
+    public void setListeRetour(ArrayList listeRetour) {
+        this.listeRetour = listeRetour;
+    }
+    
 }

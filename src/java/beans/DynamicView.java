@@ -6,14 +6,14 @@ package beans;
 
 import entity.semantic.SemanticNode;
 import facade.AbstractFacade;
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import tools.Node;
 
 /**
@@ -21,8 +21,8 @@ import tools.Node;
  * @author kieffera
  */
 @ManagedBean(name="DynamicView")
-@RequestScoped
-public class DynamicView {
+@SessionScoped
+public class DynamicView implements Serializable {
     private Long idArticle;
     private String nomArticle;
     private String nomClasseBean;
@@ -88,7 +88,9 @@ public class DynamicView {
         Method[] meths;
         
         try {
-            facadeClass = Class.forName(nomClasseBean+"Facade");
+            String[] classTemp = nomClasseBean.split(".");
+            String classFacade = "facade." + classTemp[2] + "Facade";
+            facadeClass = Class.forName(classFacade);
             
             //Nouvelle instance de la facade
             facade = (AbstractFacade) facadeClass.newInstance();

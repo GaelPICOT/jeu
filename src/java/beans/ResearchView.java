@@ -5,16 +5,12 @@
 package beans;
 
 import entity.encyclopedia.Accessory;
-import entity.encyclopedia.Article;
 import entity.encyclopedia.Book;
 import entity.encyclopedia.Game;
-import entity.semantic.SemanticNode;
-import entity.semantic.SemanticRessource;
+import entity.encyclopedia.Productible;
 import facade.AccessoryFacade;
-import facade.ArticleFacade;
 import facade.BookFacade;
 import facade.GameFacade;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -35,18 +31,22 @@ public class ResearchView {
     private GameFacade gameFacade;
     @EJB
     private AccessoryFacade accessoryFacade;
-    @EJB
-    private ArticleFacade articleFacade;
     private String search;
-    private ArrayList<SemanticRessource> semanticNodeList;
+    private ArrayList<Productible> semanticNodeList;
 
-    public Collection getSemanticNodeList() {
+    public ArrayList<Productible> getSemanticNodeList() {
         return semanticNodeList;
     }
     /**
      * Creates a new instance of ResearchView
      */
     public ResearchView() {
+    }
+    
+    public List<Game> test() {
+        List<Game> gameList = gameFacade.findAll();
+        return gameList;
+//        return this.getSemanticNodeList().get(0).getName();
     }
     
     public String getSearch() {
@@ -59,41 +59,36 @@ public class ResearchView {
     
     public String research() {
         semanticNodeList = new ArrayList<>();
+        Game g = new Game();
+        g.setName("poy");
+        g.setId(Long.MIN_VALUE);
+        semanticNodeList.add(g);
 //        if(bookFacade.count() != 0) {
 //        if(search!=null) {
-            List<Book> bookList = bookFacade.findAll();
-            for(int i = 0; i < bookList.size(); i++) {
-                if(bookList.get(i).getName().contains(search)) {
-                    semanticNodeList.add(bookList.get(i));
-                }
-            }
+//            List<Book> bookList = bookFacade.findAll();
+//            for(int i = 0; i < bookList.size(); i++) {
+//                if(bookList.get(i).getName().contains(search)) {
+//                    semanticNodeList.add(bookList.get(i));
+//                }
+//            }
 //        }
 //        }
 //        if(gameFacade.count() != 0) {
             List<Game> gameList = gameFacade.findAll();
             for(int i = 0; i < gameList.size(); i++) {
-                if(gameList.get(i).getName().contains(search)) {
+//                if(gameList.get(i).getName().contains(search)) {
                     semanticNodeList.add(gameList.get(i));
-                }
+//                }
             }
 //        }
 //        if(accessoryFacade != null) {
 //        if(accessoryFacade.count() != 0) {
-            List<Accessory> accessoryList = accessoryFacade.findAll();
-            for(int i = 0; i < accessoryList.size(); i++) {
-                if(accessoryList.get(i).getName().contains(search)) {
-                    semanticNodeList.add(accessoryList.get(i));
-                }
-            }
-//        }
-//        if(articleFacade != null) {
-//        if(articleFacade. != 0) {
-            List<Article> articleList = articleFacade.findAll();
-            for(int i = 0; i < articleList.size(); i++) {
-                if(articleList.get(i).getTitle().contains(search)) {
-                    semanticNodeList.add(articleList.get(i));
-                }
-            }
+//            List<Accessory> accessoryList = accessoryFacade.findAll();
+//            for(int i = 0; i < accessoryList.size(); i++) {
+//                if(accessoryList.get(i).getName().contains(search)) {
+//                    semanticNodeList.add(accessoryList.get(i));
+//                }
+//            }
 //        }
         return "recherche";
     }
