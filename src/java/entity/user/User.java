@@ -9,6 +9,7 @@ package entity.user;
 import entity.ecom.Cart;
 import entity.ecom.Command;
 import java.io.Serializable;
+//import java.util.List;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -41,18 +42,18 @@ public class User implements Serializable {
     @Column(nullable=false)
     private String hashPassword;
     @OneToMany(cascade=CascadeType.PERSIST)
+//    private Adress adresses;
     private List<Adress> adresses;
     @Column(name = "USERTYPE")
     private UserStatu type;
     @OneToOne(cascade=CascadeType.PERSIST)
     private Cart cart;
     @OneToMany(mappedBy = "user", cascade=CascadeType.PERSIST)
+//    private Command commands;
     private List<Command> commands;
 
     public User() {
     }
-    
-    
 
     public Cart getCart() {
         return cart;
@@ -63,10 +64,12 @@ public class User implements Serializable {
     }
 
     public List<Command> getCommands() {
+//    public Command getCommands() {
         return commands;
     }
 
     public void setCommands(List<Command> commands) {
+//    public void setCommands(Command commands) {
         this.commands = commands;
     }
 
@@ -79,10 +82,12 @@ public class User implements Serializable {
     }
 
     public List<Adress> getAdresses() {
+//    public Adress getAdresses() {
         return adresses;
     }
 
     public void setAdresses(List<Adress> adresses) {
+//    public void setAdresses(Adress adresses) {
         this.adresses = adresses;
     }
     

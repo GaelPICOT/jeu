@@ -34,47 +34,47 @@ import org.yournamehere.client.sampleService.GWTService;
 //@RequestScoped
 public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
     
-    @EJB
-    private GameFacade gameFacade;
-    private Game game;
-    
-    @EJB
-    private CopyrightFacade copyrightFacade;
-    
-    @EJB
-    private AccessoryFacade accessoryFacade;
-    private Accessory accessory;
-
-    public User getUser() {
-        return((UserView)((HttpSession) FacesContext.getCurrentInstance()
-            .getExternalContext()
-            .getSession(true)).getAttribute("UserView")).getUser();
-    }
-    
-    public void createAccessory(String name, String description) {
-        accessory = new Accessory();
-        accessory.setName(name);
-        accessory.setDescription(description);
-        accessoryFacade.create(accessory);
-    }
-    
-    public void createGame(String name, String description) {
-        game = new Game();
-        game.setName(name);
-        game.setDescription(description);
-        gameFacade.create(game);
-    }
-    
-    @Override
-    public List<CopyrightClient> getCopyright() {
-        List<Copyright> listCopyright = copyrightFacade.findAll();
-        List<CopyrightClient> listCopyrightClient = new ArrayList<CopyrightClient>();
-        if (listCopyright!=null)
-            for(Copyright cop : listCopyright) {
-                listCopyrightClient.add(new CopyrightClient(cop.toString()));
-            }
-        return listCopyrightClient;
-    }
+//    @EJB
+//    private GameFacade gameFacade;
+//    private Game game;
+//    
+//    @EJB
+//    private CopyrightFacade copyrightFacade;
+//    
+//    @EJB
+//    private AccessoryFacade accessoryFacade;
+//    private Accessory accessory;
+//
+//    public User getUser() {
+//        return((UserView)((HttpSession) FacesContext.getCurrentInstance()
+//            .getExternalContext()
+//            .getSession(true)).getAttribute("UserView")).getUser();
+//    }
+//    
+//    public void createAccessory(String name, String description) {
+//        accessory = new Accessory();
+//        accessory.setName(name);
+//        accessory.setDescription(description);
+//        accessoryFacade.create(accessory);
+//    }
+//    
+//    public void createGame(String name, String description) {
+//        game = new Game();
+//        game.setName(name);
+//        game.setDescription(description);
+//        gameFacade.create(game);
+//    }
+//    
+//    @Override
+//    public List<CopyrightClient> getCopyright() {
+//        List<Copyright> listCopyright = copyrightFacade.findAll();
+//        List<CopyrightClient> listCopyrightClient = new ArrayList<CopyrightClient>();
+//        if (listCopyright!=null)
+//            for(Copyright cop : listCopyright) {
+//                listCopyrightClient.add(new CopyrightClient(cop.toString()));
+//            }
+//        return listCopyrightClient;
+//    }
 
     public String disconnect() {
 //        System.out.println("debut myMethod");
@@ -98,11 +98,11 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 //        game.setName("huh");
 //        game.setDescription("huh2");
 //        gameFacade.create(game);
+        getThreadLocalRequest().getSession().invalidate();
         
-        
-        ((HttpSession) FacesContext.getCurrentInstance()
-         .getExternalContext()
-         .getSession(true)).invalidate();
+//        ((HttpSession) FacesContext.getCurrentInstance()
+//         .getExternalContext()
+//         .getSession(true)).invalidate();
         
 //        return "worked";
         return null;

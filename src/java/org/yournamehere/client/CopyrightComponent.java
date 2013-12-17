@@ -14,6 +14,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.List;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
+import org.yournamehere.client.sampleService.GWTServiceCopyright;
+import org.yournamehere.client.sampleService.GWTServiceCopyrightAsync;
 
 /**
  *
@@ -22,7 +24,7 @@ import org.yournamehere.client.sampleService.GWTServiceAsync;
 public class CopyrightComponent extends VerticalPanel {
     public CopyrightComponent() {
         super();
-        final GWTServiceAsync service = GWT.create(GWTService.class);
+        final GWTServiceCopyrightAsync service = GWT.create(GWTServiceCopyright.class);
         
         //creat interface :
         Label licencesLabel = new Label("Choix licence: ");

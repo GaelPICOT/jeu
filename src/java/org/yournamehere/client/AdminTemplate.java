@@ -67,7 +67,11 @@ public class AdminTemplate {
 		};
 
 		MenuBar accountMenu = new MenuBar(true);
-		accountMenu.addItem("Modifier", cmd);
+		accountMenu.addItem("Modifier", new Command() {
+			public void execute() {
+				Window.Location.replace("../welcomeGWT.html");
+			}
+		});
 		accountMenu.addItem("Supprimer", cmd);
 		accountMenu.addItem("Gestion des commandes", cmd);
 		accountMenu.getElement().setClassName("menu");

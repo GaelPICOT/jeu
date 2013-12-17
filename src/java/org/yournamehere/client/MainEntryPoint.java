@@ -22,6 +22,8 @@ import entity.user.User;
 import java.util.List;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 
 /**
  * Main entry point.
@@ -44,7 +46,7 @@ public class MainEntryPoint implements EntryPoint {
     public void onModuleLoad() {
 //        RootPanel.get().clear();
         
-        final GWTServiceAsync service = GWT.create(GWTService.class);
+        final GWTServiceModifyAccountAsync service = GWT.create(GWTServiceModifyAccount.class);
         
         final User user = new User();
         
@@ -103,17 +105,17 @@ public class MainEntryPoint implements EntryPoint {
         
         body.add(form, DockPanel.CENTER);
         
-        final AsyncCallback<String> callback = new AsyncCallback<String>() {
-                public void onSuccess(String result) {
-                        System.out.println("game created");
-                        Window.alert("jeu créé");
-                }
-
-                public void onFailure(Throwable caught) {
-                        System.out.println("error while creating game\n"+caught);
-                        Window.alert("erreur lors de la création du jeu");
-                }
-        };
+//        final AsyncCallback<Void> callback = new AsyncCallback<String>() {
+//                public void onSuccess(String result) {
+//                        System.out.println("game created");
+//                        Window.alert("jeu créé");
+//                }
+//
+//                public void onFailure(Throwable caught) {
+//                        System.out.println("error while creating game\n"+caught);
+//                        Window.alert("erreur lors de la création du jeu");
+//                }
+//        };
         
 //        AsyncCallback<List<CopyrightClient>> callbackCopyright;
 //        callbackCopyright = new AsyncCallback<List<CopyrightClient>>() {
@@ -138,18 +140,18 @@ public class MainEntryPoint implements EntryPoint {
 //        service.getCopyright(callbackCopyright);
         
         
-        createGame.addClickHandler(new ClickHandler() {
-                @Override
-                public void onClick(ClickEvent event) {
-                        System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
-//                        Window.alert("jeu créé");
-                        gameNameValue.setText("");
-                        gameDescriptionValue.setText("");
-                        // TODO Auto-generated method stub
-
-                }
-        });
+//        createGame.addClickHandler(new ClickHandler() {
+//                @Override
+//                public void onClick(ClickEvent event) {
+//                        System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
+//                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
+////                        Window.alert("jeu créé");
+//                        gameNameValue.setText("");
+//                        gameDescriptionValue.setText("");
+//                        // TODO Auto-generated method stub
+//
+//                }
+//        });
         RootPanel.get().add(page);
     }
 }

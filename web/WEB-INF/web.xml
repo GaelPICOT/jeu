@@ -17,6 +17,22 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceAddGame</servlet-name>
+        <servlet-class>org.yournamehere.server.GWTServiceAddGameImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceModifyAccountImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GWTServiceAddAccessory</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddAccessoryImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GWTServiceCopyright</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
@@ -25,9 +41,25 @@
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddGame</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtserviceaddgame</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddAccessory</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleservice/gwtserviceaddaccessory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceCopyright</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicecopyright</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

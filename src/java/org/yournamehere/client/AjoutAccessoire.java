@@ -20,6 +20,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.yournamehere.client.sampleService.GWTServiceAddAccessory;
+import org.yournamehere.client.sampleService.GWTServiceAddAccessoryAsync;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
 //import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -49,7 +51,7 @@ public class AjoutAccessoire implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 //		RootPanel.get().clear();
-		final GWTServiceAsync service = GWT.create(GWTService.class);
+		final GWTServiceAddAccessoryAsync service = GWT.create(GWTServiceAddAccessory.class);
 
 		DockPanel page = new DockPanel();
 		DockPanel body = new DockPanel();
@@ -83,11 +85,16 @@ public class AjoutAccessoire implements EntryPoint {
                                 System.out.println("accessory created");
                                 Window.alert("accesoire créé");
                         }
-
+//
                         public void onFailure(Throwable caught) {
                                 System.out.println("error while creating accessory");
                                 Window.alert("erreur lors de la création de l'accessoire");
                         }
+
+//                    @Override
+//                    public void onSuccess(Void result) {
+//                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    }
                 };
 
 		createAccessory.addClickHandler(new ClickHandler() {

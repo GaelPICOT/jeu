@@ -17,9 +17,9 @@ import org.yournamehere.client.CopyrightClient;
 @RemoteServiceRelativePath("gwtservice")
 public interface GWTService extends RemoteService {
 
-    public User getUser();
-    public List<CopyrightClient> getCopyright();
-    public void createAccessory(String name, String description);
-    public void createGame(String name, String description);
+//    public User getUser();
+//    public List<CopyrightClient> getCopyright();
+//    public void createAccessory(String name, String description);
+//    public void createGame(String name, String description);
     public String disconnect();
 }
