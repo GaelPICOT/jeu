@@ -5,8 +5,8 @@
 package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import entity.encyclopedia.Copyright;
 import java.util.List;
-import org.yournamehere.client.CopyrightClient;
 
 /**
  *
@@ -14,5 +14,5 @@ import org.yournamehere.client.CopyrightClient;
  */
 public interface GWTServiceCopyrightAsync {
 
-    public void getCopyright(AsyncCallback<List<CopyrightClient>> callback);
+    public void getCopyright(AsyncCallback<List<Copyright>> callback);
 }

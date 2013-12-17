@@ -5,25 +5,6 @@
 package org.yournamehere.server.sampleService;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import entity.user.User;
-import facade.UserFacade;
-import javax.ejb.EJB;
-import beans.UserView;
-import com.google.gwt.user.client.Window;
-import entity.encyclopedia.Accessory;
-import entity.encyclopedia.Copyright;
-import entity.encyclopedia.Game;
-import facade.AccessoryFacade;
-import facade.CopyrightFacade;
-import facade.GameFacade;
-import java.util.ArrayList;
-import java.util.List;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-import org.yournamehere.client.CopyrightClient;
-
 import org.yournamehere.client.sampleService.GWTService;
 
 /**

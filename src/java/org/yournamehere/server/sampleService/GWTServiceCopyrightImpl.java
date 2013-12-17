@@ -5,12 +5,15 @@
 package org.yournamehere.server.sampleService;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import entity.encyclopedia.Actor;
 import entity.encyclopedia.Copyright;
+import entity.encyclopedia.Licence;
+import entity.semantic.TripleEntity;
+import entity.user.User;
 import facade.CopyrightFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
-import org.yournamehere.client.CopyrightClient;
 
 import org.yournamehere.client.sampleService.GWTServiceCopyright;
 
@@ -23,13 +26,15 @@ public class GWTServiceCopyrightImpl extends RemoteServiceServlet implements GWT
     @EJB
     private CopyrightFacade copyrightFacade;
     
-    public List<CopyrightClient> getCopyright() {
+    @Override
+    public List<Copyright> getCopyright() {
         List<Copyright> listCopyright = copyrightFacade.findAll();
-        List<CopyrightClient> listCopyrightClient = new ArrayList<CopyrightClient>();
+        List<Copyright> retoure = new ArrayList<Copyright>();
         if (listCopyright!=null)
             for(Copyright cop : listCopyright) {
-                listCopyrightClient.add(new CopyrightClient(cop.toString()));
+                cop.setSujet(new ArrayList<TripleEntity>(cop.getSujet()));
+                retoure.add(cop);
             }
-        return listCopyrightClient;
+        return retoure;
     }
 }
