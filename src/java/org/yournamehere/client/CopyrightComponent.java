@@ -11,9 +11,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.encyclopedia.Copyright;
 import java.util.List;
-import org.yournamehere.client.sampleService.GWTService;
-import org.yournamehere.client.sampleService.GWTServiceAsync;
 import org.yournamehere.client.sampleService.GWTServiceCopyright;
 import org.yournamehere.client.sampleService.GWTServiceCopyrightAsync;
 
@@ -52,8 +51,8 @@ public class CopyrightComponent extends VerticalPanel {
         this.add(ownerPanel);
         this.add(actorPanel);
         
-        AsyncCallback<List<CopyrightClient>> callbackCopyright;
-        callbackCopyright = new AsyncCallback<List<CopyrightClient>>() {
+        AsyncCallback<List<Copyright>> callbackCopyright;
+        callbackCopyright = new AsyncCallback<List<Copyright>>() {
             
             @Override
             public void onFailure(Throwable caught) {
@@ -61,12 +60,12 @@ public class CopyrightComponent extends VerticalPanel {
             }
             
             @Override
-            public void onSuccess(List<CopyrightClient> result) {
-                List<CopyrightClient> listCopyright;
+            public void onSuccess(List<Copyright> result) {
+                List<Copyright> listCopyright;
                 listCopyright = result;
                 if (result != null)
-                for (CopyrightClient cr : listCopyright) {
-                    licencesList.addItem(cr.getCopychaine());
+                for (Copyright cr : listCopyright) {
+                    licencesList.addItem(cr.toString());
                 }
             }
         };
