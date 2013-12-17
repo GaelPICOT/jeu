@@ -31,9 +31,11 @@
                     <f:validateRequired for="password2"/></h:inputSecret>
                     <h:message showSummary="true" showDetail="false" id="password2Erreur" for="password2" styleClass="erreurSaisie"/><br />
                 <label class="form">Confirmez votre mot de passe: </label><h:inputSecret value="a" /> <br />
-                <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" />
+                <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" class="bouton"/>
             </h:form>
         </div>
-        <h:link value="Retour à l'acceuil" outcome="/index.xhtml"/> <br /> 
+        <div id="bottom">
+            <h:link value="Retour à l'acceuil" outcome="/index.xhtml" class="bouton"/>
+        </div>
     </h:body>
 </html>

@@ -27,7 +27,7 @@
             <div id="leftPaie">
                 <h2>Commander sans compte</h2>
                 <h:form>
-                    <h:commandButton action="paieEtape2.xhtml" value="Valider" />
+                    <h:commandButton action="paieEtape2.xhtml" value="Valider" class="bouton"/>
                 </h:form>
             </div>
             <div id="rightPaie">
@@ -39,7 +39,7 @@
                         <label class="form">Entrez votre mot de passe: </label><h:inputSecret required="true" id="password" value="#{UserView.user.hashPassword}">
                         <f:validateRequired for="password"/></h:inputSecret>
                         <h:message showSummary="true" showDetail="false" id="passwordErreur" for="password" styleClass="erreurSaisie"/><br />
-                    <h:commandButton action="#{UserView.findAccount}" value="Se connecter" />    
+                    <h:commandButton action="#{UserView.findAccount}" value="Se connecter" class="bouton"/>    
                 </h:form>
                 <h2>Creez votre compte</h2>
                 <h:form>
@@ -57,13 +57,13 @@
                         <f:validateRequired for="password2"/></h:inputSecret>
                         <h:message showSummary="true" showDetail="false" id="password2Erreur" for="password2" styleClass="erreurSaisie"/><br />
                     <label class="form">Confirmez votre mot de passe: </label><h:inputSecret value="a" /> <br />
-                    <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" />
+                    <h:commandButton action="#{UserView.createAccount}" value="Créer mon compte" class="bouton"/>
                 </h:form>
             </div>
         </div>
         <div id="bottomPaie">
             <h:form>
-                <h:link outcome="/index.xhtml" value="retour a l'index" />
+                <h:link outcome="/index.xhtml" value="retour a l'index" class="bouton"/>
             </h:form>
         </div>
     </h:body>
