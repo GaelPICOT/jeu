@@ -33,4 +33,9 @@
         <managed-bean-class>beans.AdressView</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ArticleView</managed-bean-name>
+        <managed-bean-class>beans.DynamicView</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
 </faces-config>
