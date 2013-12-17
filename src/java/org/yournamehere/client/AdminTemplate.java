@@ -58,7 +58,7 @@ public class AdminTemplate {
 		header.setCellHorizontalAlignment(discButton, HasAlignment.ALIGN_RIGHT);
 
 		page.add(header, DockPanel.NORTH);
-		page.setCellHeight(header, "20%");
+		page.setCellHeight(header, "10%");
 
 		Command cmd = new Command() {
 			public void execute() {
