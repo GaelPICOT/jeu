@@ -8,13 +8,23 @@
     </h:head>
     <h:body>
         Résultats de la recherche:
+        <h:outputText value="#{ResearchView.research()}"/>
         <ul>
-            <c:forEach var="object" items="#{ResearchView.semanticNodeList}">
+            <c:forEach var="item" items="#{ResearchView.test()}">
                 <li>
-                    <h:outputText value="#{object}"/>
+                    <h:outputText value="#{item}"/>
+                    <h:form>
+                        <h:outputText value="#{DynamicView.setIdArticle(item.id)}"/>
+                        <h:outputText value="#{item.id}"/>
+                        <h:outputText value="#{DynamicView.idArticle}"/>
+                        <h:outputText value="#{DynamicView.setNomArticle(item.name)}"/>
+                        <h:outputText value="#{DynamicView.setNomClasseBean(item.class)}"/>
+                        <h:commandButton action="#{DynamicView.createPage}" value="test"/>
+                    </h:form>
                 </li>
             </c:forEach>
         </ul>
+        AAAAAAAAAAAAAAAAAAAAAAAAAAA
     </h:body>
 </html>
 
