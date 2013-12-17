@@ -10,23 +10,17 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Store;
 
 /**
  *
  * @author inilog
  */
 @Entity
-@Indexed
 public class SemanticLiteral extends SemanticNode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Lob
     @Column(nullable=false, name="ValueSN")
-    @Field(index = Index.YES, store = Store.NO)
     private String value;
     @Column(length=2, name="languageSemantic")
     private String language;

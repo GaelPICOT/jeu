@@ -19,8 +19,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Indexed;
 
 /**
  *
@@ -28,14 +26,12 @@ import org.hibernate.search.annotations.Indexed;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Indexed
 public class SemanticNode implements Serializable {
     @OneToMany(mappedBy = "sujet", cascade=CascadeType.PERSIST)
     private List<TripleEntity> sujet;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @DocumentId
     private Long id;
     private ModarateStatu moderate;
     @ManyToOne(cascade=CascadeType.PERSIST)
