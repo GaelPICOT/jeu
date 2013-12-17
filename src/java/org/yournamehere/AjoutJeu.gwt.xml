@@ -14,8 +14,7 @@
 
     <entry-point class="org.yournamehere.client.AjoutJeu"/>
     
-    <inherits name='entity.user.User'/>
-    <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
+     <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
     <!--<entry-point class="org.yournamehere.client.MainEntryPoint"/>-->
 
     <!-- Do not define servlets here, use web.xml -->

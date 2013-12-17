@@ -44,12 +44,6 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
     @EJB
     private AccessoryFacade accessoryFacade;
     private Accessory accessory;
-
-    public User getUser() {
-        return((UserView)((HttpSession) FacesContext.getCurrentInstance()
-            .getExternalContext()
-            .getSession(true)).getAttribute("UserView")).getUser();
-    }
     
     public void createAccessory(String name, String description) {
         accessory = new Accessory();

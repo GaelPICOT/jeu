@@ -13,9 +13,7 @@ import org.yournamehere.client.CopyrightClient;
  *
  * @author Anthony
  */
-public interface GWTServiceAsync {
-    public void getUser(AsyncCallback<User> callback);
-            
+public interface GWTServiceAsync {         
     public void getCopyright(AsyncCallback<List<CopyrightClient>> callback);
     
     public void disconnect(AsyncCallback<String> callback);
