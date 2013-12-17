@@ -87,6 +87,11 @@ public class AdminTemplate {
 				Window.Location.replace("../ajouterAccessoire.html");
 			}
 		});
+                encyclopediaMenu.addItem("Ajouter image", new Command() {
+			public void execute() {
+				Window.Location.replace("../ajouterImage.html");
+			}
+		});
 		encyclopediaMenu.addItem("Ajouter autre", cmd);
 		encyclopediaMenu.addItem("Proposer modification", cmd);
 		encyclopediaMenu.getElement().setClassName("menu");

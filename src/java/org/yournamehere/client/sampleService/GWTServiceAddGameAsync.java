@@ -5,7 +5,6 @@
 package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import entity.user.User;
 
 /**
  *
