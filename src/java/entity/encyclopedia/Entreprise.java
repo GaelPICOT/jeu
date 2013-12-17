@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * Une entreprise.
  * @author inilog
  */
 @Entity
@@ -40,6 +40,11 @@ public class Entreprise extends Actor implements Serializable, SemanticRessource
     @Override
     public String getURI() {
         return SemanticRessource.BASEURI + "entreprise#" + getId();
+    }
+    
+    @Override
+    public String toString() {
+        return this.getName();
     }
     
 }

@@ -95,4 +95,8 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
         return SemanticRessource.BASEURI + "image#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

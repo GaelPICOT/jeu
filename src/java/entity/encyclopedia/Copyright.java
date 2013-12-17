@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 /**
- *
+ * droit (licence + propriétaire)
  * @author inilog
  */
 @Entity
@@ -54,4 +54,8 @@ public class Copyright extends SemanticNode implements Serializable, SemanticRes
         return SemanticRessource.BASEURI + "game#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return licence + " : " + autorCopyRight;
+    }
 }

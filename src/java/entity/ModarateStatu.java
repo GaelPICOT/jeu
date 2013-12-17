@@ -7,7 +7,8 @@
 package entity;
 
 /**
- *
+ * Defini le status de modération d'un noeud sémantique ou d'un
+ * triplet sémentic.
  * @author inilog
  */
 public enum ModarateStatu {

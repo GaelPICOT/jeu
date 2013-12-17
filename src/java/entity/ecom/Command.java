@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
- *
+ * Une commande : un panier valider avecd une adresse d'envoi.
  * @author xc1427
  */
 @Entity
@@ -38,14 +38,26 @@ public class Command implements Serializable {
     @OneToOne(cascade=CascadeType.PERSIST)
     private Cart content;
 
+    /**
+     * Recherche le contenu de la commende.
+     * @return Contenu de la commende.
+     */
     public Cart getContent() {
         return content;
     }
 
+    /**
+     * Change le contenu d'une commande.
+     * @param content nouveau contenu de la commande
+     */
     public void setContent(Cart content) {
         this.content = content;
     }
 
+    /**
+     * Recherche la date prévisionnelle d'envoi.
+     * @return date prévisionnelle d'envoi.
+     */
     public Date getPredictedDate() {
         return predictedDate;
     }
@@ -108,7 +120,7 @@ public class Command implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ecom.Blabla[ id=" + id + " ]";
+        return "commande envoyé chez " + this.adress.getFirstname() +" " + this.adress.getName();
     }
     
 }

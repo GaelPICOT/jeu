@@ -44,4 +44,8 @@ public class Licence extends SemanticNode implements Serializable, SemanticResso
         return SemanticRessource.BASEURI + "licence#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

@@ -16,7 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * panier d'un utilisateur.
  * @author inilog
  */
 @Entity
@@ -28,12 +28,36 @@ public class Cart implements Serializable {
     @OneToMany(cascade=CascadeType.PERSIST)
     private List<Product> list;
 
+    /**
+     * accés à la liste des produit d'un panier
+     * @return liste des produit d'un panier
+     */
     public List<Product> getList() {
         return list;
     }
 
+    /**
+     * changer list des produit contenu dans le panier.
+     * @param list nouvelle list.
+     */
     public void setList(List<Product> list) {
         this.list = list;
+    }
+    
+    /**
+     * ajouter un produit au panier
+     * @param prod produit à ajouté.
+     */
+    public void addProduct(Product prod) {
+        this.list.add(prod);
+    }
+    
+    /**
+     * supprimer un produit du panier
+     * @param prod produit à supprimer.
+     */
+    public void removeProduct (Product prod) {
+        this.list.remove(prod);
     }
 
     public Long getId() {
@@ -66,7 +90,7 @@ public class Cart implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ecom.Panier[ id=" + id + " ]";
+        return "Panier contenant " + list.size() + " article(s)";
     }
     
 }

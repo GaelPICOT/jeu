@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
- *
+ * Catégorie d'un jeu
  * @author inilog
  */
 @Entity
@@ -61,8 +61,13 @@ public class Category extends SemanticNode implements Serializable, SemanticRess
     public void setParent(Category parent) {
         this.parent = parent;
     }
+    
     public String getURI() {
         return SemanticRessource.BASEURI + "category#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getTitle();
+    }
 }

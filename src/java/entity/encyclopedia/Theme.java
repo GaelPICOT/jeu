@@ -60,9 +60,13 @@ public class Theme   extends SemanticNode implements Serializable, SemanticResso
         this.title = title;
     }
     
+    @Override
     public String getURI() {
         return SemanticRessource.BASEURI + "theme#" + getId();
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getTitle();
+    }
 }

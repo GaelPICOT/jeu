@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * Association divers.
  * @author inilog
  */
 @Entity
@@ -42,4 +42,8 @@ public class Association extends Actor implements Serializable, SemanticRessourc
         return SemanticRessource.BASEURI + "association#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
