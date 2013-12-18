@@ -9,40 +9,19 @@ import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.HasAlignment;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.MenuBar;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
-import entity.encyclopedia.Accessory;
-import entity.encyclopedia.Copyright;
 import entity.encyclopedia.Game;
-import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
-import java.util.List;
-//import com.sencha.gxt.core.client.util.Margins;
-//import com.sencha.gxt.widget.core.client.ContentPanel;
-//import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
-//import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
-//import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
-import org.yournamehere.client.sampleService.GWTService;
-import org.yournamehere.client.sampleService.GWTServiceAddGame;
-import org.yournamehere.client.sampleService.GWTServiceAddGameAsync;
 //import com.sencha.gxt.widget.core.client.container.MarginData;
 //import com.gwtext.client.widgets.layout.BorderLayout; 
 //import java.awt.BorderLayout; 
@@ -110,7 +89,7 @@ public class AjoutJeu implements EntryPoint {
 //
                 public void onFailure(Throwable caught) {
                         System.out.println("error while creating game\n"+caught);
-                        Window.alert("erreur lors de la création du jeu");
+                        Window.alert("erreur lors de la création du jeu : "+caught);
                 }
 
 //            @Override
