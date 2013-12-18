@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package org.yournamehere.server;
+package org.yournamehere.server.sampleService;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import entity.semantic.SemanticNode;
 
-import org.yournamehere.client.GWTServiceAddEncyclopedia;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 
 /**
  *

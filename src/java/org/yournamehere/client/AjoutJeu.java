@@ -4,6 +4,8 @@
  */
 package org.yournamehere.client;
 
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;

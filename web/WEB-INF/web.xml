@@ -23,7 +23,7 @@
     </servlet>
     <servlet>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
-        <servlet-class>org.yournamehere.server.GWTServiceAddEncyclopediaImpl</servlet-class>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddEncyclopediaImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
