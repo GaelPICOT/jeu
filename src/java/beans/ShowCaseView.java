@@ -60,7 +60,7 @@ public class ShowCaseView {
         p3.setDescription("description jolie de 3");
         p3.setImage("img/prima3.jpg");
         p3.setPrice(30);
-        p2.setReduction(3);
+        p3.setReduction(3);
         
         Product2 p4= new Product2();
         
