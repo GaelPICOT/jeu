@@ -16,6 +16,9 @@
         <div id="top">
             <ui:include src="template/top.xhtml"/>
         </div>
+        <div id="menu">
+            <ui:include src="template/menu.xhtml"/>
+        </div>
         <div>
             <div id="left">
                 <ui:insert name="left">Left</ui:insert>
@@ -25,7 +28,7 @@
                     <ui:insert name="right">Right</ui:insert>
                 </div>
                 <div id="content" class="right_content">
-                    <ui:insert name="content">Content</ui:insert>
+                    <ui:include src="template/showcase.xhtml"/>
                 </div>
             </div>
         </div>
