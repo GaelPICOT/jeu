@@ -27,7 +27,7 @@ public class DynamicView implements Serializable {
     private String nomArticle;
     private String nomClasseBean;
     private ArrayList<Node> informations;
-    private String test;
+    private ArrayList<String> test;
     
     /**
      * Creates a new instance of ArticleView
@@ -68,11 +68,11 @@ public class DynamicView implements Serializable {
         this.informations = informations;
     }
 
-    public String getTest() {
+    public ArrayList<String> getTest() {
         return test;
     }
 
-    public void setTest(String test) {
+    public void setTest(ArrayList<String> test) {
         this.test = test;
     }
     
@@ -88,6 +88,7 @@ public class DynamicView implements Serializable {
      * @return article
      */
     public String createPage(){
+        this.test = new ArrayList<>();
         //On crée un objet Class correspondant a la class facade du bean a traiter
         Class facadeClass;
         
@@ -112,7 +113,7 @@ public class DynamicView implements Serializable {
             bean = (SemanticNode) beanClass.newInstance();
             
             //Recuperation de toute les methodes du bean
-            meths = beanClass.getClass().getMethods();
+            meths = bean.getClass().getMethods();
             
             Class[] find = new Class[]{Object.class};
             
@@ -122,12 +123,13 @@ public class DynamicView implements Serializable {
             
             //Recuperation de l'objet dans la BD
             bean = (SemanticNode) facade.getClass().getMethod("find", find).invoke(facade,idArticle);
-            this.test = bean.toString();
-//            //Pour chaque methode du bean
-//            for (Method meth : meths) {
-//                //Si c'est une methode get
-//                if(meth.getName().contains("get")){
-//                    //Si la methode retourne un String
+            
+            //Pour chaque methode du bean
+            for (Method meth : meths) {
+                //Si c'est une methode get
+                if(meth.getName().contains("get") && !meth.getName().contains("persistence")){
+                    this.test.add(meth.toString());
+                    //Si la methode retourne un String
 //                    if(meth.getReturnType().toString().equals("String")){
 //                        ArrayList temp = new ArrayList();
 //                        try {
@@ -150,7 +152,7 @@ public class DynamicView implements Serializable {
 //                    }
 //                    //Si la methode retourne un autre type
 //                    else{
-//                        ArrayList temp = new ArrayList();
+//                        ArrayList<Object> temp = new ArrayList<>();
 //                        try {
 //                            //Invocation de cette methode get
 //                            temp.add(meth.invoke(bean));
@@ -160,8 +162,8 @@ public class DynamicView implements Serializable {
 //                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
 //                        }
 //                    }
-//                }
-//            }
+                }
+            }
             
             
         } catch (ClassNotFoundException ex) {
