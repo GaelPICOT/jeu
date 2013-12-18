@@ -39,9 +39,15 @@ body {
 }
 
 #menu {
-	padding-left: 10%;
-	width: 100%;
-	padding-right: 10%;
+        padding-left: 10%;
+        width: 100%;
+        padding-right: 10%;
+}
+
+#addresses {
+/*    float: right;
+    text-align: right;
+    width: 100%;*/
 }
 
 #footer {

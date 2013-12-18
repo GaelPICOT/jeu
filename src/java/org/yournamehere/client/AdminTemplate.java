@@ -72,7 +72,11 @@ public class AdminTemplate {
 				Window.Location.replace("../welcomeGWT.html");
 			}
 		});
-		accountMenu.addItem("Supprimer", cmd);
+		accountMenu.addItem("Supprimer", new Command() {
+			public void execute() {
+				Window.Location.replace("../supprimerCompte.html");
+			}
+		});
 		accountMenu.addItem("Gestion des commandes", cmd);
 		accountMenu.getElement().setClassName("menu");
 

@@ -12,6 +12,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -120,6 +121,9 @@ public class MainEntryPoint implements EntryPoint {
 //        fieldValue.add(userConfirmNewPasswordValue);
 //        final Label temp = new Label();
         final VerticalPanel addressesPanel = new VerticalPanel();
+        addressesPanel.setHorizontalAlignment(HasAlignment.ALIGN_CENTER);
+        addressesPanel.setWidth("50%");
+//        addressesPanel.getElement().setId("addresses");
         
         AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
 
@@ -157,6 +161,7 @@ public class MainEntryPoint implements EntryPoint {
 //        form.add(fieldValue);
         
         HorizontalPanel bodyPanel = new HorizontalPanel();
+        bodyPanel.setWidth("100%");
         bodyPanel.add(form);
 //        temp.setText("nombre d'adresses: " + addresses.size());
         
@@ -169,6 +174,7 @@ public class MainEntryPoint implements EntryPoint {
         bodyPanel.add(addressesPanel);
         
         body.add(bodyPanel, DockPanel.CENTER);
+//        body.setWidth("100%");
         
 //        final AsyncCallback<Void> callback = new AsyncCallback<String>() {
 //                public void onSuccess(String result) {
