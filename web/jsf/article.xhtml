@@ -27,6 +27,7 @@
                 </div>
                 <div id="content" class="right_content">
                     <!--<ui:insert name="content">Informations sur l'article</ui:insert>-->
+                    <h:outputText value="#{DynamicView.test}"/><br/>
                     <h:outputText value="affichage des methode et de leur retour"/><br/>
                     <c:forEach var="item" items="#{DynamicView.informations}">
                         <h:outputText value="methode"/><br/>
