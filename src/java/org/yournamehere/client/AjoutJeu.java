@@ -27,7 +27,10 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
+import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Copyright;
+import entity.encyclopedia.Game;
+import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
 import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -62,7 +65,7 @@ public class AjoutJeu implements EntryPoint {
     @Override
     public void onModuleLoad() {
 //        RootPanel.get().clear();
-        final GWTServiceAddGameAsync service = GWT.create(GWTServiceAddGame.class);
+        final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
@@ -100,7 +103,7 @@ public class AjoutJeu implements EntryPoint {
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("game created");
-                        Window.alert("jeu créé");
+                        Window.alert("jeu créé" + result);
                 }
 //
                 public void onFailure(Throwable caught) {
@@ -122,7 +125,8 @@ public class AjoutJeu implements EntryPoint {
                 @Override
                 public void onClick(ClickEvent event) {
                         System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
+                        Game game = new Game();
+                        service.createEncyclopediaNode((SemanticNode)game, callback);
 //                        Window.alert("jeu créé");
                         gameNameValue.setText("");
                         gameDescriptionValue.setText("");

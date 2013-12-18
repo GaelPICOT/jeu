@@ -21,6 +21,10 @@
         <servlet-name>GWTServiceCommandHandler</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceCommandHandlerImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
+        <servlet-class>org.yournamehere.server.GWTServiceAddEncyclopediaImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -84,6 +88,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceCommandHandler</servlet-name>
         <url-pattern>/org.yournamehere.GestionCommandes/sampleservice/gwtservicecommandhandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -19,6 +19,7 @@
     <inherits name='entity.encyclopedia.Copyright'/>
     <inherits name='entity.encyclopedia.Licence'/>
     <inherits name='entity.encyclopedia.Actor'/>
+    <inherits name='entity.encyclopedia.Game'/>
     
     <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
     <!--<entry-point class="org.yournamehere.client.MainEntryPoint"/>-->
