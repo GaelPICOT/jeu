@@ -22,10 +22,10 @@ public class GWTServiceAddImageImpl extends RemoteServiceServlet implements GWTS
     @Override
     protected void service(final HttpServletRequest request,
 	HttpServletResponse response) throws ServletException, IOException {
-        byte[] image = (request.getParameter("image")).getBytes();
-        File fileOut= new File("file.jpg");
-        FileOutputStream fos = new FileOutputStream(fileOut);
-        fos.write(image);
-        fos.close();
+//        byte[] image = (request.getParameter("image")).getBytes();
+//        File fileOut= new File("file.jpg");
+//        FileOutputStream fos = new FileOutputStream(fileOut);
+//        fos.write(image);
+//        fos.close();
     }
 }

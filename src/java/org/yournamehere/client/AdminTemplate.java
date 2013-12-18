@@ -120,9 +120,7 @@ public class AdminTemplate {
 		MenuBar menu = new MenuBar();
 		menu.addItem("Compte", accountMenu);
 		menu.addItem("Encyclopedie", encyclopediaMenu);
-                if(userStatu != UserStatu.CLIENT) {
-                    menu.addItem("Vente", salesMenu);
-                }
+                menu.addItem("Vente", salesMenu);
                 if(userStatu == UserStatu.ADMIN) {
                     menu.addItem("Administration", administrationMenu);
                 }

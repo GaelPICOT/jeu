@@ -3,9 +3,5 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.7.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.7.0/distro-source/core/src/gwt-module.dtd">
 
 <module>
-    <source>entity.user.User</source>
-    <inherits name='entity.ecom.Cart'/>
-    <inherits name='entity.ecom.Command'/>
-    <inherits name='entity.user.Adress'/>
-    <inherits name='entity.user.UserStatu'/>
+    <source>entity.user.UserStatu</source>
 </module>
