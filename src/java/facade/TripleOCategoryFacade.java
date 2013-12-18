@@ -6,7 +6,7 @@
 
 package facade;
 
-import entity.encyclopedia.Actor;
+import entity.semantic.subtriple.TripleOCategory;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
  * @author picotg
  */
 @Stateless
-public class ActorFacade extends AbstractFacade<Actor> {
+public class TripleOCategoryFacade extends AbstractFacade<TripleOCategory> {
     @PersistenceContext(unitName = "webEcomPU")
     private EntityManager em;
 
@@ -33,8 +33,8 @@ public class ActorFacade extends AbstractFacade<Actor> {
         return em;
     }
 
-    public ActorFacade() {
-        super(Actor.class);
+    public TripleOCategoryFacade() {
+        super(TripleOCategory.class);
     }
     
 }
