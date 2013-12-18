@@ -17,7 +17,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -27,8 +26,10 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
+import entity.ecom.Command;
 import entity.encyclopedia.Copyright;
 import entity.user.UserStatu;
+import java.util.ArrayList;
 import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -38,6 +39,10 @@ import java.util.List;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAddGame;
 import org.yournamehere.client.sampleService.GWTServiceAddGameAsync;
+import org.yournamehere.client.sampleService.GWTServiceCommandHandler;
+import org.yournamehere.client.sampleService.GWTServiceCommandHandlerAsync;
+import org.yournamehere.client.sampleService.GWTServiceDeleteAccount;
+import org.yournamehere.client.sampleService.GWTServiceDeleteAccountAsync;
 //import com.sencha.gxt.widget.core.client.container.MarginData;
 //import com.gwtext.client.widgets.layout.BorderLayout; 
 //import java.awt.BorderLayout; 
@@ -47,7 +52,7 @@ import org.yournamehere.client.sampleService.GWTServiceAddGameAsync;
  *
  * @author Anthony
  */
-public class AjoutJeu implements EntryPoint {
+public class GestionCommandes implements EntryPoint {
 
     /**
      * Creates a new instance of Main
@@ -62,50 +67,30 @@ public class AjoutJeu implements EntryPoint {
     @Override
     public void onModuleLoad() {
 //        RootPanel.get().clear();
-        final GWTServiceAddGameAsync service = GWT.create(GWTServiceAddGame.class);
+        final GWTServiceCommandHandlerAsync service = GWT.create(GWTServiceCommandHandler.class);
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
         AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
-        HorizontalPanel form = new HorizontalPanel();
-        VerticalPanel fieldName = new VerticalPanel();
-        VerticalPanel fieldValue = new VerticalPanel();
         
-        Label gameNameLabel = new Label("Nom du jeu: ");
-        Label gameDescriptionLabel = new Label("Description du jeu: ");
-        Button createGame = new Button("Creer jeu");
-
+        VerticalPanel bodyPanel = new VerticalPanel();
+        bodyPanel.add(new Label("Vos commandes: "));
+        final VerticalPanel form = new VerticalPanel();
+        bodyPanel.add(form);
         
-        fieldName.add(gameNameLabel);
-        fieldName.add(gameDescriptionLabel);
-
-        form.add(fieldName);
-        
-        final TextBox gameNameValue = new TextBox();
-        final TextArea gameDescriptionValue = new TextArea();
-        fieldValue.add(gameNameValue);
-        fieldValue.add(gameDescriptionValue);
-        
-
-        
-        form.add(fieldValue);
-        
-        
-        form.add(new CopyrightComponent());
-        
-        form.add(createGame);
-        
-        body.add(form, DockPanel.CENTER);
-        
-        final AsyncCallback<String> callback = new AsyncCallback<String>() {
-                public void onSuccess(String result) {
-                        System.out.println("game created");
-                        Window.alert("jeu créé");
+        final AsyncCallback<List<Command>> callback = new AsyncCallback<List<Command>>() {
+                public void onSuccess(List<Command> result) {
+//                        System.out.println("account deleted");
+//                        Window.alert("compte supprimé");
+                    ArrayList<Command> commandsTemp = (ArrayList<Command>) result;
+                    for (Command command : commandsTemp) {
+                        form.add(new CommandComponent(command));
+                    }
                 }
 //
                 public void onFailure(Throwable caught) {
-                        System.out.println("error while creating game\n"+caught);
-                        Window.alert("erreur lors de la création du jeu");
+                        System.out.println("error while getting commands\n"+caught);
+                        Window.alert("error while getting commands");
                 }
 
 //            @Override
@@ -114,25 +99,11 @@ public class AjoutJeu implements EntryPoint {
 //            }
         };
         
-        
+        service.getCommand(callback);
   
         
+        body.add(bodyPanel, DockPanel.CENTER);
         
-        createGame.addClickHandler(new ClickHandler() {
-                @Override
-                public void onClick(ClickEvent event) {
-                        System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
-//                        Window.alert("jeu créé");
-                        gameNameValue.setText("");
-                        gameDescriptionValue.setText("");
-                        // TODO Auto-generated method stub
-
-                }
-        });
-//        body.setCellHorizontalAlignment(form, HasAlignment.ALIGN_CENTER);
-//        body.add(label);
-//        page.add(label, DockPanel.CENTER);
         RootPanel.get().add(page);
     }
 }

@@ -11,11 +11,12 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
+import entity.user.UserStatu;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
 
 public class AdminTemplate {
-	public static void createTemplate(DockPanel page, DockPanel body) {
+	public static void createTemplate(DockPanel page, DockPanel body, UserStatu userStatu) {
                 final GWTServiceAsync service = GWT.create(GWTService.class);
                 
 		page.setSize("100%", "100%");
@@ -58,7 +59,7 @@ public class AdminTemplate {
 		header.setCellHorizontalAlignment(discButton, HasAlignment.ALIGN_RIGHT);
 
 		page.add(header, DockPanel.NORTH);
-		page.setCellHeight(header, "20%");
+		page.setCellHeight(header, "10%");
 
 		Command cmd = new Command() {
 			public void execute() {
@@ -72,8 +73,16 @@ public class AdminTemplate {
 				Window.Location.replace("../welcomeGWT.html");
 			}
 		});
-		accountMenu.addItem("Supprimer", cmd);
-		accountMenu.addItem("Gestion des commandes", cmd);
+		accountMenu.addItem("Supprimer", new Command() {
+			public void execute() {
+				Window.Location.replace("../supprimerCompte.html");
+			}
+		});
+		accountMenu.addItem("Gestion des commandes", new Command() {
+			public void execute() {
+				Window.Location.replace("../gestionCommandes.html");
+			}
+		});
 		accountMenu.getElement().setClassName("menu");
 
 		MenuBar encyclopediaMenu = new MenuBar(true);
@@ -85,6 +94,11 @@ public class AdminTemplate {
 		encyclopediaMenu.addItem("Ajouter accessoire", new Command() {
 			public void execute() {
 				Window.Location.replace("../ajouterAccessoire.html");
+			}
+		});
+                encyclopediaMenu.addItem("Ajouter image", new Command() {
+			public void execute() {
+				Window.Location.replace("../ajouterImage.html");
 			}
 		});
 		encyclopediaMenu.addItem("Ajouter autre", cmd);
@@ -106,8 +120,12 @@ public class AdminTemplate {
 		MenuBar menu = new MenuBar();
 		menu.addItem("Compte", accountMenu);
 		menu.addItem("Encyclopedie", encyclopediaMenu);
-		menu.addItem("Vente", salesMenu);
-		menu.addItem("Administration", administrationMenu);
+                if(userStatu != UserStatu.CLIENT) {
+                    menu.addItem("Vente", salesMenu);
+                }
+                if(userStatu == UserStatu.ADMIN) {
+                    menu.addItem("Administration", administrationMenu);
+                }
 
 		// menu.setAnimationEnabled(true);
 		menu.addSeparator();

@@ -13,12 +13,13 @@
             <c:forEach var="item" items="#{ResearchView.test()}">
                 <li>
                     <h:outputText value="#{item}"/>
+                    <h:outputText value="#{item.class.getName()}"/>
                     <h:form>
                         <h:outputText value="#{DynamicView.setIdArticle(item.id)}"/>
                         <h:outputText value="#{item.id}"/>
                         <h:outputText value="#{DynamicView.idArticle}"/>
                         <h:outputText value="#{DynamicView.setNomArticle(item.name)}"/>
-                        <h:outputText value="#{DynamicView.setNomClasseBean(item.class)}"/>
+                        <h:outputText value="#{DynamicView.setNomClasseBean(item.class.getName())}"/>
                         <h:commandButton action="#{DynamicView.createPage}" value="test"/>
                     </h:form>
                 </li>

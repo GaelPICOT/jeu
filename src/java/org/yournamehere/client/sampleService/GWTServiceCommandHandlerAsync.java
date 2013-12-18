@@ -5,12 +5,14 @@
 package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import entity.ecom.Command;
+import java.util.List;
 
 /**
  *
  * @author anthony
  */
-public interface GWTServiceAddGameAsync {
+public interface GWTServiceCommandHandlerAsync {
 
-    public void createGame(String name, String description, AsyncCallback<String> asyncCallback);
+    public void getCommand(AsyncCallback<List<Command>> callback);
 }

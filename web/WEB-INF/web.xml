@@ -13,6 +13,14 @@
         <servlet-name>GWTService</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GWTServiceDeleteAccount</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceDeleteAccountImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GWTServiceCommandHandler</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCommandHandlerImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -30,12 +38,20 @@
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddAccessoryImpl</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddImageImpl</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GWTServiceCopyright</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/gwtserviceaddimagee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
@@ -60,6 +76,14 @@
     <servlet-mapping>
         <servlet-name>GWTServiceCopyright</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicecopyright</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceDeleteAccount</servlet-name>
+        <url-pattern>/org.yournamehere.SupprimerCompte/sampleservice/gwtservicedeleteaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceCommandHandler</servlet-name>
+        <url-pattern>/org.yournamehere.GestionCommandes/sampleservice/gwtservicecommandhandler</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

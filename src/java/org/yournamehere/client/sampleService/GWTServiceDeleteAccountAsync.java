@@ -10,7 +10,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  *
  * @author anthony
  */
-public interface GWTServiceAddGameAsync {
+public interface GWTServiceDeleteAccountAsync {
 
-    public void createGame(String name, String description, AsyncCallback<String> asyncCallback);
+    public void deleteAccount(AsyncCallback<String> callback);
 }
