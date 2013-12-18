@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Show Case</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/showcase.css" />
+         
+    </h:head>
+    <h:body>
+        <!--#{ShowCaseView.initShowCase()}"-->
+        <div><b style="font-size: large">RECOMMANDATION A L'INSTANT:</b></div>
+        <h:dataTable value="#{ShowCaseView.showcase}" var="produit"
+        styleClass="showcaseTable"
+        headerClass="showcaseTableHeader"
+        rowClasses="showcaseTableRow">
+                        
+            <h:column>
+               <f:facet name="header">Nom</f:facet>
+               #{produit.name}
+            </h:column>
+            
+            <h:column>    				
+               <f:facet name="header">Produit</f:facet>
+               <h:link outcome="jsf/produit.xhtml">
+               <h:graphicImage value="#{produit.image}" width="200" height="200"/>
+               </h:link>                       
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Description</f:facet>
+               #{produit.description}
+            </h:column>
+
+            
+            <h:column>
+               <f:facet name="header">Prix conseillé</f:facet>
+               #{produit.price} €
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Prix après reduction </f:facet>
+               #{produit.realPrice()} €
+            </h:column>
+
+        </h:dataTable>
+    </h:body>
+</html>
+

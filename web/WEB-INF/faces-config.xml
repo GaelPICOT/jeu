@@ -54,4 +54,14 @@
 		<redirect />
 	</navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Prod2View</managed-bean-name>
+        <managed-bean-class>beans.Product2View</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>ShowCaseView2</managed-bean-name>
+        <managed-bean-class>beans.ShowCaseView</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
 </faces-config>
