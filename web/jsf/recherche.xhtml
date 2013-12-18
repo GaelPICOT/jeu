@@ -23,28 +23,37 @@
             </div>
             <div>
                 <div id="right">
-                    <ui:insert name="right">Liste d'articles</ui:insert>
+                    <ui:insert name="right">Historique de recherche</ui:insert>
                 </div>
                 <div id="content" class="right_content">
                     <h2>Résultats de la recherche:</h2>
                     <ul>
                         <c:forEach var="titre" items="#{ResearchView.nodeList}">
                             <h3><h:outputText value="#{titre.nomClass}"/></h3>
-                            <c:forEach var="item" items="#{titre.listeRetour}">
-                                <li>
-                                    <h:form>
-                                        <h:commandLink action="#{DynamicView.createPage(item.id, item.toString(), item.class.getName())}" value="#{item.toString()}"/>
-                                    </h:form>
-                                </li>
-                            </c:forEach>
+                            <table>
+                                <c:forEach var="item" items="#{titre.listeRetour}">
+                                    <tr>
+                                        <td>
+                                        <li>
+                                            <h:form>
+                                                <h:commandLink action="#{DynamicView.createPage(item.id, item.toString(), item.class.getName())}" value="#{item.toString()}"/>
+                                            </h:form>
+                                        </li>
+                                        </td>
+                                        <td>
+<!--                                            <c:forEach var="real" items="">
+                                            </c:forEach>-->
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
                         </c:forEach>
                     </ul>
                 </div>
             </div>
         </div>
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <h:link value="Retour à l'acceuil" outcome="/index.xhtml" class="bouton"/>
         </div>
     </h:body>
 </html>
-

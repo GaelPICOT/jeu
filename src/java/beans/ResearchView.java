@@ -12,14 +12,9 @@ import entity.encyclopedia.Book;
 import entity.encyclopedia.Copyright;
 import entity.encyclopedia.Entreprise;
 import entity.encyclopedia.Game;
-import entity.encyclopedia.Image;
 import entity.encyclopedia.Licence;
 import entity.encyclopedia.Person;
-import entity.encyclopedia.Productible;
-import entity.encyclopedia.Release;
-import entity.encyclopedia.Rule;
 import entity.encyclopedia.Theme;
-import entity.semantic.SemanticNode;
 import facade.AccessoryFacade;
 import facade.ActorFacade;
 import facade.ArticleFacade;
@@ -28,11 +23,8 @@ import facade.BookFacade;
 import facade.CopyrightFacade;
 import facade.EntrepriseFacade;
 import facade.GameFacade;
-import facade.ImageFacade;
 import facade.LicenceFacade;
 import facade.PersonFacade;
-import facade.ReleaseFacade;
-import facade.RuleFacade;
 import facade.ThemeFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -106,106 +98,122 @@ public class ResearchView implements Serializable{
     
     public void setSearch(String s) {
         search = (String) s;
-    }
+    } 
     
     public String research() {
         this.nodeList = new ArrayList<>();
         ArrayList semanticNodeList = new ArrayList();
         
-        List<Accessory> accessoryList = accessoryFacade.findAll();
-        for(int i = 0; i < accessoryList.size(); i++) {
-            if(accessoryList.get(i).getName().contains(search)) {
-                semanticNodeList.add(accessoryList.get(i));
+        if(this.select.equals("accessory") || this.select.equals("all")){
+            List<Accessory> accessoryList = accessoryFacade.findAll();
+            for(int i = 0; i < accessoryList.size(); i++) {
+                if(accessoryList.get(i).getName().contains(search)) {
+                    semanticNodeList.add(accessoryList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Accessoire",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Accessoire",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Actor> actorList = actorFacade.findAll();
-        for(int i = 0; i < actorList.size(); i++) {
-            if(actorList.get(i).toString().contains(search)) {
-                semanticNodeList.add(actorList.get(i));
+        if(this.select.equals("actor") || this.select.equals("all")){
+            List<Actor> actorList = actorFacade.findAll();
+            for(int i = 0; i < actorList.size(); i++) {
+                if(actorList.get(i).toString().contains(search)) {
+                    semanticNodeList.add(actorList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Acteur",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Acteur",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Article> articleList = articleFacade.findAll();
-        for(int i = 0; i < articleList.size(); i++) {
-            if(articleList.get(i).toString().contains(search)) {
-                semanticNodeList.add(articleList.get(i));
+        if(this.select.equals("article") || this.select.equals("all")){
+            List<Article> articleList = articleFacade.findAll();
+            for(int i = 0; i < articleList.size(); i++) {
+                if(articleList.get(i).toString().contains(search)) {
+                    semanticNodeList.add(articleList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Article",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Article",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Association> associationList = associationFacade.findAll();
-        for(int i = 0; i < associationList.size(); i++) {
-            if(associationList.get(i).getName().contains(search)) {
-                semanticNodeList.add(associationList.get(i));
+        if(this.select.equals("assoc") || this.select.equals("all")){
+            List<Association> associationList = associationFacade.findAll();
+            for(int i = 0; i < associationList.size(); i++) {
+                if(associationList.get(i).getName().contains(search)) {
+                    semanticNodeList.add(associationList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Association",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Association",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Book> bookList = bookFacade.findAll();
-        for(int i = 0; i < bookList.size(); i++) {
-            if(bookList.get(i).getName().contains(search)) {
-                semanticNodeList.add(bookList.get(i));
+        if(this.select.equals("book") || this.select.equals("all")){
+            List<Book> bookList = bookFacade.findAll();
+            for(int i = 0; i < bookList.size(); i++) {
+                if(bookList.get(i).getName().contains(search)) {
+                    semanticNodeList.add(bookList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Livre",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Livre",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Copyright> copyrightList = copyrightFacade.findAll();
-        for(int i = 0; i < copyrightList.size(); i++) {
-            if(copyrightList.get(i).toString().contains(search)) {
-                semanticNodeList.add(copyrightList.get(i));
+        if(this.select.equals("copy") || this.select.equals("all")){
+            List<Copyright> copyrightList = copyrightFacade.findAll();
+            for(int i = 0; i < copyrightList.size(); i++) {
+                if(copyrightList.get(i).toString().contains(search)) {
+                    semanticNodeList.add(copyrightList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Copyright",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Copyright",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Entreprise> entrepriseList = entrepriseFacade.findAll();
-        for(int i = 0; i < entrepriseList.size(); i++) {
-            if(entrepriseList.get(i).getName().contains(search)) {
-                semanticNodeList.add(entrepriseList.get(i));
+        if(this.select.equals("entre") || this.select.equals("all")){
+            List<Entreprise> entrepriseList = entrepriseFacade.findAll();
+            for(int i = 0; i < entrepriseList.size(); i++) {
+                if(entrepriseList.get(i).getName().contains(search)) {
+                    semanticNodeList.add(entrepriseList.get(i));
+                }
+            }
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Entreprise",semanticNodeList));
+                semanticNodeList = new ArrayList();
             }
         }
         
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Entreprise",semanticNodeList));
-            semanticNodeList = new ArrayList();
-        }
-        
-        List<Game> gameList = gameFacade.findAll();
-        for(int i = 0; i < gameList.size(); i++) {
-            if(gameList.get(i).getName().contains(search)) {
-                semanticNodeList.add(gameList.get(i));
+        if(this.select.equals("game") || this.select.equals("all")){
+            List<Game> gameList = gameFacade.findAll();
+            for(int i = 0; i < gameList.size(); i++) {
+                if(gameList.get(i).getName().contains(search)) {
+                    semanticNodeList.add(gameList.get(i));
+                }
             }
-        }
-        
-        if(!semanticNodeList.isEmpty()){
-            this.nodeList.add(new NodeSearch("Jeu",semanticNodeList));
-            semanticNodeList = new ArrayList();
+
+            if(!semanticNodeList.isEmpty()){
+                this.nodeList.add(new NodeSearch("Jeu",semanticNodeList));
+                semanticNodeList = new ArrayList();
+            }
         }
         
         List<Licence> licenceList = licenceFacade.findAll();

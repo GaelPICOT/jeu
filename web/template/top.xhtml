@@ -40,6 +40,9 @@
                             <h:outputText value="Bonjour #{UserView.user.firstName}"/>
                         </td>
                         <td>
+                            <a href="/jeu/welcomeGWT.html" class="bouton">Mon compte</a>
+                        </td>
+                        <td>
                             <h:form>
                                 <h:commandButton action="#{UserView.disconnect}" value="Deconnexion" styleClass="bouton"/>
                             </h:form>
@@ -61,7 +64,14 @@
                                 <f:selectItem itemLabel="Dans les jeux" itemValue="game" />
                                 <f:selectItem itemLabel="Dans les livres" itemValue="book" />
                                 <f:selectItem itemLabel="Dans les accessoire" itemValue="accessory" />
+                                <f:selectItem itemLabel="Dans les themes" itemValue="theme" />
                                 <f:selectItem itemLabel="Dans les articles" itemValue="article" />
+                                <f:selectItem itemLabel="Dans les associations" itemValue="assoc" />
+                                <f:selectItem itemLabel="Dans les copyright" itemValue="copy" />
+                                <f:selectItem itemLabel="Dans les entreprises" itemValue="entre" />
+                                <f:selectItem itemLabel="Dans les licences" itemValue="licence" />
+                                <f:selectItem itemLabel="Dans les personnes" itemValue="person" />
+                                <f:selectItem itemLabel="Dans les acteurs" itemValue="actor" />
                             </h:selectOneMenu>
                             <h:commandButton value='Rechercher' action="#{ResearchView.research}" styleClass="bouton"/>
                         </h:form>
@@ -76,4 +86,3 @@
         </div>
     </h:body>
 </html>
-
