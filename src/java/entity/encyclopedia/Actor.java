@@ -13,7 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 /**
- *
+ * Une personne ou un groupe de personnes (entreprise, association…).
  * @author inilog
  */
 @Entity
@@ -45,4 +45,8 @@ public class Actor extends SemanticNode implements Serializable, SemanticRessour
         return SemanticRessource.BASEURI + "actor#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.histoire.getTitle();
+    }
 }

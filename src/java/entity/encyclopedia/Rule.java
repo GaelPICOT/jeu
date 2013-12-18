@@ -59,5 +59,8 @@ public class Rule extends SemanticNode implements Serializable, SemanticRessourc
         return SemanticRessource.BASEURI + "rule#" + getId();
     }
    
-    
+    @Override
+    public String toString() {
+        return this.getRule().substring(0, 255);
+    }
 }

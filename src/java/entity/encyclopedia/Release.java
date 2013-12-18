@@ -87,5 +87,8 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
         return SemanticRessource.BASEURI + "release#" + getId();
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getDescriptionDetails().substring(0, 255);
+    }
 }

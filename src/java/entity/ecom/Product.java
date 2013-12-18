@@ -16,12 +16,11 @@ import entity.user.Comment;
 import entity.user.User;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * Un produit commercial.
  * @author inilog
  */
 @Entity
@@ -127,7 +126,8 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ecom.Product[ id=" + id + " ]";
+        return "Produit de type :" + this.getProductibleType()
+                + "vendu par : " + this.getVendor();
     }
     
 }

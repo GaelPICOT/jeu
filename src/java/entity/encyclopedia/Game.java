@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 /**
- *
+ * Une jeu.
  * @author inilog
  */
 @Entity
@@ -46,5 +46,8 @@ public class Game extends Productible implements Serializable, SemanticRessource
         return SemanticRessource.BASEURI + "game#" + getId();
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

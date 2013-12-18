@@ -71,4 +71,8 @@ public class Productible extends SemanticNode implements Serializable, SemanticR
         return SemanticRessource.BASEURI + "productible#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

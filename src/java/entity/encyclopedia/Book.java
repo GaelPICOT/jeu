@@ -13,7 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 /**
- *
+ * Livre
  * @author inilog
  */
 @Entity
@@ -43,5 +43,10 @@ public class Book extends Productible implements Serializable, SemanticRessource
     @Override
     public String getURI() {
         return SemanticRessource.BASEURI + "book#" + getId();
+    }
+    
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

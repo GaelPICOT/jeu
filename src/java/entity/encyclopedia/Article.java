@@ -17,7 +17,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 /**
- *
+ * Article quelquonque.
  * @author inilog
  */
 @Entity
@@ -60,4 +60,8 @@ public class Article extends SemanticNode implements Serializable, SemanticResso
         return SemanticRessource.BASEURI + "article#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getTitle();
+    }
 }

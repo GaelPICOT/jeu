@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import entity.semantic.SemanticRessource;
 
 /**
- *
+ * Représente un accessoire, sous forme abstraite.
  * @author inilog
  */
 @Entity
@@ -23,6 +23,9 @@ public class Accessory extends Productible implements Serializable, SemanticRess
         return SemanticRessource.BASEURI + "accessory#" + getId();
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getName();
+    }
     
 }

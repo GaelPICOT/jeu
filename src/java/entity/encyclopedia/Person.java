@@ -53,4 +53,8 @@ public class Person extends Actor implements Serializable, SemanticRessource {
         return SemanticRessource.BASEURI + "person#" + getId();
     }
     
+    @Override
+    public String toString() {
+        return this.getFirstName() + " " + this.getName();
+    }
 }
