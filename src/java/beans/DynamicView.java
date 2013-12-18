@@ -116,13 +116,13 @@ public class DynamicView implements Serializable {
             
             Class[] find = new Class[]{Object.class};
             
-            this.test = facade.getClass().getMethod("find", find).toString();
-            Method m = facade.getClass().getMethod("find", find);
-            m.invoke(facade, idArticle);
+//            this.test = facade.getClass().getMethod("find", find).toString();
+//            Method m = facade.getClass().getMethod("find", find);
+//            m.invoke(facade, idArticle);
             
-//            //Recuperation de l'objet dans la BD
-//            bean = (SemanticNode) facade.getClass().getMethod("find", find).invoke(facade,idArticle);
-//            
+            //Recuperation de l'objet dans la BD
+            bean = (SemanticNode) facade.getClass().getMethod("find", find).invoke(facade,idArticle);
+            this.test = bean.toString();
 //            //Pour chaque methode du bean
 //            for (Method meth : meths) {
 //                //Si c'est une methode get
