@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +24,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Productible extends SemanticNode implements Serializable, SemanticRessource {
+    @OneToMany(mappedBy = "productibleType")
+    private List<Release> releases;
     private static final long serialVersionUID = 1L;
     @Column(nullable=false)
     private String name;
@@ -64,6 +67,14 @@ public class Productible extends SemanticNode implements Serializable, SemanticR
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Release> getReleases() {
+        return releases;
+    }
+
+    public void setReleases(List<Release> releases) {
+        this.releases = releases;
     }
 
     @Override

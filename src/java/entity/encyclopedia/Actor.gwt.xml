@@ -3,4 +3,6 @@
 <module>
     <source>entity.encyclopedia.Actor</source>
     <inherits name='entity.encyclopedia.Article'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>

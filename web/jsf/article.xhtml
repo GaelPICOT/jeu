@@ -27,16 +27,20 @@
                 </div>
                 <div id="content" class="right_content">
                     <!--<ui:insert name="content">Informations sur l'article</ui:insert>-->
-                    <h:outputText value="liste des methodes get"/><br/>
-                    <c:forEach var="item" items="#{DynamicView.test}">
-                        <h:outputText value="#{item}"/><br/>
-                    </c:forEach>
-                        
+                    <!--debug-->
+<!--                    <h:outputText value="liste des methodes get"/><br/>
+                    <c:forEach var="item" items="{DynamicView.test}">
+                        <h:outputText value="{item}"/><br/>
+                    </c:forEach>-->
+                    <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
                     <h:outputText value="affichage des methode et de leur retour"/><br/>
                     <c:forEach var="item" items="#{DynamicView.informations}">
-                        <h:outputText value="methode"/><br/>
-                        <h:outputText value="#{item.nomClass}"/><br/>
-                        <h:outputText value="#{item.nomClassRetour}"/><br/>
+                        <div class="articlePart">
+                        <h2><h:outputText value="#{item.nomClass}"/></h2><br/>
+                        <c:forEach var="item2" items="#{item.listeRetour}">
+                            <h:outputText value="#{item2}"/>
+                        </c:forEach>
+                        </div>
                     </c:forEach>
                 </div>
             </div>
@@ -45,5 +49,4 @@
             <ui:insert name="bottom">Bottom</ui:insert>
         </div>
     </h:body>
-
 </html>

@@ -55,16 +55,15 @@
                 <tr>
                     <td>
                         <h:form>
-                            <h:inputText value="" size="75"/>
-                            <h:selectOneMenu>
-                                <f:selectItem itemLabel="Dans tout le site" itemValue="" />
-                                <f:selectItem itemLabel="Dans les jeux" itemValue="" />
-                                <f:selectItem itemLabel="Dans les livres" itemValue="" />
-                                <f:selectItem itemLabel="Dans les accessoire" itemValue="" />
-                                <f:selectItem itemLabel="Dans les articles" itemValue="" />
-                <!--                <f:selectItems value=""/>-->
+                            <h:inputText value="#{ResearchView.search}" size="75"/>
+                            <h:selectOneMenu value="#{ResearchView.select}">
+                                <f:selectItem itemLabel="Dans tout le site" itemValue="all" />
+                                <f:selectItem itemLabel="Dans les jeux" itemValue="game" />
+                                <f:selectItem itemLabel="Dans les livres" itemValue="book" />
+                                <f:selectItem itemLabel="Dans les accessoire" itemValue="accessory" />
+                                <f:selectItem itemLabel="Dans les articles" itemValue="article" />
                             </h:selectOneMenu>
-                            <h:commandButton value="Rechercher" action="null" styleClass="bouton"/>
+                            <h:commandButton value='Rechercher' action="#{ResearchView.research}" styleClass="bouton"/>
                         </h:form>
                     </td>
                     <td>
