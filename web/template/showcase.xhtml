@@ -36,13 +36,13 @@
 
             
             <h:column>
-               <f:facet name="header">Prix conseillé</f:facet>
-               #{produit.price} €
+                <f:facet name="header">Prix conseillé</f:facet>
+                <strike>#{produit.price} €</strike>
             </h:column>
 
             <h:column>
                <f:facet name="header">Prix après reduction </f:facet>
-               #{produit.realPrice()} €
+               <font color="green">#{produit.realPrice()} €</font>
             </h:column>
 
         </h:dataTable>
