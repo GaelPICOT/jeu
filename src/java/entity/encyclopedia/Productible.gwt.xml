@@ -4,5 +4,7 @@
     <source>entity.encyclopedia.Productible</source>
     <inherits name='entity.encyclopedia.Image'/>
     <inherits name='entity.encyclopedia.Copyright'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 
 </module>

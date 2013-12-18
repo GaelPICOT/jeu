@@ -3,4 +3,8 @@
 <module>
     <source>entity.encyclopedia.Book</source>
     <inherits name='entity.encyclopedia.Person'/>
+    <inherits name='entity.encyclopedia.Image'/>
+    <inherits name='entity.encyclopedia.Copyright'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>

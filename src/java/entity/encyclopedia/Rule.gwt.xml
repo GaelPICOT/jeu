@@ -3,4 +3,6 @@
 <module>
     <source>entity.encyclopedia.Rule</source>
     <inherits name='entity.encyclopedia.Image'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>

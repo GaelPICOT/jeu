@@ -8,4 +8,6 @@
     <inherits name='entity.semantic.SemanticNode'/>
     <inherits name='entity.semantic.SemanticRessource'/>
     <inherits name='entity.encyclopedia.Productible'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>

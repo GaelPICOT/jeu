@@ -4,4 +4,6 @@
     <source>entity.encyclopedia.Game</source>
     <inherits name='entity.encyclopedia.Game'/>
     <inherits name='entity.encyclopedia.Category'/>
+    <inherits name='entity.ModarateStatu'/>
+    <inherits name='entity.semantic.TripleEntity'/>
 </module>
