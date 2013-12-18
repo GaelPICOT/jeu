@@ -7,6 +7,8 @@ package facade;
 import entity.semantic.Predicate;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -20,6 +22,12 @@ public class PredicateFacade extends AbstractFacade<Predicate> {
 
     @Override
     protected EntityManager getEntityManager() {
+        if(this.em == null){
+               EntityManagerFactory factory =
+                       Persistence.createEntityManagerFactory(
+                               "webEcomPU", System.getProperties());
+               this.em = factory.createEntityManager();
+         }
         return em;
     }
 
