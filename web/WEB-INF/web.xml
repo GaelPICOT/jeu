@@ -17,6 +17,10 @@
         <servlet-name>GWTServiceDeleteAccount</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceDeleteAccountImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GWTServiceCommandHandler</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCommandHandlerImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -75,7 +79,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceDeleteAccount</servlet-name>
-        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicedeleteaccount</url-pattern>
+        <url-pattern>/org.yournamehere.SupprimerCompte/sampleservice/gwtservicedeleteaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceCommandHandler</servlet-name>
+        <url-pattern>/org.yournamehere.GestionCommandes/sampleservice/gwtservicecommandhandler</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

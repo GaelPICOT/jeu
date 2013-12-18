@@ -77,7 +77,11 @@ public class AdminTemplate {
 				Window.Location.replace("../supprimerCompte.html");
 			}
 		});
-		accountMenu.addItem("Gestion des commandes", cmd);
+		accountMenu.addItem("Gestion des commandes", new Command() {
+			public void execute() {
+				Window.Location.replace("../gestionCommandes.html");
+			}
+		});
 		accountMenu.getElement().setClassName("menu");
 
 		MenuBar encyclopediaMenu = new MenuBar(true);
