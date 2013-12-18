@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -23,9 +24,7 @@ import tools.Node;
 @ManagedBean(name="DynamicView")
 @SessionScoped
 public class DynamicView implements Serializable {
-    private Long idArticle;
     private String nomArticle;
-    private String nomClasseBean;
     private ArrayList<Node> informations;
     private ArrayList<String> test;
     
@@ -33,23 +32,6 @@ public class DynamicView implements Serializable {
      * Creates a new instance of ArticleView
      */
     public DynamicView() {
-        this.informations = new ArrayList<>();
-    }
-
-    public String getNomClasseBean() {
-        return nomClasseBean;
-    }
-
-    public void setNomClasseBean(String nomClasseBean) {
-        this.nomClasseBean = nomClasseBean;
-    }
-
-    public Long getIdArticle() {
-        return idArticle;
-    }
-
-    public void setIdArticle(Long idArticle) {
-        this.idArticle = idArticle;
     }
 
     public String getNomArticle() {
@@ -83,11 +65,11 @@ public class DynamicView implements Serializable {
      * champs à afficher dans celle ci
      * Utilisation d'introspection pour rester générique et pouvoir
      * récupérer tous les champs d'un objet peu importe sa classe
-     * Insere les champs dans la HashMap informations sous forme :
-     * <String, ArrayList>
      * @return article
      */
-    public String createPage(){
+    public String createPage(Long idArticle, String nomArticle, String nomClasseBean){
+        this.nomArticle = nomArticle;
+        this.informations = new ArrayList<>();
         this.test = new ArrayList<>();
         //On crée un objet Class correspondant a la class facade du bean a traiter
         Class facadeClass;
@@ -117,55 +99,54 @@ public class DynamicView implements Serializable {
             
             Class[] find = new Class[]{Object.class};
             
-//            this.test = facade.getClass().getMethod("find", find).toString();
-//            Method m = facade.getClass().getMethod("find", find);
-//            m.invoke(facade, idArticle);
-            
             //Recuperation de l'objet dans la BD
             bean = (SemanticNode) facade.getClass().getMethod("find", find).invoke(facade,idArticle);
             
             //Pour chaque methode du bean
             for (Method meth : meths) {
                 //Si c'est une methode get
-                if(meth.getName().contains("get") && !meth.getName().contains("persistence")){
+                if(meth.getName().contains("get") && !meth.getName().contains("persistence") && !meth.getName().contains("URI") && !meth.getName().contains("Id") && !meth.getName().contains("Moderate") && !meth.getName().contains("Class")){
                     this.test.add(meth.toString());
                     //Si la methode retourne un String
-//                    if(meth.getReturnType().toString().equals("String")){
-//                        ArrayList temp = new ArrayList();
-//                        try {
-//                            //Invocation de cette methode get
-//                            temp.add(meth.invoke(bean).toString());
-//                            //Insertion dans la liste des informations du bean
-//                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
-//                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-//                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
-//                    //Si la methode retourne une liste
-//                    else if(meth.getReturnType().toString().contains("List")){
-//                        try {
-//                            //Invocation de cette methode get et Insertion dans la liste des informations du bean
-//                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), (ArrayList) meth.invoke(bean)));
-//                        } catch (IllegalArgumentException | InvocationTargetException ex) {
-//                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
-//                    //Si la methode retourne un autre type
-//                    else{
-//                        ArrayList<Object> temp = new ArrayList<>();
-//                        try {
-//                            //Invocation de cette methode get
-//                            temp.add(meth.invoke(bean));
-//                            //Insertion dans la liste des informations du bean
-//                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
-//                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-//                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
+                    if(meth.getReturnType().toString().equals("String")){
+                        ArrayList temp = new ArrayList();
+                        try {
+                            //Invocation de cette methode get
+                            temp.add(meth.invoke(bean).toString());
+                            //Insertion dans la liste des informations du bean
+                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
+                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    //Si la methode retourne une liste
+                    else if(meth.getReturnType().toString().contains("List")){
+                        ArrayList temp = new ArrayList();
+                        try {
+                            List t = (List)meth.invoke(bean);
+                            for (int i = 0; i<t.size(); i++) {
+                                temp.add(t.get(i));
+                            }
+                            //Invocation de cette methode get et Insertion dans la liste des informations du bean
+                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
+                        } catch (IllegalArgumentException | InvocationTargetException ex) {
+                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    //Si la methode retourne un autre type
+                    else{
+                        ArrayList temp = new ArrayList<>();
+                        try {
+                            //Invocation de cette methode get
+                            temp.add(meth.invoke(bean));
+                            //Insertion dans la liste des informations du bean
+                            this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
+                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                            Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                 }
             }
-            
-            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DynamicView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

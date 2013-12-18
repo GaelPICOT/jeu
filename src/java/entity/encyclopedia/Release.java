@@ -38,8 +38,8 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
     @Lob
     @Column(nullable=false)
     private String descriptionDetails;
-    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(nullable=false)
+    @ManyToOne
     private Productible productibleType;
 
     public List<Product> getProducts() {

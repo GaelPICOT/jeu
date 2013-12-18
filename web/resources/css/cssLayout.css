@@ -168,3 +168,15 @@
     border-radius:5px;
     font-size: 12px;
 }
+
+.articlePart{
+    margin-top: 10px;
+    margin-bottom: 3px;
+    padding: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+}
