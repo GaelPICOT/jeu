@@ -128,7 +128,9 @@ public class AjoutJeu implements EntryPoint {
                 public void onClick(ClickEvent event) {
                         System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
                         Game game = new Game();
-                        service.createEncyclopediaNode((SemanticNode)game, callback);
+                        game.setName(gameNameValue.getText());
+                        game.setDescription(gameDescriptionValue.getText());
+                        service.createEncyclopediaNode(game, callback);
 //                        Window.alert("jeu créé");
                         gameNameValue.setText("");
                         gameDescriptionValue.setText("");
