@@ -30,16 +30,8 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>GWTServiceAddGame</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddGameImpl</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>GWTServiceModifyAccount</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceModifyAccountImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceAddAccessory</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddAccessoryImpl</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GWTServiceAddImage</servlet-name>
@@ -54,10 +46,6 @@
         <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTServiceAddImage</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutImage/gwtserviceaddimagee</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
     </servlet-mapping>
@@ -66,16 +54,8 @@
         <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTServiceAddGame</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtserviceaddgame</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GWTServiceModifyAccount</servlet-name>
         <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicemodifyaccount</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GWTServiceAddAccessory</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleservice/gwtserviceaddaccessory</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceCopyright</servlet-name>
@@ -92,6 +72,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/sampleService/gwtserviceaddencyclopedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

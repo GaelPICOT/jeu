@@ -4,9 +4,6 @@
  */
 package org.yournamehere.client;
 
-import org.yournamehere.client.sampleService.GWTService;
-import org.yournamehere.client.sampleService.GWTServiceAsync;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -20,9 +17,11 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.encyclopedia.Accessory;
+import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
-import org.yournamehere.client.sampleService.GWTServiceAddAccessory;
-import org.yournamehere.client.sampleService.GWTServiceAddAccessoryAsync;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
 //import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -52,8 +51,8 @@ public class AjoutAccessoire implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 //		RootPanel.get().clear();
-		final GWTServiceAddAccessoryAsync service = GWT.create(GWTServiceAddAccessory.class);
-
+		final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
+        
 		DockPanel page = new DockPanel();
 		DockPanel body = new DockPanel();
 		AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
@@ -104,7 +103,10 @@ public class AjoutAccessoire implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				System.out.println("creation accessoire: " + accessoryNameValue.getText() + " description: "
 						+ accessoryDescriptionValue.getText());
-                                service.createAccessory(accessoryNameValue.getText(), accessoryDescriptionValue.getText(), callback);
+                                Accessory acc = new Accessory();
+                                acc.setName(accessoryNameValue.getText());
+                                acc.setDescription(accessoryDescriptionValue.getText());
+                                service.createEncyclopediaNode((SemanticNode)acc, callback);
 //                                Window.alert("accessoire créé");
                                 accessoryNameValue.setText("");
                                 accessoryDescriptionValue.setText("");
