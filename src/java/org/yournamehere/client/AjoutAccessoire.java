@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.user.UserStatu;
 import org.yournamehere.client.sampleService.GWTServiceAddAccessory;
 import org.yournamehere.client.sampleService.GWTServiceAddAccessoryAsync;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -55,7 +56,7 @@ public class AjoutAccessoire implements EntryPoint {
 
 		DockPanel page = new DockPanel();
 		DockPanel body = new DockPanel();
-		AdminTemplate.createTemplate(page, body);
+		AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
 		HorizontalPanel form = new HorizontalPanel();
 		VerticalPanel fieldName = new VerticalPanel();
 		VerticalPanel fieldValue = new VerticalPanel();

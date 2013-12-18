@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import entity.ecom.Command;
 import entity.encyclopedia.Copyright;
+import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -70,7 +71,7 @@ public class GestionCommandes implements EntryPoint {
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body);
+        AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
         VerticalPanel bodyPanel = new VerticalPanel();
         bodyPanel.add(new Label("Vos commandes: "));

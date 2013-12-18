@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import entity.encyclopedia.Copyright;
+import entity.user.UserStatu;
 import java.util.List;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -67,7 +68,7 @@ public class SupprimerCompte implements EntryPoint {
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body);
+        AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         HorizontalPanel form = new HorizontalPanel();
         Button deleteAccount = new Button("Supprimer compte");
         

@@ -11,11 +11,12 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
+import entity.user.UserStatu;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
 
 public class AdminTemplate {
-	public static void createTemplate(DockPanel page, DockPanel body) {
+	public static void createTemplate(DockPanel page, DockPanel body, UserStatu userStatu) {
                 final GWTServiceAsync service = GWT.create(GWTService.class);
                 
 		page.setSize("100%", "100%");
@@ -119,8 +120,12 @@ public class AdminTemplate {
 		MenuBar menu = new MenuBar();
 		menu.addItem("Compte", accountMenu);
 		menu.addItem("Encyclopedie", encyclopediaMenu);
-		menu.addItem("Vente", salesMenu);
-		menu.addItem("Administration", administrationMenu);
+                if(userStatu != UserStatu.CLIENT) {
+                    menu.addItem("Vente", salesMenu);
+                }
+                if(userStatu == UserStatu.ADMIN) {
+                    menu.addItem("Administration", administrationMenu);
+                }
 
 		// menu.setAnimationEnabled(true);
 		menu.addSeparator();

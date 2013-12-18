@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import entity.user.UserStatu;
 import org.yournamehere.client.sampleService.GWTServiceAddImage;
 import org.yournamehere.client.sampleService.GWTServiceAddImageAsync;
 
@@ -28,7 +29,7 @@ public class AjoutImage implements EntryPoint {
 
         DockPanel page = new DockPanel();
 	DockPanel body = new DockPanel();
-	AdminTemplate.createTemplate(page, body);
+	AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
         final FormPanel formPanel;
         formPanel = new FormPanel();

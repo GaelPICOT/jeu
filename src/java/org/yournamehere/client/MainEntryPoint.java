@@ -19,10 +19,13 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.ModarateStatu;
 import entity.user.Adress;
 import entity.user.User;
+import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.usertype.UserType;
 import org.yournamehere.client.sampleService.GWTService;
 import org.yournamehere.client.sampleService.GWTServiceAsync;
 import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
@@ -55,11 +58,13 @@ public class MainEntryPoint implements EntryPoint {
 //        String name = "";
 //        String firstName = "";
         final ArrayList<Adress> addresses = new ArrayList<Adress>();
+        final UserStatu status = UserStatu.CLIENT;
+//        status.
         
         
-        DockPanel page = new DockPanel();
-        DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body);
+        final DockPanel page = new DockPanel();
+        final DockPanel body = new DockPanel();
+
         VerticalPanel form = new VerticalPanel();
         HorizontalPanel fieldName = new HorizontalPanel();
         HorizontalPanel fieldFirstName = new HorizontalPanel();
@@ -145,6 +150,8 @@ public class MainEntryPoint implements EntryPoint {
                     addressesPanel.add(new AddressComponent(address));
                     addresses.add(address);
                 }
+                AdminTemplate.createTemplate(page, body, result.getType());
+//                status = result.getType();
 //                temp.setText("nombre d'adresses: " + addresses.size());
 ////                    addresses.add(result.getAdresses().get(0));
 //                }
