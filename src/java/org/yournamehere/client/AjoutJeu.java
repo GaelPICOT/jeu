@@ -51,6 +51,7 @@ public class AjoutJeu implements EntryPoint {
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
         AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+        VerticalPanel formPanel = new VerticalPanel();
         HorizontalPanel form = new HorizontalPanel();
         VerticalPanel fieldName = new VerticalPanel();
         VerticalPanel fieldValue = new VerticalPanel();
@@ -70,16 +71,18 @@ public class AjoutJeu implements EntryPoint {
         fieldValue.add(gameNameValue);
         fieldValue.add(gameDescriptionValue);
         
-
         
         form.add(fieldValue);
         
         
         form.add(new CopyrightComponent());
         
-        form.add(createGame);
+        formPanel.add(form);
+        ImagePanel imagePanel = new ImagePanel();
+        formPanel.add(imagePanel.getConcretPanel());
+        formPanel.add(createGame);
         
-        body.add(form, DockPanel.CENTER);
+        body.add(formPanel, DockPanel.CENTER);
         
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
@@ -92,10 +95,6 @@ public class AjoutJeu implements EntryPoint {
                         Window.alert("erreur lors de la création du jeu : "+caught);
                 }
 
-//            @Override
-//            public void onSuccess(Void result) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
         };
         
         
@@ -110,16 +109,10 @@ public class AjoutJeu implements EntryPoint {
                         game.setName(gameNameValue.getText());
                         game.setDescription(gameDescriptionValue.getText());
                         service.createEncyclopediaNode(game, callback);
-//                        Window.alert("jeu créé");
                         gameNameValue.setText("");
                         gameDescriptionValue.setText("");
-                        // TODO Auto-generated method stub
-
                 }
         });
-//        body.setCellHorizontalAlignment(form, HasAlignment.ALIGN_CENTER);
-//        body.add(label);
-//        page.add(label, DockPanel.CENTER);
         RootPanel.get().add(page);
     }
 }
