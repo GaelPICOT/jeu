@@ -113,8 +113,6 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
     private TripleOSemanticLiteralFacade tripleOSemanticLiteralFacade;
     @EJB
     TripleEntityFacade tripleEntityFacade;
-    @EJB
-    DynamicView dynamicView;
     
     @Override
     public String createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet) {
@@ -232,14 +230,14 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
     }
 
     @Override
-    public List<SemanticNode> getAllNodeFromType(String Type) {
+    public ArrayList<SemanticNode> getAllNodeFromType(String Type) {
         //On crée un objet Class correspondant a la class facade du bean a traiter
         Class facadeClass;
         Class beanClass;
         
         Object facade;
         
-        List<SemanticNode> retour = new ArrayList<>();
+        ArrayList<SemanticNode> retour = new ArrayList<>();
         try {
             beanClass = Class.forName(Type);
             
@@ -250,7 +248,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             //Nouvelle instance de la facade
             facade = facadeClass.newInstance();
             
-            Class[] find = new Class[]{Object.class};
+            Class[] find = new Class[]{};
             
             List<SemanticNode> tmp = (List<SemanticNode>) facade.getClass().getMethod("findAll", find).invoke(facade);
             retour = new ArrayList<>(tmp);

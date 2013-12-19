@@ -8,6 +8,10 @@ package org.yournamehere.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -20,20 +24,19 @@ import entity.encyclopedia.Association;
 import entity.encyclopedia.Book;
 import entity.encyclopedia.Category;
 import entity.encyclopedia.Copyright;
-import entity.encyclopedia.Entreprise;
 import entity.encyclopedia.Game;
-import entity.encyclopedia.Image;
 import entity.encyclopedia.Licence;
 import entity.encyclopedia.Person;
 import entity.encyclopedia.Productible;
 import entity.encyclopedia.Release;
 import entity.encyclopedia.Rule;
 import entity.encyclopedia.Theme;
-import entity.semantic.Predicate;
 import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
+import java.util.ArrayList;
+import java.util.List;
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
 import org.yournamehere.client.sampleService.GWTServiceAddTripleAsync;
 
@@ -56,21 +59,26 @@ public class AjoutTriple implements EntryPoint {
         HorizontalPanel AffichagePanel = new HorizontalPanel();
         
         VerticalPanel selectSujetPanel = new VerticalPanel();
-        ListBox listTypeSujet = creéListEncylopedie ();
-        ListBox listSujet = new ListBox();
+        final ListBox listTypeSujet = creéListEncylopedie ();
+        listTypeSujet.setWidth("100");
+        final ListBox listSujet = new ListBox();
+        listSujet.setWidth("100");
         listSujet.setVisibleItemCount(10);
         selectSujetPanel.add(listTypeSujet);
         selectSujetPanel.add(listSujet);
         
         VerticalPanel predicatPanel = new VerticalPanel();
         ListBox listPredicat = new ListBox();
+        listPredicat.setWidth("100");
         predicatPanel.add(listPredicat);
         
         VerticalPanel selectObjetPanel = new VerticalPanel();
         ListBox listTypeObjet = creéListEncylopedie ();
-        ListBox listObjet = new ListBox();
-        listObjet.setVisibleItemCount(10);
+        listTypeObjet.setWidth("100");
         listTypeObjet.addItem("Litéral", SemanticLiteral.class.getName());
+        ListBox listObjet = new ListBox();
+        listObjet.setWidth("100");
+        listObjet.setVisibleItemCount(10);
         selectObjetPanel.add(listTypeObjet);
         selectObjetPanel.add(listObjet);
         
@@ -78,7 +86,32 @@ public class AjoutTriple implements EntryPoint {
         SelectPanel.add(predicatPanel);
         SelectPanel.add(selectObjetPanel);
         
-        bodyPanel.add(selectSujetPanel);
+        bodyPanel.add(SelectPanel);
+        bodyPanel.add(AffichagePanel);
+        
+        final AsyncCallback<ArrayList<SemanticNode>> selectSujetTypeCallback = new AsyncCallback<ArrayList<SemanticNode>>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                System.out.println("game created");
+                Window.alert("jeu créé" + caught);
+            }
+
+            @Override
+            public void onSuccess(ArrayList<SemanticNode> result) {
+                for (SemanticNode SN : result) {
+                    listSujet.addItem(SN.toString(), SN.getId().toString());
+                }
+            }
+        };
+        
+        listTypeSujet.addChangeHandler(new ChangeHandler() {
+
+            @Override
+            public void onChange(ChangeEvent event) {
+                service.getAllNodeFromType(listTypeSujet.getValue(listTypeSujet.getSelectedIndex()), selectSujetTypeCallback);
+            }
+        });
         
         body.add(bodyPanel, DockPanel.CENTER);
         
