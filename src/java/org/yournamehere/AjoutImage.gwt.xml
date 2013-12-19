@@ -12,11 +12,13 @@
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
         <entry-point class="org.yournamehere.client.AjoutImage"/>
 
-        <inherits name="com.google.gwt.logging.Logging"/>
+        <!--<inherits name="com.google.gwt.logging.Logging"/>-->
         <!--<inherits name="servlet.UploadServlet"/>-->
         <inherits name="gwtupload.GWTUpload"/>
         <inherits name='entity.user.User'/>
         <inherits name='entity.encyclopedia.Image'/>
+        <inherits name='entity.encyclopedia.Copyright'/>
+        <inherits name='entity.encyclopedia.Licence'/>
         <!-- Other module inherits                                      -->
 
 	<!-- Specify the app entry point class.                         -->
