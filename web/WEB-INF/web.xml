@@ -86,10 +86,6 @@
         <url-pattern>/org.yournamehere.AjoutAccessoire/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutTriple/sampleService/gwtserviceaddencyclopedia</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GWTServiceAddTriple</servlet-name>
         <url-pattern>/org.yournamehere.AjoutTriple/sampleService/gwtserviceaddtriple</url-pattern>
     </servlet-mapping>

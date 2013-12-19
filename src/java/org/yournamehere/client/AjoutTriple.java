@@ -39,8 +39,6 @@ import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
 import entity.user.UserStatu;
 import java.util.HashMap;
-import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
-import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
 import org.yournamehere.client.sampleService.GWTServiceAddTripleAsync;
 
@@ -53,7 +51,6 @@ public class AjoutTriple implements EntryPoint {
     @Override
     public void onModuleLoad() {
         final GWTServiceAddTripleAsync service = GWT.create(GWTServiceAddTriple.class);
-        final GWTServiceAddEncyclopediaAsync serviceAjoutEnc = GWT.create(GWTServiceAddEncyclopedia.class);
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
