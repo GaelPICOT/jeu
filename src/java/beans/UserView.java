@@ -100,8 +100,20 @@ public class UserView implements Serializable {
 //       this.messageFacade.create(message);
         List<User> userList = userFacade.findAll();
         for(int i = 0; i < userList.size(); i++) {
+            Cart c = ((CartView)((HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getSession(true)).getAttribute("CartView")).getCart();
             if(userList.get(i).getMail().equals(user.getMail()) && userList.get(i).getHashPassword().equals(user.getHashPassword())) {
                 user = userList.get(i);
+                if(c.getId() != null){
+                    for (int j = 0; j < c.getList().size(); j++) {
+                        this.quantiteVoulue = c.getList().get(i).getQuantity();
+                        addToCard(c.getList().get(i).getProd().getId());
+                    }
+                    ((HttpSession) FacesContext.getCurrentInstance()
+                    .getExternalContext()
+                    .getSession(true)).removeAttribute("CartView");
+                }
                 return "index";
             }
         }
