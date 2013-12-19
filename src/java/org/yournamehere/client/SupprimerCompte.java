@@ -40,7 +40,6 @@ public class SupprimerCompte implements EntryPoint {
      */
     @Override
     public void onModuleLoad() {
-//        RootPanel.get().clear();
         final GWTServiceDeleteAccountAsync service = GWT.create(GWTServiceDeleteAccount.class);
         
         DockPanel page = new DockPanel();
@@ -63,33 +62,15 @@ public class SupprimerCompte implements EntryPoint {
                         System.out.println("error while deleting account\n"+caught);
                         Window.alert("error while deleting account");
                 }
-
-//            @Override
-//            public void onSuccess(Void result) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
         };
-        
-        
-  
-        
         
         deleteAccount.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
                     service.deleteAccount(callback);
-//                        System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-//                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
-////                        Window.alert("jeu créé");
-//                        gameNameValue.setText("");
-//                        gameDescriptionValue.setText("");
-                        // TODO Auto-generated method stub
-
+                    Window.Location.replace("../");
                 }
         });
-//        body.setCellHorizontalAlignment(form, HasAlignment.ALIGN_CENTER);
-//        body.add(label);
-//        page.add(label, DockPanel.CENTER);
         RootPanel.get().add(page);
     }
 }

@@ -30,14 +30,14 @@ public class AdminTemplate {
 		homeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 //				System.out.println("Acceuil");
-				 Window.Location.replace("/jeu");
+				 Window.Location.replace("../");
 			}
 		});
 
 		final AsyncCallback<String> callback = new AsyncCallback<String>() {
 			public void onSuccess(String result) {
 				System.out.println("disconnected");
-				Window.Location.replace("/jeu");
+				Window.Location.replace("../");
 			}
 
 			public void onFailure(Throwable caught) {
@@ -124,6 +124,12 @@ public class AdminTemplate {
 		administrationMenu.addItem("Gestion", cmd);
 		administrationMenu.addItem("Validation", cmd);
 		administrationMenu.addItem("Vitrine", cmd);
+		administrationMenu.addItem("Générateur RDF", new Command() {
+                    @Override
+                    public void execute() {
+                        Window.Location.replace("../genRDF.html");
+                    }
+                });
 		administrationMenu.getElement().setClassName("menu");
 
 		MenuBar menu = new MenuBar();

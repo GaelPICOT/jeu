@@ -9,10 +9,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
  *
- * @author Anthony
+ * @author inilog
  */
-@RemoteServiceRelativePath("gwtservice")
-public interface GWTService extends RemoteService {
+@RemoteServiceRelativePath("sampleService/gwtservicegenrdf")
+public interface GWTServiceGenRDF extends RemoteService {
 
-    public void disconnect();
+    public String myMethod(String s);
 }

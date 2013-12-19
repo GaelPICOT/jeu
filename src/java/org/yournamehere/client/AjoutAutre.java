@@ -15,7 +15,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.user.UserStatu;
@@ -48,6 +47,8 @@ public class AjoutAutre implements EntryPoint {
         listChoix.addItem("prédicat", "0");
         map.put(1, new AccessoryPanel());
         listChoix.addItem("accessoire", "1");
+        map.put(2, new LicencePanel());
+        listChoix.addItem("Licence", "2");
         
         final Button okButton = new Button("Enregistrer");
         

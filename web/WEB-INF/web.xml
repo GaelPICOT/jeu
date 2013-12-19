@@ -10,48 +10,28 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
-        <servlet-name>GWTService</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceDeleteAccount</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceDeleteAccountImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceCommandHandler</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCommandHandlerImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddEncyclopediaImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceAddTriple</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddTripleImpl</servlet-class>
+        <servlet-name>GWTServiceGenRDF</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceGenRDFImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>GWTServiceModifyAccount</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceModifyAccountImpl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GWTServiceAddImage</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddImageImpl</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GWTServiceAddImage</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutImage/sampleservice/gwtserviceaddimage</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>GWTServiceCopyright</servlet-name>
-        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
+        <servlet-name>GWTService</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
-        <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAutre/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
@@ -59,24 +39,40 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutTriple/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTServiceModifyAccount</servlet-name>
-        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicemodifyaccount</url-pattern>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.GestionCommandes/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTServiceCopyright</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicecopyright</url-pattern>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.SupprimerCompte/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceDeleteAccount</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceDeleteAccountImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceDeleteAccount</servlet-name>
         <url-pattern>/org.yournamehere.SupprimerCompte/sampleservice/gwtservicedeleteaccount</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceCommandHandler</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCommandHandlerImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceCommandHandler</servlet-name>
         <url-pattern>/org.yournamehere.GestionCommandes/sampleservice/gwtservicecommandhandler</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddEncyclopediaImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/sampleService/gwtserviceaddencyclopedia</url-pattern>
@@ -89,9 +85,49 @@
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutAutre/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceAddTriple</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddTripleImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceAddTriple</servlet-name>
         <url-pattern>/org.yournamehere.AjoutTriple/sampleService/gwtserviceaddtriple</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceModifyAccountImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddImageImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/sampleservice/gwtserviceaddimage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtserviceaddimage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GWTServiceCopyright</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GWTServiceCopyright</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicecopyright</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>uploadServlet</servlet-name>
@@ -100,6 +136,10 @@
     <servlet-mapping>
         <servlet-name>uploadServlet</servlet-name>
         <url-pattern>*.gupld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceGenRDF</servlet-name>
+        <url-pattern>/org.yournamehere.genRDF/sampleService/gwtservicegenrdf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

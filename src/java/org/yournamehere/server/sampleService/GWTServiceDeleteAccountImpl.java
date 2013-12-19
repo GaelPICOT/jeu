@@ -23,5 +23,6 @@ public class GWTServiceDeleteAccountImpl extends RemoteServiceServlet implements
     
     public void deleteAccount() {
         userFacade.remove(((UserView) (getThreadLocalRequest().getSession().getAttribute("UserView"))).getUser());
+        getThreadLocalRequest().getSession().invalidate();
     }
 }
