@@ -9,6 +9,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import entity.semantic.Predicate;
 import entity.semantic.SemanticNode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,6 +19,6 @@ import java.util.List;
 @RemoteServiceRelativePath("sampleService/gwtserviceaddtriple")
 public interface GWTServiceAddTriple extends RemoteService {
 
-    public ArrayList<SemanticNode> getAllNodeFromType (String Type);
+    public HashMap<Long, String> getAllNodeFromType (String Type);
     public String createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet);
 }

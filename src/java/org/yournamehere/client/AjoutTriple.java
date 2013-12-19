@@ -36,6 +36,7 @@ import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
 import org.yournamehere.client.sampleService.GWTServiceAddTripleAsync;
@@ -89,7 +90,7 @@ public class AjoutTriple implements EntryPoint {
         bodyPanel.add(SelectPanel);
         bodyPanel.add(AffichagePanel);
         
-        final AsyncCallback<ArrayList<SemanticNode>> selectSujetTypeCallback = new AsyncCallback<ArrayList<SemanticNode>>() {
+        final AsyncCallback<HashMap<Long, String>> selectSujetTypeCallback = new AsyncCallback<HashMap<Long, String> >() {
 
             @Override
             public void onFailure(Throwable caught) {
@@ -98,9 +99,9 @@ public class AjoutTriple implements EntryPoint {
             }
 
             @Override
-            public void onSuccess(ArrayList<SemanticNode> result) {
-                for (SemanticNode SN : result) {
-                    listSujet.addItem(SN.toString(), SN.getId().toString());
+            public void onSuccess(HashMap<Long, String>  result) {
+                for (Long i : result.keySet()) {
+                    listSujet.addItem(result.get(i), i.toString());
                 }
             }
         };

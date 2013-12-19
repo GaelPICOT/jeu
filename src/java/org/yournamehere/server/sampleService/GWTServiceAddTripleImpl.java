@@ -64,6 +64,7 @@ import facade.TripleOSemanticLiteralFacade;
 import facade.TripleOThemeFacade;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -230,14 +231,15 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
     }
 
     @Override
-    public ArrayList<SemanticNode> getAllNodeFromType(String Type) {
+    public HashMap<Long, String> getAllNodeFromType(String Type) {
         //On crée un objet Class correspondant a la class facade du bean a traiter
         Class facadeClass;
         Class beanClass;
         
         Object facade;
         
-        ArrayList<SemanticNode> retour = new ArrayList<>();
+        HashMap<Long, String> retour;
+        retour = new HashMap<> ();
         try {
             beanClass = Class.forName(Type);
             
@@ -251,8 +253,9 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             Class[] find = new Class[]{};
             
             List<SemanticNode> tmp = (List<SemanticNode>) facade.getClass().getMethod("findAll", find).invoke(facade);
-            retour = new ArrayList<>(tmp);
-            
+            for (SemanticNode SN : tmp) {
+                retour.put(SN.getId(), SN.toString());
+            }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
             Logger.getLogger(GWTServiceAddTripleImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
