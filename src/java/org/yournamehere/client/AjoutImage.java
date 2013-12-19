@@ -45,7 +45,7 @@ import servlet.UploadServlet;
  */
 public class AjoutImage implements EntryPoint {
     
-    final static Logger logger = Logger.getLogger("log");
+//    final static Logger logger = Logger.getLogger("log");
 
     @Override
     public void onModuleLoad() {
