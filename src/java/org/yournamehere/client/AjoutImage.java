@@ -37,7 +37,7 @@ import org.yournamehere.client.sampleService.GWTServiceAddImageAsync;
  */
 public class AjoutImage implements EntryPoint {
     
-    Logger logger = Logger.getLogger("log");
+    final static Logger logger = Logger.getLogger("log");
 
     @Override
     public void onModuleLoad() {
@@ -82,10 +82,17 @@ public class AjoutImage implements EntryPoint {
         
         final SingleUploader uploader = new SingleUploader(null, new Button());
         
+        final Image image = new Image();
+        
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("image created");
-                        Window.alert("image créée" + result);
+//                        imageId = result;
+//                        imageId = new Integer(result);
+//                        Window.alert("image créée" + result);
+//                        Window.alert("image créée" + result);
+                        image.setId(Long.parseLong(result));
+                        logger.log(Level.INFO, "id: " + result);
                         formPanel.add(uploader);
                 }
 //
@@ -93,28 +100,22 @@ public class AjoutImage implements EntryPoint {
                         System.out.println("error while creating image\n"+caught);
                         Window.alert("erreur lors de la création de l'image");
                 }
-
-//            @Override
-//            public void onSuccess(Void result) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
         };
         
-        final Image image = new Image();
         
         createImage.addClickHandler(new ClickHandler() {
-
             @Override
             public void onClick(ClickEvent event) {
-                // rpc call
                 logger.log(Level.INFO, imageNameValue.getText() + " " + imageDescriptionValue.getText() + 
                         " " + imageTextAltValue.getText());
                 logger.log(Level.INFO, image.getId().toString());
+                
                 image.setName(imageNameValue.getText());
                 image.setDescription(imageDescriptionValue.getText());
                 image.setTextAlt(imageTextAltValue.getText());
 //                image.setURL("aaa");
-                service.createEncyclopediaNode(image, callback);
+//                service.createEncyclopediaNode(image, callback);
+                service2.addImage(image, callback); 
                 createImage.setEnabled(false);
 //                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }

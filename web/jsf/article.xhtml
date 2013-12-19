@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,23 +24,51 @@
             </div>
             <div>
                 <c:if test="#{Controler.isBeanProduct(DynamicView.bean)}">
-                    ce bean est un product
-                </c:if>
-                <div id="right">
-                    <ui:insert name="right">Liste d'articles</ui:insert>
-                </div>
-                <div id="content" class="right_content">
-                    <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
-                    <h:outputText value="affichage des methode et de leur retour"/><br/>
-                    <c:forEach var="item" items="#{DynamicView.informations}">
-                        <div class="articlePart">
-                        <h2><h:outputText value="#{item.nomClass}"/></h2><br/>
-                        <c:forEach var="item2" items="#{item.listeRetour}">
-                            <h:outputText value="#{item2}"/>
+                    <div id="right">
+                        <c:if test="#{DynamicView.bean.reduction != 0}">
+                            <h:outputText value="#{DynamicView.bean.prix}" style="text-decoration: line-through;"/><br/>
+                        </c:if>
+                            <h:outputText value="#{DynamicView.bean.prix}"/>
+                            Vendu par :  <h:outputText value="#{DynamicView.bean.vendor}"/>
+                            <h:form>
+                                <h:selectOneMenu value="parametre de la future view">
+                                    <c:forEach begin="1" end="10" var="i">
+                                        <f:selectItem itemLabel="#{i}" itemValue="#{i}"/>
+                                    </c:forEach>
+                                </h:selectOneMenu>
+                                <h:commandButton action="null" value="Ajouter au panier"/>
+                            </h:form>
+                            
+                    </div>
+                    <div id="content" class="right_content">
+                        <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
+                        <c:forEach var="item" items="#{DynamicView.informations}">
+                            <div class="articlePart">
+                            <h2><h:outputText value="#{item.nomClass}"/></h2><br/>
+                            <c:forEach var="item2" items="#{item.listeRetour}">
+                                <h:outputText value="#{item2}"/>
+                            </c:forEach>
+                            </div>
                         </c:forEach>
-                        </div>
-                    </c:forEach>
-                </div>
+                    </div>
+                </c:if>
+                
+                <c:if test="#{!Controler.isBeanProduct(DynamicView.bean)}">
+                    <div id="right">
+                        <ui:insert name="right">Liste d'articles</ui:insert>
+                    </div>
+                    <div id="content" class="right_content">
+                        <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
+                        <c:forEach var="item" items="#{DynamicView.informations}">
+                            <div class="articlePart">
+                            <h2><h:outputText value="#{item.nomClass}"/></h2><br/>
+                            <c:forEach var="item2" items="#{item.listeRetour}">
+                                <h:outputText value="#{item2}"/>
+                            </c:forEach>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div id="bottom">
