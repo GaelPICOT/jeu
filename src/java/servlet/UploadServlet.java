@@ -33,6 +33,7 @@ public class UploadServlet extends UploadAction {
               try {
 
                   // we can save the received file
+//                  request.
                   String fileName = item.getName().substring(
                               item.getName().lastIndexOf(File.separator) + 1);
     //              File file = File.createTempFile("upload-", ".bin", new File("/home/anthony/"));
@@ -46,7 +47,7 @@ public class UploadServlet extends UploadAction {
                    * File file = File.createTempFile("receivedFile", ".tmp",
                    * new File("./www/"));
                    */
-                  File file = new File("/home/anthony/images/"+fileName);
+                  File file = new File("/home/anthony/images/" + fileName);
                   item.write(file);
                   
                   loggerJava.log(Level.SEVERE, "upload fichier: " + file.getAbsolutePath());

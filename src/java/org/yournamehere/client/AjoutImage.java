@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.encyclopedia.Image;
 import entity.user.UserStatu;
 import gwtupload.client.IUploadStatus.Status;
 import gwtupload.client.IUploader;
@@ -41,6 +42,7 @@ public class AjoutImage implements EntryPoint {
     @Override
     public void onModuleLoad() {
         final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
+        final GWTServiceAddImageAsync service2 = GWT.create(GWTServiceAddImage.class);
 
         DockPanel page = new DockPanel();
 	DockPanel body = new DockPanel();
@@ -98,6 +100,8 @@ public class AjoutImage implements EntryPoint {
 //            }
         };
         
+        final Image image = new Image();
+        
         createImage.addClickHandler(new ClickHandler() {
 
             @Override
@@ -105,7 +109,12 @@ public class AjoutImage implements EntryPoint {
                 // rpc call
                 logger.log(Level.INFO, imageNameValue.getText() + " " + imageDescriptionValue.getText() + 
                         " " + imageTextAltValue.getText());
-                service.createEncyclopediaNode(null, callback);
+                logger.log(Level.INFO, image.getId().toString());
+                image.setName(imageNameValue.getText());
+                image.setDescription(imageDescriptionValue.getText());
+                image.setTextAlt(imageTextAltValue.getText());
+//                image.setURL("aaa");
+                service.createEncyclopediaNode(image, callback);
                 createImage.setEnabled(false);
 //                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
@@ -125,6 +134,7 @@ public class AjoutImage implements EntryPoint {
 //                    formPanel.add(new Label(uploader.getFileName()));
 //                    RootPanel.get().add(new Label(uploader.getFileName()));
                     logger.log(Level.INFO, "upload success");
+//                    service2.updateURL();
                 }
             }
         });
