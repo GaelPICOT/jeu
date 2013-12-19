@@ -64,9 +64,6 @@ public class AjoutTriple implements EntryPoint {
         
         VerticalPanel predicatPanel = new VerticalPanel();
         ListBox listPredicat = new ListBox();
-        for (SemanticNode p : service.getAllNodeFromType(Predicate.class.getName(), null)) {
-            listPredicat.addItem(p.toString());
-        }
         predicatPanel.add(listPredicat);
         
         VerticalPanel selectObjetPanel = new VerticalPanel();

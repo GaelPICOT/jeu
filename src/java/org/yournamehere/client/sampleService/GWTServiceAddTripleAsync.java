@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface GWTServiceAddTripleAsync {
 
-    public List<SemanticNode> getAllNodeFromType (String Type, AsyncCallback<List<SemanticNode>> callback);
+    public void getAllNodeFromType (String Type, AsyncCallback<List<SemanticNode>> callback);
     public void createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet, AsyncCallback<String> callback);
 }
