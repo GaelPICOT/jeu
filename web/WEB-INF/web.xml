@@ -25,6 +25,10 @@
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddEncyclopediaImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GWTServiceAddTriple</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddTripleImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -76,6 +80,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutAccessoire/sampleService/gwtserviceaddencyclopedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddTriple</servlet-name>
+        <url-pattern>/org.yournamehere.Main/sampleService/gwtserviceaddtriple</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

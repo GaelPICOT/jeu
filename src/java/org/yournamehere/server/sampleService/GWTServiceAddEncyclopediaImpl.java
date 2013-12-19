@@ -13,6 +13,7 @@ import entity.encyclopedia.Article;
 import entity.encyclopedia.Association;
 import entity.encyclopedia.Book;
 import entity.encyclopedia.Category;
+import entity.encyclopedia.Copyright;
 import entity.encyclopedia.Entreprise;
 import entity.encyclopedia.Game;
 import entity.encyclopedia.Image;
@@ -29,6 +30,7 @@ import facade.ArticleFacade;
 import facade.AssociationFacade;
 import facade.BookFacade;
 import facade.CategoryFacade;
+import facade.CopyrightFacade;
 import facade.EntrepriseFacade;
 import facade.GameFacade;
 import facade.ImageFacade;
@@ -38,11 +40,6 @@ import facade.ProductibleFacade;
 import facade.ReleaseFacade;
 import facade.RuleFacade;
 import facade.ThemeFacade;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
@@ -64,6 +61,8 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
     private BookFacade bookFacade;
     @EJB
     private CategoryFacade categoryFacade;
+    @EJB
+    private CopyrightFacade copyrightFacade;
     @EJB
     private EntrepriseFacade entrepriseFacade;
     @EJB
@@ -150,8 +149,8 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                 imageFacade.create((Image)nodeAdd);
             } else if (beanClass.getName().equals(Licence.class.getName())) {
                 licenceFacade.create((Licence)nodeAdd);
-            } else if (beanClass.getName().equals(Person.class.getName())) {
-                personFacade.create((Person)nodeAdd);
+            } else if (beanClass.getName().equals(Copyright.class.getName())) {
+                copyrightFacade.create((Copyright)nodeAdd);
             } else if (beanClass.getName().equals(Productible.class.getName())) {
                 productibleFacade.create((Productible)nodeAdd);
             } else if (beanClass.getName().equals(Release.class.getName())) {
