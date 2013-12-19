@@ -109,7 +109,7 @@ public class DynamicView implements Serializable {
             //Pour chaque methode du bean
             for (Method meth : meths) {
                 //Si c'est une methode get
-                if(meth.getName().contains("get") && !meth.getName().contains("persistence") && !meth.getName().contains("URI") && !meth.getName().contains("Id") && !meth.getName().contains("Moderate") && !meth.getName().contains("Class")){
+                if(meth.getName().startsWith("get") && !meth.getName().contains("persistence") && !meth.getName().contains("URI") && !meth.getName().contains("Id") && !meth.getName().contains("Moderate") && !meth.getName().contains("Class")){
                     this.test.add(meth.toString());
                     //Si la methode retourne un String
                     if(meth.getReturnType().toString().equals("String")){

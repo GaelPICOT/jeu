@@ -6,7 +6,9 @@
 
 package org.yournamehere.server.sampleService;
 
+import beans.UserView;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet; 
+import entity.ModarateStatu;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
 import entity.encyclopedia.Article;
@@ -27,6 +29,8 @@ import entity.semantic.Predicate;
 import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
+import entity.user.User;
+import entity.user.UserStatu;
 import facade.AccessoryFacade;
 import facade.ActorFacade;
 import facade.ArticleFacade;
@@ -94,53 +98,35 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
     @EJB
     private PredicateFacade predicateFacade;
     
+    private User user;
+    private ModarateStatu MS;
+    
     
     @Override
     public String createEncyclopediaNode(SemanticNode nodeAdd) {
-        marche (nodeAdd);
-          
+        createSemNode (nodeAdd);
+        user = ((UserView) (getThreadLocalRequest().getSession().getAttribute("UserView"))).getUser();
+        switch(user.getType()) {
+            case ADMIN :
+                MS = ModarateStatu.VALIDATE;
+                break;
+            case CLIENT :
+                MS = ModarateStatu.TO_BE_MODERATE;
+                break;
+            case CERTIFIED :
+                if (nodeAdd instanceof Release)
+                    MS = ModarateStatu.VALIDATE;
+                else
+                    MS = ModarateStatu.TO_BE_MODERATE;
+                break;
+        }
         return "";
     }
     
-    public void marche (SemanticNode nodeAdd) {
+    public void createSemNode (SemanticNode nodeAdd) {
         //On crée un objet Class correspondant a la class du bean a traiter
         Class beanClass = nodeAdd.getClass();
         if(nodeAdd.getId()==null) {
-        
-//            for (Method meth : beanClass.getMethods()) {
-//                if (meth.getReturnType().isAssignableFrom(nodeAdd.getClass()) && meth.getParameterTypes().length==0) {
-//                    try {
-//                        SemanticNode SN = (SemanticNode) meth.invoke(nodeAdd);
-//                        if(SN!=null)
-//                            marche(SN);
-//                    } catch (IllegalAccessException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    } catch (IllegalArgumentException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    } catch (InvocationTargetException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//                if(meth.getReturnType().isAssignableFrom(List.class) && meth.getParameterTypes().length==0) {
-//                    try {
-//                        List laList = (List)meth.invoke(nodeAdd);
-//                        if (laList.get(0).getClass().isAssignableFrom(SemanticNode.class)) {
-//                            if (laList!=null)
-//                                for (Object SN : laList) {
-//                                    if(SN!=null)
-//                                        marche((SemanticNode) SN);
-//                                }
-//                        }
-//                    } catch (IllegalAccessException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    } catch (IllegalArgumentException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    } catch (InvocationTargetException ex) {
-//                        Logger.getLogger(GWTServiceAddEncyclopediaImpl.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//            }
-
             if (beanClass.getName().equals(Accessory.class.getName())) {
                 accessoryFacade.create((Accessory)nodeAdd);
             } else if (beanClass.getName().equals(Actor.class.getName())) {
@@ -179,6 +165,52 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                 semanticLiteralFacade.create((SemanticLiteral)nodeAdd);
             } else if (beanClass.getName().equals(Predicate.class.getName())) {
                 predicateFacade.create((Predicate)nodeAdd);
+            }
+        }
+    }
+    
+    public void editSemNode (SemanticNode nodeAdd) {
+        //On crée un objet Class correspondant a la class du bean a traiter
+        Class beanClass = nodeAdd.getClass();
+        if(nodeAdd.getId()==null) {
+            if (beanClass.getName().equals(Accessory.class.getName())) {
+                accessoryFacade.edit((Accessory)nodeAdd);
+            } else if (beanClass.getName().equals(Actor.class.getName())) {
+                actorFacade.edit((Actor)nodeAdd);
+            } else if (beanClass.getName().equals(Article.class.getName())) {
+                articleFacade.edit((Article)nodeAdd);
+            } else if (beanClass.getName().equals(Association.class.getName())) {
+                associationFacade.edit((Association)nodeAdd);
+            } else if (beanClass.getName().equals(Book.class.getName())) {
+                bookFacade.edit((Book)nodeAdd);
+            } else if (beanClass.getName().equals(Category.class.getName())) {
+                categoryFacade.edit((Category)nodeAdd);
+            } else if (beanClass.getName().equals(Entreprise.class.getName())) {
+                entrepriseFacade.edit((Entreprise)nodeAdd);
+            } else if (beanClass.getName().equals(Game.class.getName())) {
+                gameFacade.edit((Game)nodeAdd);
+            } else if (beanClass.getName().equals(Image.class.getName())) {
+                imageFacade.edit((Image)nodeAdd);
+            } else if (beanClass.getName().equals(Licence.class.getName())) {
+                licenceFacade.edit((Licence)nodeAdd);
+            } else if (beanClass.getName().equals(Copyright.class.getName())) {
+                copyrightFacade.edit((Copyright)nodeAdd);
+            } else if (beanClass.getName().equals(Productible.class.getName())) {
+                productibleFacade.edit((Productible)nodeAdd);
+            } else if (beanClass.getName().equals(Release.class.getName())) {
+                releaseFacade.edit((Release)nodeAdd);
+            } else if (beanClass.getName().equals(Rule.class.getName())) {
+                ruleFacade.edit((Rule)nodeAdd);
+            } else if (beanClass.getName().equals(Theme.class.getName())) {
+                themeFacade.edit((Theme)nodeAdd);
+            } else if (beanClass.getName().equals(Person.class.getName())) {
+                personFacade.edit((Person)nodeAdd);
+            } else if (beanClass.getName().equals(PureSemanticRessource.class.getName())) {
+                pureSemanticRessourceFacade.edit((PureSemanticRessource)nodeAdd);
+            } else if (beanClass.getName().equals(SemanticLiteral.class.getName())) {
+                semanticLiteralFacade.edit((SemanticLiteral)nodeAdd);
+            } else if (beanClass.getName().equals(Predicate.class.getName())) {
+                predicateFacade.edit((Predicate)nodeAdd);
             }
         }
     }
