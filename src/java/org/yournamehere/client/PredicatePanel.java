@@ -18,21 +18,28 @@ import entity.semantic.Predicate;
 public class PredicatePanel extends SemanticPanel<Predicate> {
     
     TextBox labelValue = new TextBox();
+    TextBox URIValue = new TextBox();
     
     public PredicatePanel () {
         HorizontalPanel labelPanel = new HorizontalPanel();
         Label labelLabel = new Label("Label du predicat: ");
         labelPanel.add(labelLabel);
         labelPanel.add(labelValue);
+        HorizontalPanel URIPanel = new HorizontalPanel();
+        Label URILabel = new Label("URI du predicat (vide = URI par defaut) : ");
+        URIPanel.add(URILabel);
+        URIPanel.add(URIValue);
         
-        this.add(labelPanel);
+        getConcretPanel().add(labelPanel);
+        getConcretPanel().add(URIPanel);
     }
 
     @Override
     public Predicate getSemanticObject() {
         Predicate pred = new Predicate();
         pred.setLabel(labelValue.getText());
-        pred.setURI("URI#pred");
+        if (!URIValue.getText().equals(""))
+            pred.setURI(URIValue.getText());
         return pred;
     }
 }
