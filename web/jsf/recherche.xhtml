@@ -43,13 +43,30 @@
                                         <td>
                                             <c:if test="#{Controler.isProductible(item)}">
                                                 <ul>
-                                                <c:forEach var="real" items="#{item.releases}">
-                                                    <li>
-                                                        <h:form>
-                                                            <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
-                                                        </h:form>
-                                                    </li>
-                                                </c:forEach>
+                                                    <table>
+                                                        <c:forEach var="real" items="#{item.releases}">
+                                                            <li>
+                                                                <tr>
+                                                                    <td>
+                                                                    <h:form>
+                                                                        <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
+                                                                    </h:form>
+                                                                    </td>
+                                                                    <td>
+                                                                        <ul>
+                                                                            <c:forEach var="prod" items="#{real.products}">
+                                                                                <li>
+                                                                                    <h:form>
+                                                                                        <h:commandLink action="#{DynamicView.createPage(products.id, products.nom, products.class.getName())}" value="#{real.toString()}"/>
+                                                                                    </h:form>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </li>
+                                                        </c:forEach>
+                                                    </table>
                                                 </ul>
                                             </c:if>
                                         </td>
