@@ -22,16 +22,13 @@
                 <ui:insert name="left">Articles encyclopédiques</ui:insert>
             </div>
             <div>
+                <c:if test="#{Controler.isBeanProduct(DynamicView.bean)}">
+                    ce bean est un product
+                </c:if>
                 <div id="right">
                     <ui:insert name="right">Liste d'articles</ui:insert>
                 </div>
                 <div id="content" class="right_content">
-                    <!--<ui:insert name="content">Informations sur l'article</ui:insert>-->
-                    <!--debug-->
-<!--                    <h:outputText value="liste des methodes get"/><br/>
-                    <c:forEach var="item" items="{DynamicView.test}">
-                        <h:outputText value="{item}"/><br/>
-                    </c:forEach>-->
                     <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
                     <h:outputText value="affichage des methode et de leur retour"/><br/>
                     <c:forEach var="item" items="#{DynamicView.informations}">

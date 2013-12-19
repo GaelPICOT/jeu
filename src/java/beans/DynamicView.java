@@ -4,8 +4,6 @@
  */
 package beans;
 
-import entity.semantic.SemanticNode;
-import facade.AbstractFacade;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,6 +25,7 @@ public class DynamicView implements Serializable {
     private String nomArticle;
     private ArrayList<Node> informations;
     private ArrayList<String> test;
+    private Object bean;
     
     /**
      * Creates a new instance of ArticleView
@@ -57,8 +56,14 @@ public class DynamicView implements Serializable {
     public void setTest(ArrayList<String> test) {
         this.test = test;
     }
-    
-    
+
+    public Object getBean() {
+        return bean;
+    }
+
+    public void setBean(Object bean) {
+        this.bean = bean;
+    }
     
     /**
      * createPage retourne la page article après avoir récupéré tous les
@@ -78,7 +83,6 @@ public class DynamicView implements Serializable {
         Class beanClass;
         
         Object facade;
-        Object bean;
         Method[] meths;
         
         try {
@@ -92,15 +96,15 @@ public class DynamicView implements Serializable {
             facade = facadeClass.newInstance();
             
             //Nouvelle instance de la facade
-            bean = beanClass.newInstance();
+            this.bean = beanClass.newInstance();
             
             //Recuperation de toute les methodes du bean
-            meths = bean.getClass().getMethods();
+            meths = this.bean.getClass().getMethods();
             
             Class[] find = new Class[]{Object.class};
             
             //Recuperation de l'objet dans la BD
-            bean = facade.getClass().getMethod("find", find).invoke(facade,idArticle);
+            this.bean = facade.getClass().getMethod("find", find).invoke(facade,idArticle);
             
             //Pour chaque methode du bean
             for (Method meth : meths) {
@@ -112,7 +116,7 @@ public class DynamicView implements Serializable {
                         ArrayList temp = new ArrayList();
                         try {
                             //Invocation de cette methode get
-                            temp.add(meth.invoke(bean).toString());
+                            temp.add(meth.invoke(this.bean).toString());
                             //Insertion dans la liste des informations du bean
                             this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
                         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -123,7 +127,7 @@ public class DynamicView implements Serializable {
                     else if(meth.getReturnType().toString().contains("List")){
                         ArrayList temp = new ArrayList();
                         try {
-                            List t = (List)meth.invoke(bean);
+                            List t = (List)meth.invoke(this.bean);
                             for (int i = 0; i<t.size(); i++) {
                                 temp.add(t.get(i));
                             }
@@ -138,7 +142,7 @@ public class DynamicView implements Serializable {
                         ArrayList temp = new ArrayList<>();
                         try {
                             //Invocation de cette methode get
-                            temp.add(meth.invoke(bean));
+                            temp.add(meth.invoke(this.bean));
                             //Insertion dans la liste des informations du bean
                             this.informations.add(new Node(meth.getName().substring(3), meth.getReturnType().toString(), temp));
                         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {

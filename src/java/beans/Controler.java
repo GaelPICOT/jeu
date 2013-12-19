@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package beans;
+import entity.ecom.Product;
 import java.lang.reflect.Method;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
@@ -32,5 +33,9 @@ public class Controler {
             } 
         }
         return false;
+    }
+    
+    public boolean isBeanProduct(Object b){
+        return b.getClass().equals(Product.class);
     }
 }
