@@ -26,6 +26,12 @@
                     <ui:insert name="right">Historique de recherche</ui:insert>
                 </div>
                 <div id="content" class="right_content">
+                    test
+                    <h:outputText value="#{ResearchView.test()}"/><br/>
+                    <h:outputText value="#{ResearchView.test().getReleases().size()}"/><br/>
+                    <c:forEach var="test" items="#{ResearchView.test().getReleases()}">
+                        <h:outputText value="#{test.toString()}"/>
+                    </c:forEach>
                     <h2>Résultats de la recherche:</h2>
                     <ul>
                         <c:forEach var="titre" items="#{ResearchView.nodeList}">
@@ -41,8 +47,15 @@
                                         </li>
                                         </td>
                                         <td>
-<!--                                            <c:forEach var="real" items="">
-                                            </c:forEach>-->
+                                            <c:if test="#{Controler.isProductible(item)}">
+                                                <ul>
+                                                <c:forEach var="real" items="#{item.releases}">
+                                                    <li>
+                                                        <h:outputText value="#{real.toString()}"/>
+                                                    </li>
+                                                </c:forEach>
+                                                </ul>
+                                            </c:if>
                                         </td>
                                     </tr>
                                 </c:forEach>

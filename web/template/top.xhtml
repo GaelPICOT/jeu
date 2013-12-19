@@ -13,7 +13,7 @@
         </div>
         
         <div id="topRight">
-            <c:if test="#{empty UserView.user.mail}">
+            <c:if test="#{empty UserView.user.id}">
                 <table>
                     <tr>
                         <td>
@@ -31,9 +31,7 @@
                     </tr>
                 </table>
             </c:if>
-            <!-- otherwise ne marche pas-->
-            <!--<c:otherwise>-->
-            <c:if test="#{not empty UserView.user.mail}">
+            <c:if test="#{not empty UserView.user.id}">
                 <table>
                     <tr>
                         <td>
@@ -49,9 +47,7 @@
                         </td>
                     </tr>
                 </table>
-            </c:if>
-            <!--</c:otherwise>-->
-            
+            </c:if>          
         </div>  
         <div id="topCenter">
             <table>

@@ -86,9 +86,9 @@ public class ResearchView implements Serializable{
         this.select = select;
     }
     
-    public List<Game> test() {
+    public Game test() {
         List<Game> gameList = gameFacade.findAll();
-        return gameList;
+        return gameList.get(0);
 //        return this.getSemanticNodeList().get(0).getName();
     }
     

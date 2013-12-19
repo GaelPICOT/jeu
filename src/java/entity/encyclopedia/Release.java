@@ -89,6 +89,6 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
     
     @Override
     public String toString() {
-        return this.getDescriptionDetails().substring(0, 255);
+        return this.getDescriptionDetails().substring(0, Math.min(getDescriptionDetails().length(), 255));
     }
 }
