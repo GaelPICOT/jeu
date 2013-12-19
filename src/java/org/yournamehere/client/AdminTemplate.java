@@ -124,6 +124,12 @@ public class AdminTemplate {
 		administrationMenu.addItem("Gestion", cmd);
 		administrationMenu.addItem("Validation", cmd);
 		administrationMenu.addItem("Vitrine", cmd);
+		administrationMenu.addItem("Générateur RDF", new Command() {
+                    @Override
+                    public void execute() {
+                        Window.Location.replace("../genRDF.html");
+                    }
+                });
 		administrationMenu.getElement().setClassName("menu");
 
 		MenuBar menu = new MenuBar();

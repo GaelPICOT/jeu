@@ -9,6 +9,10 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>GWTServiceGenRDF</servlet-name>
+        <servlet-class>org.yournamehere.server.sampleService.GWTServiceGenRDFImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -104,6 +108,10 @@
     <servlet-mapping>
         <servlet-name>uploadServlet</servlet-name>
         <url-pattern>*.gupld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceGenRDF</servlet-name>
+        <url-pattern>/org.yournamehere.genRDF/sampleService/gwtservicegenrdf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
