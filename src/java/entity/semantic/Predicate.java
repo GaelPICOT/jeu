@@ -38,4 +38,9 @@ public class Predicate extends SemanticNode implements Serializable, SemanticRes
         this.URI = URI;
     }
     
+    @Override
+    public String toString() {
+        return this.getLabel();
+    }
+    
 }

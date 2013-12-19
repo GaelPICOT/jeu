@@ -4,7 +4,6 @@
  */
 package org.yournamehere.server.sampleService;
 
-import beans.DynamicView;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
@@ -44,6 +43,8 @@ import entity.semantic.subtriple.TripleORelease;
 import entity.semantic.subtriple.TripleORule;
 import entity.semantic.subtriple.TripleOSemanticLiteral;
 import entity.semantic.subtriple.TripleOTheme;
+import facade.PredicateFacade;
+import facade.SemanticNodeFacade;
 import facade.TripleEntityFacade;
 import facade.TripleOAccessoryFacade;
 import facade.TripleOActorFacade;
@@ -63,7 +64,7 @@ import facade.TripleORuleFacade;
 import facade.TripleOSemanticLiteralFacade;
 import facade.TripleOThemeFacade;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,134 +113,158 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
     @EJB
     private TripleOSemanticLiteralFacade tripleOSemanticLiteralFacade;
     @EJB
-    TripleEntityFacade tripleEntityFacade;
+    private TripleEntityFacade tripleEntityFacade;
     @EJB
-    DynamicView dynamicView;
+    private SemanticNodeFacade semanticNodeFacade;
+    @EJB
+    private PredicateFacade predicateFacade;
     
     @Override
-    public String createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet) {
+    public String createTriple(Long sujetId, Long predicateId, Long objetId) {
+        SemanticNode sujet = semanticNodeFacade.find(sujetId);
+        SemanticNode objet = semanticNodeFacade.find(objetId);
+        Predicate predicate = predicateFacade.find(predicateId);
         Class beanClass = objet.getClass();
         if (beanClass.getName().equals(Accessory.class.getName())) {
             TripleOAccessory triple = new TripleOAccessory();
+            tripleOAccessoryFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOAccessoryFacade.create(triple);
+            tripleOAccessoryFacade.edit(triple);
         } else if (beanClass.getName().equals(Actor.class.getName())) {
             TripleOActor triple = new TripleOActor();
+            tripleOActorFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOActorFacade.create(triple);
+            tripleOActorFacade.edit(triple);
         } else if (beanClass.getName().equals(Article.class.getName())) {
             TripleOArticle triple = new TripleOArticle();
+            tripleOArticleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOArticleFacade.create(triple);
+            tripleOArticleFacade.edit(triple);
         } else if (beanClass.getName().equals(Association.class.getName())) {
             TripleOAssociation triple = new TripleOAssociation();
+            tripleOAssociationFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOAssociationFacade.create(triple);
+            tripleOAssociationFacade.edit(triple);
         } else if (beanClass.getName().equals(Book.class.getName())) {
             TripleOBook triple = new TripleOBook();
+            tripleOBookFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOBookFacade.create(triple);
+            tripleOBookFacade.edit(triple);
         } else if (beanClass.getName().equals(Category.class.getName())) {
             TripleOCategory triple = new TripleOCategory();
+            tripleOCategoryFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOCategoryFacade.create(triple);
+            tripleOCategoryFacade.edit(triple);
         } else if (beanClass.getName().equals(Copyright.class.getName())) {
             TripleOCopyright triple = new TripleOCopyright();
+            tripleOCopyrightFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOCopyrightFacade.create(triple);
+            tripleOCopyrightFacade.edit(triple);
         } else if (beanClass.getName().equals(Entreprise.class.getName())) {
             TripleOEntreprise triple = new TripleOEntreprise();
+            tripleOEntrepriseFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOEntrepriseFacade.create(triple);
+            tripleOEntrepriseFacade.edit(triple);
         } else if (beanClass.getName().equals(Game.class.getName())) {
             TripleOGame triple = new TripleOGame();
+            tripleOGameFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOGameFacade.create(triple);
+            tripleOGameFacade.edit(triple);
         } else if (beanClass.getName().equals(Image.class.getName())) {
             TripleOImage triple = new TripleOImage();
+            tripleOImageFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOImageFacade.create(triple);
+            tripleOImageFacade.edit(triple);
         } else if (beanClass.getName().equals(Licence.class.getName())) {
             TripleOLicence triple = new TripleOLicence();
+            tripleOLicenceFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOLicenceFacade.create(triple);
+            tripleOLicenceFacade.edit(triple);
         } else if (beanClass.getName().equals(Productible.class.getName())) {
             TripleOProductible triple = new TripleOProductible();
+            tripleOProductibleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOProductibleFacade.create(triple);
+            tripleOProductibleFacade.edit(triple);
         } else if (beanClass.getName().equals(Release.class.getName())) {
             TripleORelease triple = new TripleORelease();
+            tripleOReleaseFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOReleaseFacade.create(triple);
+            tripleOReleaseFacade.edit(triple);
         } else if (beanClass.getName().equals(Rule.class.getName())) {
             TripleORule triple = new TripleORule();
+            tripleORuleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleORuleFacade.create(triple);
+            tripleORuleFacade.edit(triple);
         } else if (beanClass.getName().equals(Theme.class.getName())) {
             TripleOTheme triple = new TripleOTheme();
+            tripleOThemeFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOThemeFacade.create(triple);
+            tripleOThemeFacade.edit(triple);
         } else if (beanClass.getName().equals(Person.class.getName())) {
             TripleOPerson triple = new TripleOPerson();
+            tripleOPersonFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOPersonFacade.create(triple);
+            tripleOPersonFacade.edit(triple);
         } else if (beanClass.getName().equals(SemanticLiteral.class.getName())) {
             TripleOSemanticLiteral triple = new TripleOSemanticLiteral();
+            tripleOSemanticLiteralFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleOSemanticLiteralFacade.create(triple);
+            tripleOSemanticLiteralFacade.edit(triple);
         } else {
             TripleEntity triple = new TripleEntity();
+            tripleEntityFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
             triple.setObjet(objet);
-            tripleEntityFacade.create(triple);
+            tripleEntityFacade.edit(triple);
         }
         return "Server says: ";
     }
 
     @Override
-    public List<SemanticNode> getAllNodeFromType(String Type) {
+    public HashMap<Long, String> getAllNodeFromType(String Type) {
         //On crée un objet Class correspondant a la class facade du bean a traiter
         Class facadeClass;
         Class beanClass;
         
         Object facade;
         
-        List<SemanticNode> retour = new ArrayList<>();
+        HashMap<Long, String> retour;
+        retour = new HashMap<> ();
         try {
             beanClass = Class.forName(Type);
             
@@ -250,11 +275,12 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             //Nouvelle instance de la facade
             facade = facadeClass.newInstance();
             
-            Class[] find = new Class[]{Object.class};
+            Class[] find = new Class[]{};
             
             List<SemanticNode> tmp = (List<SemanticNode>) facade.getClass().getMethod("findAll", find).invoke(facade);
-            retour = new ArrayList<>(tmp);
-            
+            for (SemanticNode SN : tmp) {
+                retour.put(SN.getId(), SN.toString());
+            }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
             Logger.getLogger(GWTServiceAddTripleImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
