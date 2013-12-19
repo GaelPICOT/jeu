@@ -11,6 +11,26 @@
 	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
         <entry-point class="org.yournamehere.client.AjoutAutre"/>
+        <inherits name='entity.semantic.SemanticNode'/>
+        <inherits name='entity.semantic.SemanticLiteral'/>
+        <inherits name='entity.semantic.PureSemanticRessource'/>
+        <inherits name='entity.semantic.Predicate'/>
+        <inherits name='entity.encyclopedia.Accessory'/>
+        <inherits name='entity.encyclopedia.Actor'/>
+        <inherits name='entity.encyclopedia.Article'/>
+        <inherits name='entity.encyclopedia.Association'/>
+        <inherits name='entity.encyclopedia.Book'/>
+        <inherits name='entity.encyclopedia.Category'/>
+        <inherits name='entity.encyclopedia.Copyright'/>
+        <inherits name='entity.encyclopedia.Entreprise'/>
+        <inherits name='entity.encyclopedia.Game'/>
+        <inherits name='entity.encyclopedia.Image'/>
+        <inherits name='entity.encyclopedia.Licence'/>
+        <inherits name='entity.encyclopedia.Person'/>
+        <inherits name='entity.encyclopedia.Productible'/>
+        <inherits name='entity.encyclopedia.Release'/>
+        <inherits name='entity.encyclopedia.Rule'/>
+        <inherits name='entity.encyclopedia.Theme'/>
 
         <!-- Other module inherits                                      -->
 
