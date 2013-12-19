@@ -9,8 +9,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
  *
- * @author inilog
+ * @author anthony
  */
-@RemoteServiceRelativePath("GWTServiceAddImage")
-public interface GWTServiceAddImage extends RemoteService{
+@RemoteServiceRelativePath("sampleservice/gwtserviceaddimage")
+public interface GWTServiceAddImage extends RemoteService {
+
+    public void addImage(String name, String description, String textAlt);
 }

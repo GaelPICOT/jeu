@@ -8,7 +8,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  *
- * @author inilog
+ * @author anthony
  */
 public interface GWTServiceAddImageAsync {
+
+    public void addImage(String name, String description, String textAlt, AsyncCallback<String> callback);
 }

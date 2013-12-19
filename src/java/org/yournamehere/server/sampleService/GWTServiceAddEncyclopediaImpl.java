@@ -6,7 +6,7 @@
 
 package org.yournamehere.server.sampleService;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet; 
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
 import entity.encyclopedia.Article;

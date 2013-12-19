@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package beans;
+import java.lang.reflect.Method;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 /**
@@ -21,5 +22,15 @@ public class Controler {
     
     public String getTestPaie(){
         return "jsf/paieEtape1";
+    }
+    
+    public boolean isProductible(Object b){
+        Method[] c = b.getClass().getMethods();
+        for (Method method : c) {
+           if(method.getName().contains("Release")){
+                return true;
+            } 
+        }
+        return false;
     }
 }

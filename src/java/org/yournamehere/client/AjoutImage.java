@@ -2,18 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.yournamehere.client;
+package org.yournamehere.client; 
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.FileUpload;
-import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.user.UserStatu;
+import gwtupload.client.IUploadStatus.Status;
+import gwtupload.client.IUploader;
+import gwtupload.client.IUploader.OnFinishUploaderHandler;
+import gwtupload.client.SingleUploader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
+import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 import org.yournamehere.client.sampleService.GWTServiceAddImage;
 import org.yournamehere.client.sampleService.GWTServiceAddImageAsync;
 
@@ -22,38 +35,103 @@ import org.yournamehere.client.sampleService.GWTServiceAddImageAsync;
  * @author inilog
  */
 public class AjoutImage implements EntryPoint {
+    
+    Logger logger = Logger.getLogger("log");
 
     @Override
     public void onModuleLoad() {
-        final GWTServiceAddImageAsync service = GWT.create(GWTServiceAddImage.class);
+        final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
 
         DockPanel page = new DockPanel();
 	DockPanel body = new DockPanel();
 	AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
-        final FormPanel formPanel;
-        formPanel = new FormPanel();
-        formPanel.setAction(GWT.getModuleBaseURL() + "GWTServiceAddImage");
-        formPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
-        formPanel.setMethod(FormPanel.METHOD_POST);
-        final FileUpload uploader = new FileUpload();
-        uploader.setName("image");
-        formPanel.add(uploader);
+        final VerticalPanel formPanel = new VerticalPanel();
+        final HorizontalPanel form = new HorizontalPanel();
+        VerticalPanel formFields = new VerticalPanel();
         
-        Button uploadButton = new Button("upload image");
-        uploadButton.addClickHandler(new ClickHandler() {
+        HorizontalPanel fieldName = new HorizontalPanel();
+        HorizontalPanel fieldDescription = new HorizontalPanel();
+        HorizontalPanel fieldTextAlt = new HorizontalPanel();
+        
+        Label imageNameLabel = new Label("Nom de l'image: ");
+        final TextBox imageNameValue = new TextBox();
+        Label imageDescriptionLabel = new Label("Description de l'image: ");
+        final TextArea imageDescriptionValue = new TextArea();
+        Label imageTextAltLabel = new Label("TextAlt de l'image: ");
+        final TextArea imageTextAltValue = new TextArea();
+        final Button createImage = new Button("Creer image");
 
-            @Override
-            public void onClick(final ClickEvent event) {
-                if(!uploader.getFilename().equalsIgnoreCase("")) {
-                    formPanel.submit();
+        
+        fieldName.add(imageNameLabel);
+        fieldName.add(imageNameValue);
+        fieldDescription.add(imageDescriptionLabel);
+        fieldDescription.add(imageDescriptionValue);
+        fieldTextAlt.add(imageTextAltLabel);
+        fieldTextAlt.add(imageTextAltValue);
+
+        formFields.add(fieldName);
+        formFields.add(fieldDescription);
+        formFields.add(fieldTextAlt);
+        formFields.add(createImage);
+        
+        form.add(formFields);
+        form.add(new CopyrightComponent());
+        
+        final SingleUploader uploader = new SingleUploader(null, new Button());
+        
+        final AsyncCallback<String> callback = new AsyncCallback<String>() {
+                public void onSuccess(String result) {
+                        System.out.println("image created");
+                        Window.alert("image créée" + result);
+                        formPanel.add(uploader);
+                }
+//
+                public void onFailure(Throwable caught) {
+                        System.out.println("error while creating image\n"+caught);
+                        Window.alert("erreur lors de la création de l'image");
                 }
 
+//            @Override
+//            public void onSuccess(Void result) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+        };
+        
+        createImage.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                // rpc call
+                logger.log(Level.INFO, imageNameValue.getText() + " " + imageDescriptionValue.getText() + 
+                        " " + imageTextAltValue.getText());
+                service.createEncyclopediaNode(null, callback);
+                createImage.setEnabled(false);
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        formPanel.add(uploadButton);
         
-        body.add(formPanel);
+        
+        
+        
+        
+        
+        formPanel.add(form);
+        uploader.addOnFinishUploadHandler(new OnFinishUploaderHandler() {
+            @Override  
+            public void onFinish(IUploader uploader) {
+  //        	loggerJava.log(Level.SEVERE, "upload ended");
+                if (uploader.getStatus() == Status.SUCCESS) {
+//                    formPanel.add(new Label(uploader.getFileName()));
+//                    RootPanel.get().add(new Label(uploader.getFileName()));
+                    logger.log(Level.INFO, "upload success");
+                }
+            }
+        });
+        
+        
+        
+        body.add(formPanel, DockPanel.CENTER);
 	RootPanel.get().add(page);
 		
     }
