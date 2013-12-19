@@ -33,7 +33,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     @Column(nullable=false)
     private String name;
     @Column(nullable=false)
@@ -43,14 +42,12 @@ public class User implements Serializable {
     @Column(nullable=false)
     private String hashPassword;
     @OneToMany(cascade=CascadeType.PERSIST)
-//    private Adress adresses;
     private List<Adress> adresses;
     @Column(name = "USERTYPE")
     private UserStatu type;
     @OneToOne(cascade=CascadeType.PERSIST)
     private Cart cart;
     @OneToMany(mappedBy = "user", cascade=CascadeType.PERSIST)
-//    private Command commands;
     private List<Command> commands;
 
     public User() {
@@ -65,12 +62,10 @@ public class User implements Serializable {
     }
 
     public List<Command> getCommands() {
-//    public Command getCommands() {
         return commands;
     }
 
     public void setCommands(List<Command> commands) {
-//    public void setCommands(Command commands) {
         this.commands = commands;
     }
 
@@ -83,12 +78,10 @@ public class User implements Serializable {
     }
 
     public List<Adress> getAdresses() {
-//    public Adress getAdresses() {
         return adresses;
     }
 
     public void setAdresses(List<Adress> adresses) {
-//    public void setAdresses(Adress adresses) {
         this.adresses = adresses;
     }
     
@@ -145,7 +138,6 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof User)) {
             return false;
         }
@@ -163,7 +155,6 @@ public class User implements Serializable {
 
     public void setCommand(ArrayList<Command> commands) {
         this.commands = commands;
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

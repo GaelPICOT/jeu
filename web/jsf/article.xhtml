@@ -32,12 +32,12 @@
                             </c:if>
                             <h:outputText value="#{DynamicView.bean.prix}"/> €<br/>
                             <h:form>
-                                <h:selectOneMenu value="parametre de la future view">
+                                <h:selectOneMenu value="quantite">
                                     <c:forEach begin="1" end="10" var="i">
                                         <f:selectItem itemLabel="#{i}" itemValue="#{i}"/>
                                     </c:forEach>
                                 </h:selectOneMenu>
-                                <h:commandButton action="null" value="Ajouter au panier"/>
+                                <h:commandLink action="#{CartView.addToCard(DynamicView.bean.id, quantite)}" value="Ajouter au panier" styleClass="bouton"/>
                             </h:form>
                         </div>
                         <div class="articlePart">
@@ -46,7 +46,7 @@
                                  Vendu par <h:outputText value="#{choix.vendor}"/> au prix de <br/>
                                 <h:outputText value="#{choix.prix - choix.reduction}"/> €<br/>
                                 <h:form>
-                                    <h:commandButton action="null" value="Ajouter au panier"/>
+                                    <h:commandLink action="#{CartView.addToCard(choix.id, 1)}" value="Ajouter au panier" styleClass="bouton"/>
                                 </h:form>
                             </c:forEach>
                         </div>

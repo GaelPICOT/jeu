@@ -5,11 +5,8 @@
 package beans;
 
 import entity.ecom.Cart;
-import entity.ecom.Product;
-import entity.user.Adress;
 import entity.user.User;
 import entity.user.UserStatu;
-import facade.AdressFacade;
 import facade.CartFacade;
 //import entity.user.UserStatu; 
 import facade.UserFacade;
@@ -28,7 +25,6 @@ import javax.servlet.http.HttpSession;
  * @author Anthony
  */
 @ManagedBean(name="UserView")
-//@RequestScoped
 @SessionScoped
 public class UserView implements Serializable {
     @EJB
@@ -38,8 +34,6 @@ public class UserView implements Serializable {
     @EJB
     private CartFacade cartFacade;
     private Cart cart;
-    
-//    Logger logger = Logger.getLogger("metho");
     
     /**
      * Creates a new instance of UserView
@@ -54,11 +48,13 @@ public class UserView implements Serializable {
 //        logger.info("getUser");
         return user;
     }
-
     
+    public String getSize(){
+        return("Panier ("+this.user.getCart().getList().size()+")");
+    }
+
     public String createAccount(){
 //        logger.info("createAccount");
-//       this.messageFacade.create(message);
         cart = new Cart();
 //        cart.setList(new ArrayList<Product>());
         cartFacade.create(cart);
