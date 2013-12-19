@@ -107,8 +107,6 @@ public class AdminTemplate {
 			}
 		});
 		encyclopediaMenu.addItem("Ajouter autre", new Command() {
-
-                    @Override
                     public void execute() {
                         Window.Location.replace("../ajouterAutre.html"); //To change body of generated methods, choose Tools | Templates.
                     }

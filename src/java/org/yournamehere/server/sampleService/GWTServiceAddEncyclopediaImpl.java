@@ -23,6 +23,7 @@ import entity.encyclopedia.Productible;
 import entity.encyclopedia.Release;
 import entity.encyclopedia.Rule;
 import entity.encyclopedia.Theme;
+import entity.semantic.Predicate;
 import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
@@ -38,6 +39,7 @@ import facade.GameFacade;
 import facade.ImageFacade;
 import facade.LicenceFacade;
 import facade.PersonFacade;
+import facade.PredicateFacade;
 import facade.ProductibleFacade;
 import facade.PureSemanticRessourceFacade;
 import facade.ReleaseFacade;
@@ -89,6 +91,8 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
     private PureSemanticRessourceFacade pureSemanticRessourceFacade;
     @EJB
     private SemanticLiteralFacade semanticLiteralFacade;
+    @EJB
+    private PredicateFacade predicateFacade;
     
     
     @Override
@@ -168,11 +172,13 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
             } else if (beanClass.getName().equals(Theme.class.getName())) {
                 themeFacade.create((Theme)nodeAdd);
             } else if (beanClass.getName().equals(Person.class.getName())) {
-               personFacade.create((Person)nodeAdd);
+                personFacade.create((Person)nodeAdd);
             } else if (beanClass.getName().equals(PureSemanticRessource.class.getName())) {
-               pureSemanticRessourceFacade.create((PureSemanticRessource)nodeAdd);
+                pureSemanticRessourceFacade.create((PureSemanticRessource)nodeAdd);
             } else if (beanClass.getName().equals(SemanticLiteral.class.getName())) {
-               semanticLiteralFacade.create((SemanticLiteral)nodeAdd);
+                semanticLiteralFacade.create((SemanticLiteral)nodeAdd);
+            } else if (beanClass.getName().equals(Predicate.class.getName())) {
+                predicateFacade.create((Predicate)nodeAdd);
             }
         }
     }
