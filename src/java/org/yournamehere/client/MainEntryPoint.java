@@ -6,28 +6,18 @@ package org.yournamehere.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HasAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import entity.ModarateStatu;
 import entity.user.Adress;
 import entity.user.User;
 import entity.user.UserStatu;
 import java.util.ArrayList;
-import java.util.List;
-import org.hibernate.usertype.UserType;
-import org.yournamehere.client.sampleService.GWTService;
-import org.yournamehere.client.sampleService.GWTServiceAsync;
 import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
 import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 

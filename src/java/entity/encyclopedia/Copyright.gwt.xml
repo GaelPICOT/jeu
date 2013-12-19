@@ -4,7 +4,6 @@
     <source>entity.encyclopedia.Copyright</source>
     <inherits name='entity.encyclopedia.Licence'/>
     <inherits name='entity.encyclopedia.Actor'/>
-    <inherits name='entity.encyclopedia.Copyright'/>
     <inherits name='entity.ModarateStatu'/>
     <inherits name='entity.semantic.TripleEntity'/>
 </module>
