@@ -83,7 +83,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutImage/sampleService/gwtserviceaddencyclopedia</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutAutre/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceAddImage</servlet-name>

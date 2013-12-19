@@ -31,7 +31,10 @@ public class Predicate extends SemanticNode implements Serializable, SemanticRes
 
     @Override
     public String getURI() {
-        return URI;
+        if (this.URI == null)
+            return SemanticRessource.BASEURI + "Predicate#" + this.getId();
+        else
+            return URI;
     }
 
     public void setURI(String URI) {
