@@ -45,8 +45,7 @@
                                                 <ul>
                                                     <table>
                                                         <c:forEach var="real" items="#{item.releases}">
-                                                            <li>
-                                                                <tr>
+                                                            <tr>
                                                                     <td>
                                                                     <h:form>
                                                                         <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
@@ -57,14 +56,16 @@
                                                                             <c:forEach var="prod" items="#{real.products}">
                                                                                 <li>
                                                                                     <h:form>
-                                                                                        <h:commandLink action="#{DynamicView.createPage(products.id, products.nom, products.class.getName())}" value="#{real.toString()}"/>
+                                                                                        <h:commandLink action="#{DynamicView.createPage(prod.id, real.nom, prod.class.getName())}" value="#{real.toString()}"/>
                                                                                     </h:form>
+                                                                                    Prix : <h:outputText value="#{prod.prix}"/><br/>
+                                                                                    Vendu par : <h:outputText value="#{prod.vendor}"/><br/>
+                                                                                    Stock restant : <h:outputText value="#{prod.stock}"/><br/>
                                                                                 </li>
                                                                             </c:forEach>
                                                                         </ul>
                                                                     </td>
                                                                 </tr>
-                                                            </li>
                                                         </c:forEach>
                                                     </table>
                                                 </ul>

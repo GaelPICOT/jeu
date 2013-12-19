@@ -78,7 +78,7 @@ public class DynamicView implements Serializable {
         Class beanClass;
         
         Object facade;
-        SemanticNode bean;
+        Object bean;
         Method[] meths;
         
         try {
@@ -92,7 +92,7 @@ public class DynamicView implements Serializable {
             facade = facadeClass.newInstance();
             
             //Nouvelle instance de la facade
-            bean = (SemanticNode) beanClass.newInstance();
+            bean = beanClass.newInstance();
             
             //Recuperation de toute les methodes du bean
             meths = bean.getClass().getMethods();
@@ -100,7 +100,7 @@ public class DynamicView implements Serializable {
             Class[] find = new Class[]{Object.class};
             
             //Recuperation de l'objet dans la BD
-            bean = (SemanticNode) facade.getClass().getMethod("find", find).invoke(facade,idArticle);
+            bean = facade.getClass().getMethod("find", find).invoke(facade,idArticle);
             
             //Pour chaque methode du bean
             for (Method meth : meths) {
