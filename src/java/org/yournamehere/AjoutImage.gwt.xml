@@ -13,6 +13,7 @@
         <entry-point class="org.yournamehere.client.AjoutImage"/>
 
         <inherits name="com.google.gwt.logging.Logging"/>
+        <!--<inherits name="servlet.UploadServlet"/>-->
         <inherits name="gwtupload.GWTUpload"/>
         <inherits name='entity.user.User'/>
         <inherits name='entity.encyclopedia.Image'/>

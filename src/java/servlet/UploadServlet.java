@@ -21,7 +21,13 @@ public class UploadServlet extends UploadAction {
 	 * 
 	 */
     private static final long serialVersionUID = 1L;
-	Logger loggerJava = Logger.getLogger("log");
+    Logger loggerJava = Logger.getLogger("log");
+//    private static String id;
+//        
+//    public static void setId(String idString) {
+//        id = idString; 
+//    }
+    
     @Override
     public String executeAction(HttpServletRequest request, List<FileItem> sessionFiles) throws UploadActionException {
     //	logger.info("Bonjour, logger");
@@ -34,8 +40,8 @@ public class UploadServlet extends UploadAction {
 
                   // we can save the received file
 //                  request.
-                  String fileName = item.getName().substring(
-                              item.getName().lastIndexOf(File.separator) + 1);
+//                  String fileName = item.getName().substring(
+//                              item.getName().lastIndexOf(File.separator) + 1);
     //              File file = File.createTempFile("upload-", ".bin", new File("/home/anthony/"));
     //              item.write(file);
     //              File file = new File("./www/localServerUploads/" );
@@ -47,7 +53,8 @@ public class UploadServlet extends UploadAction {
                    * File file = File.createTempFile("receivedFile", ".tmp",
                    * new File("./www/"));
                    */
-                  File file = new File("/home/anthony/images/" + fileName);
+//                  item.get
+                  File file = new File("/home/anthony/images/" + request.getParameter("id") + ".png");
                   item.write(file);
                   
                   loggerJava.log(Level.SEVERE, "upload fichier: " + file.getAbsolutePath());
