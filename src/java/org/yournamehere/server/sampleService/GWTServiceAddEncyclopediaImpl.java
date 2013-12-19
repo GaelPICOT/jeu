@@ -120,8 +120,11 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                     MS = ModarateStatu.TO_BE_MODERATE;
                 break;
         }
+        nodeAdd.setAutor(user);
+        nodeAdd.setModerate(MS);
         editSemNode (nodeAdd);
-        return user.getName();
+        
+        return user.getType().toString();
     }
     
     public void createSemNode (SemanticNode nodeAdd) {
