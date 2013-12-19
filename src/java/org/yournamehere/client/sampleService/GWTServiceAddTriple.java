@@ -20,5 +20,5 @@ import java.util.List;
 public interface GWTServiceAddTriple extends RemoteService {
 
     public HashMap<Long, String> getAllNodeFromType (String Type);
-    public String createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet);
+    public String createTriple(Long sujetId, Long predicateId, Long objetId);
 }
