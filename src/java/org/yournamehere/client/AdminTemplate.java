@@ -106,7 +106,13 @@ public class AdminTemplate {
 				Window.Location.replace("../ajouterTriple.html");
 			}
 		});
-		encyclopediaMenu.addItem("Ajouter autre", cmd);
+		encyclopediaMenu.addItem("Ajouter autre", new Command() {
+
+                    @Override
+                    public void execute() {
+                        Window.Location.replace("../ajouterAutre.html"); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });
 		encyclopediaMenu.addItem("Proposer modification", cmd);
 		encyclopediaMenu.getElement().setClassName("menu");
 
@@ -126,8 +132,10 @@ public class AdminTemplate {
 		menu.addItem("Compte", accountMenu);
 		menu.addItem("Encyclopedie", encyclopediaMenu);
                 menu.addItem("Vente", salesMenu);
-                if(userStatu == UserStatu.ADMIN) {
-                    menu.addItem("Administration", administrationMenu);
+                switch(userStatu) {
+                    case ADMIN :
+                        menu.addItem("Administration", administrationMenu);
+                        break;
                 }
 
 		// menu.setAnimationEnabled(true);

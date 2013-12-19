@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.0.0/distro-source/core/src/gwt-module.dtd">
+<module>
+	<!-- Inherit the core Web Toolkit stuff.                        -->
+	<inherits name='com.google.gwt.user.User' />
+
+        <!-- Inherit the default GWT style sheet.  You can change       -->
+	<!-- the theme of your GWT application by uncommenting          -->
+	<!-- any one of the following lines.                            -->
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+        <entry-point class="org.yournamehere.client.AjoutAutre"/>
+        <inherits name='entity.semantic.SemanticNode'/>
+        <inherits name='entity.semantic.SemanticLiteral'/>
+        <inherits name='entity.semantic.PureSemanticRessource'/>
+        <inherits name='entity.semantic.Predicate'/>
+        <inherits name='entity.encyclopedia.Accessory'/>
+        <inherits name='entity.encyclopedia.Actor'/>
+        <inherits name='entity.encyclopedia.Article'/>
+        <inherits name='entity.encyclopedia.Association'/>
+        <inherits name='entity.encyclopedia.Book'/>
+        <inherits name='entity.encyclopedia.Category'/>
+        <inherits name='entity.encyclopedia.Copyright'/>
+        <inherits name='entity.encyclopedia.Entreprise'/>
+        <inherits name='entity.encyclopedia.Game'/>
+        <inherits name='entity.encyclopedia.Image'/>
+        <inherits name='entity.encyclopedia.Licence'/>
+        <inherits name='entity.encyclopedia.Person'/>
+        <inherits name='entity.encyclopedia.Productible'/>
+        <inherits name='entity.encyclopedia.Release'/>
+        <inherits name='entity.encyclopedia.Rule'/>
+        <inherits name='entity.encyclopedia.Theme'/>
+
+        <!-- Other module inherits                                      -->
+
+	<!-- Specify the app entry point class.                         -->
+
+</module>
