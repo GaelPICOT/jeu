@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.ecom.Command;
+import entity.ecom.NodeCart;
 import entity.ecom.Product;
 import entity.encyclopedia.Actor;
 import entity.encyclopedia.Licence;
@@ -32,8 +33,8 @@ public class CommandComponent extends HorizontalPanel {
         infoPanel.add(new Label("date d'envoi: " + command.getSendDate()));
         infoPanel.add(new Label("date estimée réception: " + command.getPredictedDate()));
         this.add(infoPanel);
-        for(Product product : command.getContent().getList()) {
-            this.add(new ProductComponent(product));
+        for(NodeCart nodeCart : command.getContent().getList()) {
+            this.add(new ProductComponent(nodeCart.getProd()));
         }
 //        HorizontalPanel namePanel = new HorizontalPanel();
 //        namePanel.add(new Label(address.getName() + " " + address.getFirstname()));

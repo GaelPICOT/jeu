@@ -42,15 +42,33 @@
 	<from-view-id>index.xhtml</from-view-id>
 	<navigation-case>
 		<from-outcome>recherche</from-outcome>
-		<to-view-id>jsf/recherche.xhtml</to-view-id>
+		<to-view-id>/jsf/recherche.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+        <navigation-case>
+		<from-outcome>panier</from-outcome>
+		<to-view-id>/jsf/panier.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
     </navigation-rule>
     <navigation-rule>
-	<from-view-id>jsf/recherche.xhtml</from-view-id>
+	<from-view-id>/jsf/recherche.xhtml</from-view-id>
 	<navigation-case>
 		<from-outcome>article</from-outcome>
-		<to-view-id>jsf/article.xhtml</to-view-id>
+		<to-view-id>/jsf/article.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+        <navigation-case>
+		<from-outcome>panier</from-outcome>
+		<to-view-id>/jsf/panier.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+	<from-view-id>/jsf/article.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>panier</from-outcome>
+		<to-view-id>/jsf/panier.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
     </navigation-rule>

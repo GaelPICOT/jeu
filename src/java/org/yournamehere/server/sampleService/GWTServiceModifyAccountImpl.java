@@ -7,7 +7,7 @@ package org.yournamehere.server.sampleService;
 import beans.UserView;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import entity.ecom.Command;
-import entity.ecom.Product;
+import entity.ecom.NodeCart;
 import entity.user.Adress;
 import entity.user.User;
 import facade.UserFacade;
@@ -31,7 +31,7 @@ public class GWTServiceModifyAccountImpl extends RemoteServiceServlet implements
         user = ((UserView) (getThreadLocalRequest().getSession().getAttribute("UserView"))).getUser();
 //        List<User> users = userFacade.findAll();
 //        user = users.get(1);
-        user.getCart().setList(new ArrayList<Product>());
+        user.getCart().setList(new ArrayList<NodeCart>());
 //        user.setCart(new Cart());
         user.setCommand(new ArrayList<Command>());
 //        if(user.getAdresses().isEmpty()) {

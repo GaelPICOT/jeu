@@ -5,9 +5,12 @@
 package beans;
 
 import entity.ecom.Cart;
+import entity.ecom.NodeCart;
 import entity.user.User;
 import entity.user.UserStatu;
 import facade.CartFacade;
+import facade.NodeCartFacade;
+import facade.ProductFacade;
 //import entity.user.UserStatu; 
 import facade.UserFacade;
 import java.io.Serializable;
@@ -35,6 +38,31 @@ public class UserView implements Serializable {
     private CartFacade cartFacade;
     private Cart cart;
     
+    @EJB
+    private NodeCartFacade nodeCartFacade;
+    private NodeCart nodeCart;
+    
+    @EJB
+    private ProductFacade productFacade;
+    
+    private int quantiteVoulue;
+    
+    public int getQuantiteVoulue() {
+        return quantiteVoulue;
+    }
+
+    public void setQuantiteVoulue(int quantiteVoulue) {
+        this.quantiteVoulue = quantiteVoulue;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+    
     /**
      * Creates a new instance of UserView
      */
@@ -50,7 +78,11 @@ public class UserView implements Serializable {
     }
     
     public String getSize(){
-        return("Panier ("+this.user.getCart().getList().size()+")");
+        int total = 0;
+        for (int i = 0; i < this.user.getCart().getList().size(); i++) {
+            total += this.user.getCart().getList().get(i).getQuantity();
+        }
+        return("Panier ("+total+")");
     }
 
     public String createAccount(){
@@ -78,6 +110,42 @@ public class UserView implements Serializable {
             }
         }
         return "index";
+    }
+    
+    public String addToCard(Long id){
+        int i = this.user.getCart().isInCart(id);
+        if(i == -1){
+            this.nodeCart = new NodeCart();
+            this.nodeCart.setProd(productFacade.find(id));
+            this.nodeCart.setQuantity(this.quantiteVoulue);
+            this.nodeCartFacade.create(nodeCart);
+            this.user.getCart().addProduct(nodeCart);
+        }else{
+//            this.nodeCart = nodeCartFacade.find(this.cart.getList().get(i).getId());
+//            this.nodeCart.setQuantity(this.nodeCart.getQuantity() + quantite);
+//            nodeCartFacade.edit(nodeCart);
+            this.user.getCart().majProd(i, this.user.getCart().getList().get(i).getQuantity()+this.quantiteVoulue);
+        }
+        userFacade.edit(this.user);
+        return "article";
+    }
+    
+    public String addOneToCard(Long id){
+        int i = this.user.getCart().isInCart(id);
+        if(i == -1){
+            this.nodeCart = new NodeCart();
+            this.nodeCart.setProd(productFacade.find(id));
+            this.nodeCart.setQuantity(1);
+            this.nodeCartFacade.create(nodeCart);
+            this.user.getCart().addProduct(nodeCart);
+        }else{
+//            this.nodeCart = nodeCartFacade.find(this.cart.getList().get(i).getId());
+//            this.nodeCart.setQuantity(this.nodeCart.getQuantity() + quantite);
+//            nodeCartFacade.edit(nodeCart);
+            this.user.getCart().majProd(i, this.user.getCart().getList().get(i).getQuantity()+1);
+        }
+        userFacade.edit(this.user);
+        return "article";
     }
     
     public String disconnect() {

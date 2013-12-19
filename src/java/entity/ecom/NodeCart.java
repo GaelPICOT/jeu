@@ -11,13 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import entity.encyclopedia.Release;
-import entity.user.Comment;
-import entity.user.User;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * Un produit commercial.
@@ -29,15 +24,33 @@ public class NodeCart implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    private Product prod;
     private int quantity;
 
     public NodeCart() {
     }
 
-    public NodeCart(Long id, int quantity) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Product getProd() {
+        return prod;
+    }
+
+    public void setProd(Product prod) {
+        this.prod = prod;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
 }

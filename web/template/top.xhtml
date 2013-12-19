@@ -76,18 +76,18 @@
                         <c:if test="#{empty UserView.user.id}"> 
                             <c:if test="#{empty CartView.cart.id}">
                                 <h:form>
-                                    <h:commandButton value="Panier (0)" action="null" styleClass="bouton"/>
+                                    <h:commandButton value="Panier (0)" action="#{PanierView.createPage()}" styleClass="bouton"/>
                                 </h:form>
                             </c:if>
                         </c:if>
                         <c:if test="#{not empty CartView.cart.id}">
                             <h:form>
-                                <h:commandButton value="#{CartView.getSize()}" action="null" styleClass="bouton"/>
+                                <h:commandButton value="#{CartView.getSize()}" action="#{PanierView.createPage()}" styleClass="bouton"/>
                             </h:form>
                         </c:if>
                         <c:if test="#{not empty UserView.user.id}">
                             <h:form>
-                                <h:commandButton value="#{UserView.getSize()}" action="null" styleClass="bouton"/>
+                                <h:commandButton value="#{UserView.getSize()}" action="#{PanierView.createPage()}" styleClass="bouton"/>
                             </h:form>
                         </c:if>
                     </td>

@@ -32,12 +32,22 @@
                             </c:if>
                             <h:outputText value="#{DynamicView.bean.prix}"/> €<br/>
                             <h:form>
-                                <h:selectOneMenu value="quantite">
+                                <c:if test="#{empty UserView.user.id}">
+                                <h:selectOneMenu value="#{CartView.quantiteVoulue}">
                                     <c:forEach begin="1" end="10" var="i">
                                         <f:selectItem itemLabel="#{i}" itemValue="#{i}"/>
                                     </c:forEach>
                                 </h:selectOneMenu>
-                                <h:commandLink action="#{CartView.addToCard(DynamicView.bean.id, quantite)}" value="Ajouter au panier" styleClass="bouton"/>
+                                    <h:commandLink action="#{CartView.addToCard(DynamicView.bean.id)}" value="Ajouter au panier" styleClass="bouton"/>
+                                </c:if>
+                                <c:if test="#{not empty UserView.user.id}">
+                                    <h:selectOneMenu value="#{UserView.quantiteVoulue}">
+                                        <c:forEach begin="1" end="10" var="i">
+                                            <f:selectItem itemLabel="#{i}" itemValue="#{i}"/>
+                                        </c:forEach>
+                                    </h:selectOneMenu>
+                                    <h:commandLink action="#{UserView.addToCard(DynamicView.bean.id)}" value="Ajouter au panier" styleClass="bouton"/>
+                                </c:if>
                             </h:form>
                         </div>
                         <div class="articlePart">
@@ -46,7 +56,12 @@
                                  Vendu par <h:outputText value="#{choix.vendor}"/> au prix de <br/>
                                 <h:outputText value="#{choix.prix - choix.reduction}"/> €<br/>
                                 <h:form>
-                                    <h:commandLink action="#{CartView.addToCard(choix.id, 1)}" value="Ajouter au panier" styleClass="bouton"/>
+                                    <c:if test="#{empty UserView.user.id}">
+                                        <h:commandLink action="#{CartView.addOneToCard(choix.id)}" value="Ajouter au panier" styleClass="bouton"/>
+                                    </c:if>
+                                    <c:if test="#{not empty UserView.user.id}">
+                                        <h:commandLink action="#{UserView.addOneToCard(choix.id)}" value="Ajouter au panier" styleClass="bouton"/>
+                                    </c:if>
                                 </h:form>
                             </c:forEach>
                         </div>

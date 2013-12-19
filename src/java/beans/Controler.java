@@ -37,5 +37,5 @@ public class Controler {
     
     public boolean isBeanProduct(Object b){
         return b.getClass().equals(Product.class);
-    }
+    } 
 }

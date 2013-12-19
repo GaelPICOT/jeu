@@ -26,13 +26,13 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany(cascade=CascadeType.PERSIST)
-    private List<Product> list;
+    private List<NodeCart> list;
 
     /**
      * accés à la liste des produit d'un panier
      * @return liste des produit d'un panier
      */
-    public List<Product> getList() {
+    public List<NodeCart> getList() {
         return list;
     }
 
@@ -40,7 +40,7 @@ public class Cart implements Serializable {
      * changer list des produit contenu dans le panier.
      * @param list nouvelle list.
      */
-    public void setList(List<Product> list) {
+    public void setList(List<NodeCart> list) {
         this.list = list;
     }
     
@@ -48,15 +48,28 @@ public class Cart implements Serializable {
      * ajouter un produit au panier
      * @param prod produit à ajouté.
      */
-    public void addProduct(Product prod) {
+    public void addProduct(NodeCart prod) {
         this.list.add(prod);
+    }
+    
+    public int isInCart(Long id){
+        for(int i = 0; i< this.list.size(); i++){
+            if(this.list.get(i).getProd().getId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public void majProd(int index, int quantite){
+        this.list.get(index).setQuantity(quantite);
     }
     
     /**
      * supprimer un produit du panier
      * @param prod produit à supprimer.
      */
-    public void removeProduct (Product prod) {
+    public void removeProduct (NodeCart prod) {
         this.list.remove(prod);
     }
 

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Panier</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:include src="../template/top.xhtml"/>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Left</ui:insert>
+            </div>
+            <div>
+                <div id="right">
+                    <ui:insert name="right">Right</ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <c:if test="#{empty UserView.user.id}">
+                        <c:forEach var="test" items="#{CartView.cart.list}">
+                            Produit : <h:outputText value="#{test.prod}"/> 
+                            quantité : <h:outputText value="#{test.quantity}"/><br/>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="#{not empty UserView.user.id}">
+                        <c:forEach var="test" items="#{UserView.user.cart.list}">
+                            Produit : <h:outputText value="#{test.prod}"/> 
+                            quantité : <h:outputText value="#{test.quantity}"/><br/>
+                        </c:forEach>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+            <h:form>
+                <h:link outcome="paieEtape1.xhtml" value="Paiement de la commande" styleClass="bouton"/>
+            </h:form>
+        </div>
+        
+    </h:body>
+
+</html>
