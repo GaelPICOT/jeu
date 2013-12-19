@@ -82,6 +82,7 @@ public class AjoutImage implements EntryPoint {
         
         final SingleUploader uploader = new SingleUploader(null, new Button());
         
+        final Image image = new Image();
         
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
@@ -89,9 +90,9 @@ public class AjoutImage implements EntryPoint {
 //                        imageId = result;
 //                        imageId = new Integer(result);
 //                        Window.alert("image créée" + result);
-                        Window.alert("image créée");
-//                        image.setId(result.longValue());
-//                        logger.log(Level.INFO, "id: " + result);
+//                        Window.alert("image créée" + result);
+                        image.setId(Long.parseLong(result));
+                        logger.log(Level.INFO, "id: " + result);
                         formPanel.add(uploader);
                 }
 //
@@ -101,20 +102,20 @@ public class AjoutImage implements EntryPoint {
                 }
         };
         
-        final Image image = new Image();
+        
         createImage.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 logger.log(Level.INFO, imageNameValue.getText() + " " + imageDescriptionValue.getText() + 
                         " " + imageTextAltValue.getText());
-//                logger.log(Level.INFO, image.getId().toString());
+                logger.log(Level.INFO, image.getId().toString());
                 
                 image.setName(imageNameValue.getText());
                 image.setDescription(imageDescriptionValue.getText());
                 image.setTextAlt(imageTextAltValue.getText());
 //                image.setURL("aaa");
 //                service.createEncyclopediaNode(image, callback);
-                service2.addImage(image, callback);
+                service2.addImage(image, callback); 
                 createImage.setEnabled(false);
 //                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }

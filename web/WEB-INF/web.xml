@@ -41,6 +41,10 @@
         <servlet-name>GWTServiceAddImage</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceAddImageImpl</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/sampleservice/gwtserviceaddimage</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceCopyright</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>

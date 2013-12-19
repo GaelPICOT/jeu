@@ -24,10 +24,10 @@ public class GWTServiceAddImageImpl extends RemoteServiceServlet implements GWTS
     public String addImage(Image image) {
         imageFacade.create(image);
 //        imageFacade.f
-//        image.setURL("/home/anthony/images/" + image.getId().toString() + ".png");
-//        imageFacade.edit(image);
-//        return image.getId().intValue();
-        return "0";
+        image.setURL("/home/anthony/images/" + image.getId().toString() + ".png");
+        imageFacade.edit(image);
+        return image.getId().toString();
+//        return "0";
 //        return image.getId().intValue();
         // Do something interesting with 's' here on the server.
 //        return "Server says: " + s;
