@@ -76,6 +76,7 @@ public class Product implements Serializable {
         return stock;
     }
 
+    
     public void setStock(int stock) {
         this.stock = stock;
     }

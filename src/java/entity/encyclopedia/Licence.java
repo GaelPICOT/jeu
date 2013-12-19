@@ -7,9 +7,11 @@ package entity.encyclopedia;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +24,16 @@ public class Licence extends SemanticNode implements Serializable, SemanticResso
     private String Text;
     @Column(nullable=false)
     private String name;
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private Copyright copyright;
+
+    public Copyright getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(Copyright copyright) {
+        this.copyright = copyright;
+    }
 
     public String getText() {
         return Text;

@@ -32,7 +32,7 @@ public class TripleEntity implements Serializable, Triple {
     @ManyToOne(cascade=CascadeType.PERSIST)
     private SemanticNode sujet;
     @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
-    private PureSemanticRessource objetSem;
+    private SemanticNode objetSem;
     private ModarateStatu moderate;
 
     public ModarateStatu getModerate() {

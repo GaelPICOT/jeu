@@ -10,6 +10,7 @@ import entity.ecom.Product;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.LockModeType;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
@@ -33,6 +34,15 @@ public class ProductFacade extends AbstractFacade<Product> {
         return em;
     }
 
+    @Override
+    public void edit(Product entity) {
+        em.lock(entity, LockModeType.WRITE);
+        super.edit(entity); //To change body of generated methods, choose Tools | Templates.
+        em.lock(entity, LockModeType.NONE);
+    }
+
+    
+    
     public ProductFacade() {
         super(Product.class);
     }

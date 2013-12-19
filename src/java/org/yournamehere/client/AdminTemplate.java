@@ -101,6 +101,11 @@ public class AdminTemplate {
 				Window.Location.replace("../ajouterImage.html");
 			}
 		});
+                encyclopediaMenu.addItem("Ajouter triple", new Command() {
+			public void execute() {
+				Window.Location.replace("../ajouterTriple.html");
+			}
+		});
 		encyclopediaMenu.addItem("Ajouter autre", cmd);
 		encyclopediaMenu.addItem("Proposer modification", cmd);
 		encyclopediaMenu.getElement().setClassName("menu");
