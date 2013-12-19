@@ -26,12 +26,6 @@
                     <ui:insert name="right">Historique de recherche</ui:insert>
                 </div>
                 <div id="content" class="right_content">
-                    test
-                    <h:outputText value="#{ResearchView.test()}"/><br/>
-                    <h:outputText value="#{ResearchView.test().getReleases().size()}"/><br/>
-                    <c:forEach var="test" items="#{ResearchView.test().getReleases()}">
-                        <h:outputText value="#{test.toString()}"/>
-                    </c:forEach>
                     <h2>Résultats de la recherche:</h2>
                     <ul>
                         <c:forEach var="titre" items="#{ResearchView.nodeList}">
@@ -51,7 +45,9 @@
                                                 <ul>
                                                 <c:forEach var="real" items="#{item.releases}">
                                                     <li>
-                                                        <h:outputText value="#{real.toString()}"/>
+                                                        <h:form>
+                                                            <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
+                                                        </h:form>
                                                     </li>
                                                 </c:forEach>
                                                 </ul>

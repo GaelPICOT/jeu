@@ -7,6 +7,9 @@ package org.yournamehere.client.sampleService;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import entity.semantic.Predicate;
 import entity.semantic.SemanticNode;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -14,5 +17,6 @@ import entity.semantic.SemanticNode;
  */
 public interface GWTServiceAddTripleAsync {
 
-    public void createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet, AsyncCallback<String> callback);
+    public void getAllNodeFromType (String Type, AsyncCallback<HashMap<Long, String>> callback);
+    public void createTriple(Long sujetId, Long predicateId, Long objetId, AsyncCallback<String> callback);
 }
