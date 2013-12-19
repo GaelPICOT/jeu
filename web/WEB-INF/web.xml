@@ -19,7 +19,35 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAutre/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutTriple/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.GestionCommandes/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.SupprimerCompte/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceDeleteAccount</servlet-name>
