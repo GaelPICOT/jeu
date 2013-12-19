@@ -16,4 +16,5 @@ import entity.semantic.SemanticNode;
 public interface GWTServiceAddEncyclopediaAsync {
 
     public void createEncyclopediaNode(SemanticNode nodeAdd, AsyncCallback<String> callback);
+    public void editEncyclopediaNode(SemanticNode nodeAdd, AsyncCallback<String> callback);
 }

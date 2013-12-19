@@ -30,7 +30,6 @@ import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
 import entity.user.User;
-import entity.user.UserStatu;
 import facade.AccessoryFacade;
 import facade.ActorFacade;
 import facade.ArticleFacade;
@@ -124,7 +123,7 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
         nodeAdd.setModerate(MS);
         editSemNode (nodeAdd);
         
-        return user.getType().toString();
+        return "";
     }
     
     public void createSemNode (SemanticNode nodeAdd) {
@@ -215,5 +214,11 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
             } else if (beanClass.getName().equals(Predicate.class.getName())) {
                 predicateFacade.edit((Predicate)nodeAdd);
         }
+    }
+
+    @Override
+    public String editEncyclopediaNode(SemanticNode nodeAdd) {
+        editSemNode (nodeAdd);
+        return "";
     }
 }
