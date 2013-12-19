@@ -46,10 +46,6 @@
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GWTServiceAddImage</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutImage/sampleService/gwtserviceaddimage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.Main/gwtservice</url-pattern>
     </servlet-mapping>
@@ -88,6 +84,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutImage/sampleService/gwtserviceaddencyclopedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/sampleservice/gwtserviceaddimage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceAddTriple</servlet-name>

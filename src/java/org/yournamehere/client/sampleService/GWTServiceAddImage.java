@@ -15,5 +15,5 @@ import entity.encyclopedia.Image;
 @RemoteServiceRelativePath("sampleservice/gwtserviceaddimage")
 public interface GWTServiceAddImage extends RemoteService {
 
-    public int addImage(Image image);
+    public String addImage(Image image);
 }
