@@ -114,6 +114,7 @@ public class AjoutTriple implements EntryPoint {
 
             @Override
             public void onSuccess(HashMap<Long, String>  result) {
+                listSujet.clear();
                 for (Long i : result.keySet()) {
                     listSujet.addItem(result.get(i), i.toString());
                 }
@@ -138,6 +139,7 @@ public class AjoutTriple implements EntryPoint {
 
             @Override
             public void onSuccess(HashMap<Long, String>  result) {
+                listObjet.clear();
                 for (Long i : result.keySet()) {
                     listObjet.addItem(result.get(i), i.toString());
                 }

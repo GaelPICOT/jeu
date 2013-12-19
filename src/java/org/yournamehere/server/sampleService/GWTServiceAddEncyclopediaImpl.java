@@ -120,7 +120,8 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                     MS = ModarateStatu.TO_BE_MODERATE;
                 break;
         }
-        return "";
+        editSemNode (nodeAdd);
+        return user.getName();
     }
     
     public void createSemNode (SemanticNode nodeAdd) {
@@ -172,7 +173,6 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
     public void editSemNode (SemanticNode nodeAdd) {
         //On crée un objet Class correspondant a la class du bean a traiter
         Class beanClass = nodeAdd.getClass();
-        if(nodeAdd.getId()==null) {
             if (beanClass.getName().equals(Accessory.class.getName())) {
                 accessoryFacade.edit((Accessory)nodeAdd);
             } else if (beanClass.getName().equals(Actor.class.getName())) {
@@ -211,7 +211,6 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                 semanticLiteralFacade.edit((SemanticLiteral)nodeAdd);
             } else if (beanClass.getName().equals(Predicate.class.getName())) {
                 predicateFacade.edit((Predicate)nodeAdd);
-            }
         }
     }
 }
