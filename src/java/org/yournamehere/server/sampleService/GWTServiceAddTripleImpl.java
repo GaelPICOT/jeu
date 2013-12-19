@@ -4,6 +4,7 @@
  */
 package org.yournamehere.server.sampleService;
 
+import beans.DynamicView;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
@@ -61,6 +62,11 @@ import facade.TripleOReleaseFacade;
 import facade.TripleORuleFacade;
 import facade.TripleOSemanticLiteralFacade;
 import facade.TripleOThemeFacade;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
@@ -107,6 +113,8 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
     private TripleOSemanticLiteralFacade tripleOSemanticLiteralFacade;
     @EJB
     TripleEntityFacade tripleEntityFacade;
+    @EJB
+    DynamicView dynamicView;
     
     @Override
     public String createTriple(SemanticNode sujet, Predicate predicate, SemanticNode objet) {
@@ -221,5 +229,35 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleEntityFacade.create(triple);
         }
         return "Server says: ";
+    }
+
+    @Override
+    public List<SemanticNode> getAllNodeFromType(String Type) {
+        //On crée un objet Class correspondant a la class facade du bean a traiter
+        Class facadeClass;
+        Class beanClass;
+        
+        Object facade;
+        
+        List<SemanticNode> retour = new ArrayList<>();
+        try {
+            beanClass = Class.forName(Type);
+            
+            String packageBean = beanClass.getPackage().getName();
+            String classFacade = "facade." + Type.substring(packageBean.length()+1) + "Facade";
+            facadeClass = Class.forName(classFacade);
+            
+            //Nouvelle instance de la facade
+            facade = facadeClass.newInstance();
+            
+            Class[] find = new Class[]{Object.class};
+            
+            List<SemanticNode> tmp = (List<SemanticNode>) facade.getClass().getMethod("findAll", find).invoke(facade);
+            retour = new ArrayList<>(tmp);
+            
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
+            Logger.getLogger(GWTServiceAddTripleImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retour;
     }
 }
