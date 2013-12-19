@@ -158,7 +158,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.user.User[ id=" + id + " ]";
+        return (this.name + " " + this.firstName);
     }
 
     public void setCommand(ArrayList<Command> commands) {

@@ -25,11 +25,12 @@
             <div>
                 <c:if test="#{Controler.isBeanProduct(DynamicView.bean)}">
                     <div id="right">
-                        <c:if test="#{DynamicView.bean.reduction != 0}">
-                            <h:outputText value="#{DynamicView.bean.prix}" style="text-decoration: line-through;"/><br/>
-                        </c:if>
-                            <h:outputText value="#{DynamicView.bean.prix}"/>
-                            Vendu par :  <h:outputText value="#{DynamicView.bean.vendor}"/>
+                        <div class="articlePart">
+                            Vendu par <h:outputText value="#{DynamicView.bean.vendor}"/> au prix de <br/>
+                            <c:if test="#{DynamicView.bean.reduction != 0}">
+                                <h:outputText value="#{DynamicView.bean.prix}" style="text-decoration: line-through;"/><br/>
+                            </c:if>
+                            <h:outputText value="#{DynamicView.bean.prix}"/> €<br/>
                             <h:form>
                                 <h:selectOneMenu value="parametre de la future view">
                                     <c:forEach begin="1" end="10" var="i">
@@ -38,7 +39,17 @@
                                 </h:selectOneMenu>
                                 <h:commandButton action="null" value="Ajouter au panier"/>
                             </h:form>
-                            
+                        </div>
+                        <div class="articlePart">
+                            Plus de choix<br/>
+                            <c:forEach var="choix" items="#{DynamicView.bean.productibleType.products}">
+                                 Vendu par <h:outputText value="#{choix.vendor}"/> au prix de <br/>
+                                <h:outputText value="#{choix.prix - choix.reduction}"/> €<br/>
+                                <h:form>
+                                    <h:commandButton action="null" value="Ajouter au panier"/>
+                                </h:form>
+                            </c:forEach>
+                        </div>
                     </div>
                     <div id="content" class="right_content">
                         <h1><h:outputText value="#{DynamicView.nomArticle}"/></h1>
