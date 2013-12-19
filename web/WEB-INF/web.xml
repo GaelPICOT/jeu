@@ -83,7 +83,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTServiceAddTriple</servlet-name>
-        <url-pattern>/org.yournamehere.Main/sampleService/gwtserviceaddtriple</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutTriple/sampleService/gwtserviceaddtriple</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
