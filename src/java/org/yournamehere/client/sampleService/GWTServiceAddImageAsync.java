@@ -5,12 +5,15 @@
 package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import entity.encyclopedia.Image;
 
 /**
  *
  * @author anthony
  */
-public interface GWTServiceAddImageAsync {
+public interface GWTServiceAddImageAsync { 
 
-    public void addImage(String name, String description, String textAlt, AsyncCallback<String> callback);
+    public void addImage(Image image, AsyncCallback<Integer> callback);
+
+//    public void updateURL();
 }

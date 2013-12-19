@@ -6,6 +6,7 @@ package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import entity.encyclopedia.Image;
 
 /**
  *
@@ -14,5 +15,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("sampleservice/gwtserviceaddimage")
 public interface GWTServiceAddImage extends RemoteService {
 
-    public void addImage(String name, String description, String textAlt);
+    public int addImage(Image image);
 }

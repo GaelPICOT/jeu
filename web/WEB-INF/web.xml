@@ -47,7 +47,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceAddImage</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutImage/gwtserviceaddimage</url-pattern>
+        <url-pattern>/org.yournamehere.AjoutImage/sampleService/gwtserviceaddimage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
@@ -92,6 +92,14 @@
     <servlet-mapping>
         <servlet-name>GWTServiceAddTriple</servlet-name>
         <url-pattern>/org.yournamehere.AjoutTriple/sampleService/gwtserviceaddtriple</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>servlet.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>*.gupld</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

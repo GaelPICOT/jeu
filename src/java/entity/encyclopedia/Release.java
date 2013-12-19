@@ -41,6 +41,15 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
     @JoinColumn(nullable=false)
     @ManyToOne
     private Productible productibleType;
+    private String nom;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
     public List<Product> getProducts() {
         return products;
