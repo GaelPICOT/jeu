@@ -54,12 +54,8 @@ public class UserView implements Serializable {
     }
 
     public String createAccount(){
-//        logger.info("createAccount");
         cart = new Cart();
-//        cart.setList(new ArrayList<Product>());
         cartFacade.create(cart);
-//        user.setCart(cart);
-//        user.setAdresses(new ArrayList<Adress>());
         user.setType(UserStatu.CLIENT);
         userFacade.create(user);
         user.setCart(cart);
