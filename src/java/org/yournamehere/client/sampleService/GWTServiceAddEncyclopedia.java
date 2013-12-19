@@ -18,4 +18,5 @@ import entity.semantic.SemanticNode;
 public interface GWTServiceAddEncyclopedia extends RemoteService {
 
     public String createEncyclopediaNode(SemanticNode nodeAdd);
+    public String editEncyclopediaNode(SemanticNode nodeAdd);
 }

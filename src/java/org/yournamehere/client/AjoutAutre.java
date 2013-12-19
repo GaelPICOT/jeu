@@ -46,6 +46,8 @@ public class AjoutAutre implements EntryPoint {
         
         map.put(0, new PredicatePanel());
         listChoix.addItem("prédicat", "0");
+        map.put(1, new AccessoryPanel());
+        listChoix.addItem("accessoire", "1");
         
         final Button okButton = new Button("Enregistrer");
         

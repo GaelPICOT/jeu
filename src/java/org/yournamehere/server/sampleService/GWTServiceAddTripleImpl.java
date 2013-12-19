@@ -5,6 +5,7 @@
 package org.yournamehere.server.sampleService;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import entity.ModarateStatu;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
 import entity.encyclopedia.Article;
@@ -127,6 +128,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
         Class beanClass = objet.getClass();
         if (beanClass.getName().equals(Accessory.class.getName())) {
             TripleOAccessory triple = new TripleOAccessory();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOAccessoryFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -134,6 +136,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOAccessoryFacade.edit(triple);
         } else if (beanClass.getName().equals(Actor.class.getName())) {
             TripleOActor triple = new TripleOActor();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOActorFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -141,6 +144,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOActorFacade.edit(triple);
         } else if (beanClass.getName().equals(Article.class.getName())) {
             TripleOArticle triple = new TripleOArticle();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOArticleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -148,6 +152,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOArticleFacade.edit(triple);
         } else if (beanClass.getName().equals(Association.class.getName())) {
             TripleOAssociation triple = new TripleOAssociation();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOAssociationFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -155,6 +160,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOAssociationFacade.edit(triple);
         } else if (beanClass.getName().equals(Book.class.getName())) {
             TripleOBook triple = new TripleOBook();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOBookFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -162,6 +168,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOBookFacade.edit(triple);
         } else if (beanClass.getName().equals(Category.class.getName())) {
             TripleOCategory triple = new TripleOCategory();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOCategoryFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -169,6 +176,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOCategoryFacade.edit(triple);
         } else if (beanClass.getName().equals(Copyright.class.getName())) {
             TripleOCopyright triple = new TripleOCopyright();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOCopyrightFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -176,6 +184,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOCopyrightFacade.edit(triple);
         } else if (beanClass.getName().equals(Entreprise.class.getName())) {
             TripleOEntreprise triple = new TripleOEntreprise();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOEntrepriseFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -183,6 +192,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOEntrepriseFacade.edit(triple);
         } else if (beanClass.getName().equals(Game.class.getName())) {
             TripleOGame triple = new TripleOGame();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOGameFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -190,6 +200,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOGameFacade.edit(triple);
         } else if (beanClass.getName().equals(Image.class.getName())) {
             TripleOImage triple = new TripleOImage();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOImageFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -197,6 +208,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOImageFacade.edit(triple);
         } else if (beanClass.getName().equals(Licence.class.getName())) {
             TripleOLicence triple = new TripleOLicence();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOLicenceFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -204,6 +216,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOLicenceFacade.edit(triple);
         } else if (beanClass.getName().equals(Productible.class.getName())) {
             TripleOProductible triple = new TripleOProductible();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOProductibleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -211,6 +224,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOProductibleFacade.edit(triple);
         } else if (beanClass.getName().equals(Release.class.getName())) {
             TripleORelease triple = new TripleORelease();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOReleaseFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -218,6 +232,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOReleaseFacade.edit(triple);
         } else if (beanClass.getName().equals(Rule.class.getName())) {
             TripleORule triple = new TripleORule();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleORuleFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -225,6 +240,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleORuleFacade.edit(triple);
         } else if (beanClass.getName().equals(Theme.class.getName())) {
             TripleOTheme triple = new TripleOTheme();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOThemeFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -232,6 +248,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOThemeFacade.edit(triple);
         } else if (beanClass.getName().equals(Person.class.getName())) {
             TripleOPerson triple = new TripleOPerson();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOPersonFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -239,6 +256,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOPersonFacade.edit(triple);
         } else if (beanClass.getName().equals(SemanticLiteral.class.getName())) {
             TripleOSemanticLiteral triple = new TripleOSemanticLiteral();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleOSemanticLiteralFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);
@@ -246,6 +264,7 @@ public class GWTServiceAddTripleImpl extends RemoteServiceServlet implements GWT
             tripleOSemanticLiteralFacade.edit(triple);
         } else {
             TripleEntity triple = new TripleEntity();
+            triple.setmoderate(ModarateStatu.TO_BE_MODERATE);
             tripleEntityFacade.create(triple);
             triple.setSujet((SemanticRessource) sujet);
             triple.setPredicate(predicate);

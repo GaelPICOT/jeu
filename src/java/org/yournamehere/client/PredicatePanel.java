@@ -26,7 +26,7 @@ public class PredicatePanel extends SemanticPanel<Predicate> {
         labelPanel.add(labelLabel);
         labelPanel.add(labelValue);
         HorizontalPanel URIPanel = new HorizontalPanel();
-        Label URILabel = new Label("URI du predicat (vide = URI par defaut) : ");
+        Label URILabel = new Label("URI du predicat (vide = URI par defaut): ");
         URIPanel.add(URILabel);
         URIPanel.add(URIValue);
         
