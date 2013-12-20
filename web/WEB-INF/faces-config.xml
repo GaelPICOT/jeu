@@ -94,6 +94,16 @@
 		<to-view-id>/index.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
+	<navigation-case>
+		<from-outcome>paieEtape1</from-outcome>
+		<to-view-id>/jsf/paieEtape1.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>paieEtape2</from-outcome>
+		<to-view-id>/jsf/paieEtape2.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
     </navigation-rule>
 <!--    <navigation-rule>
 	<from-view-id>*index.xhtml</from-view-id>

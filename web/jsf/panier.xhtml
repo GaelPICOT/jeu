@@ -112,10 +112,20 @@
                 </div>
             </div>
         </div>
-        <div id="bottom">
+        <div id="bottomPanier">
             <ui:insert name="bottom">Bottom</ui:insert>
+            <c:if test="#{empty UserView.user.id}">
+                <h:form>
+                    <h:link outcome="paieEtape1" value="Commander" styleClass="boutonPanier"/>
+                </h:form>
+            </c:if>
+            <c:if test="#{not empty UserView.user.id}">
+                <h:form>
+                    <h:link outcome="paieEtape2" value="Commander" styleClass="boutonPanier"/>
+                </h:form>
+            </c:if>
             <h:form>
-                <h:link outcome="paieEtape1.xhtml" value="Paiement de la commande" styleClass="bouton"/>
+                <h:link outcome="index" value="Continuer mes achats" styleClass="boutonPanier"/>
             </h:form>
         </div>
         
