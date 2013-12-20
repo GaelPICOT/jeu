@@ -37,10 +37,13 @@ import entity.encyclopedia.Theme;
 import entity.semantic.Predicate;
 import entity.semantic.PureSemanticRessource;
 import entity.semantic.SemanticLiteral;
+import entity.user.User;
 import entity.user.UserStatu;
 import java.util.HashMap;
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
 import org.yournamehere.client.sampleService.GWTServiceAddTripleAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 
 /**
  *
@@ -51,10 +54,10 @@ public class AjoutTriple implements EntryPoint {
     @Override
     public void onModuleLoad() {
         final GWTServiceAddTripleAsync service = GWT.create(GWTServiceAddTriple.class);
+        final GWTServiceModifyAccountAsync service2 = GWT.create(GWTServiceModifyAccount.class);
         
-        DockPanel page = new DockPanel();
-        DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+        final DockPanel page = new DockPanel(); 
+        final DockPanel body = new DockPanel();
         
         VerticalPanel bodyPanel = new VerticalPanel();
         HorizontalPanel SelectPanel = new HorizontalPanel();
@@ -172,6 +175,19 @@ public class AjoutTriple implements EntryPoint {
         service.getAllNodeFromType(Predicate.class.getName(), listPredicatCallback);
         
         body.add(bodyPanel, DockPanel.CENTER);
+        
+        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(User result) {
+                AdminTemplate.createTemplate(page, body, result.getType());
+            }
+        };
+        service2.getUser(callbackUser);
         
         RootPanel.get().add(page);
     }

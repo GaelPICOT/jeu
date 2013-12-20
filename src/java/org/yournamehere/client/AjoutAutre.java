@@ -17,11 +17,14 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import entity.user.User;
 import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 
 /**
  *
@@ -32,9 +35,10 @@ public class AjoutAutre implements EntryPoint {
     @Override
     public void onModuleLoad() {
         final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
+        final GWTServiceModifyAccountAsync service2 = GWT.create(GWTServiceModifyAccount.class);
 
-        DockPanel page = new DockPanel();
-	DockPanel body = new DockPanel();
+        final DockPanel page = new DockPanel();
+	final DockPanel body = new DockPanel();
 	AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
         final VerticalPanel formPanel = new VerticalPanel();
@@ -68,16 +72,11 @@ public class AjoutAutre implements EntryPoint {
                         System.out.println("game created");
                         Window.alert("jeu créé" + result);
                 }
-//
+
                 public void onFailure(Throwable caught) {
                         System.out.println("error while creating game\n"+caught);
                         Window.alert("erreur lors de la création du jeu : "+caught);
                 }
-
-//            @Override
-//            public void onSuccess(Void result) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
         };
         okButton.addClickHandler(new ClickHandler() {
 
@@ -89,6 +88,20 @@ public class AjoutAutre implements EntryPoint {
         });
         
         body.add(formPanel, DockPanel.CENTER);
+        
+                AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(User result) {
+                AdminTemplate.createTemplate(page, body, result.getType());
+            }
+        };
+        service2.getUser(callbackUser);
+        
 	RootPanel.get().add(page);
     }
     

@@ -13,6 +13,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockPanel;
 import entity.ecom.Command;
+import entity.user.User;
 import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ import java.util.List;
 //import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import org.yournamehere.client.sampleService.GWTServiceCommandHandler;
 import org.yournamehere.client.sampleService.GWTServiceCommandHandlerAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 //import com.sencha.gxt.widget.core.client.container.MarginData;
 //import com.gwtext.client.widgets.layout.BorderLayout; 
 //import java.awt.BorderLayout; 
@@ -46,12 +49,11 @@ public class GestionCommandes implements EntryPoint {
      */
     @Override
     public void onModuleLoad() {
-//        RootPanel.get().clear();
         final GWTServiceCommandHandlerAsync service = GWT.create(GWTServiceCommandHandler.class);
+        final GWTServiceModifyAccountAsync service2 = GWT.create(GWTServiceModifyAccount.class);
         
-        DockPanel page = new DockPanel();
-        DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+        final DockPanel page = new DockPanel();
+        final DockPanel body = new DockPanel();
         
         VerticalPanel bodyPanel = new VerticalPanel();
         bodyPanel.add(new Label("Vos commandes: "));
@@ -60,29 +62,35 @@ public class GestionCommandes implements EntryPoint {
         
         final AsyncCallback<List<Command>> callback = new AsyncCallback<List<Command>>() {
                 public void onSuccess(List<Command> result) {
-//                        System.out.println("account deleted");
-//                        Window.alert("compte supprimé");
                     ArrayList<Command> commandsTemp = (ArrayList<Command>) result;
                     for (Command command : commandsTemp) {
                         form.add(new CommandComponent(command));
                     }
                 }
-//
+
                 public void onFailure(Throwable caught) {
                         System.out.println("error while getting commands\n"+caught);
                         Window.alert("error while getting commands");
                 }
-
-//            @Override
-//            public void onSuccess(Void result) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
         };
         
         service.getCommand(callback);
   
         
         body.add(bodyPanel, DockPanel.CENTER);
+        
+        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(User result) {
+                AdminTemplate.createTemplate(page, body, result.getType());
+            }
+        };
+        service2.getUser(callbackUser);
         
         RootPanel.get().add(page);
     }
