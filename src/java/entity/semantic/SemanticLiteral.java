@@ -40,4 +40,9 @@ public class SemanticLiteral extends SemanticNode implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
+    
+    @Override
+    public String toString() {
+        return this.getValue();
+    }
 }

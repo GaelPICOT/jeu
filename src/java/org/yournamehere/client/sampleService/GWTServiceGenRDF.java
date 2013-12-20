@@ -4,6 +4,7 @@
  */
 package org.yournamehere.client.sampleService;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -14,5 +15,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("sampleService/gwtservicegenrdf")
 public interface GWTServiceGenRDF extends RemoteService {
 
-    public String myMethod(String s);
+    public String genRDF();
 }

@@ -31,7 +31,10 @@ public class PureSemanticRessource extends SemanticNode implements Serializable,
 
     @Override
     public String getURI() {
-        return URI;
+        if (URI==null)
+            return SemanticRessource.BASEURI + "ressource#" + getId();
+        else
+            return URI;
     }
 
     public void setURI(String URI) {
