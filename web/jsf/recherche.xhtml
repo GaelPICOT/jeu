@@ -54,6 +54,7 @@
                                                             <tr>
                                                                 <td class="tdGauche">
                                                                 <h:form>
+                                                                    <h:graphicImage value="../#{real.images.get(0).getURL()}" height="100px" width="100px"/>
                                                                     <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
                                                                 </h:form>
                                                                 </td>
