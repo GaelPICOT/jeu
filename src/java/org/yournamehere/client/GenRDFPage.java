@@ -6,9 +6,13 @@ package org.yournamehere.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Actor;
@@ -44,6 +48,33 @@ public class GenRDFPage implements EntryPoint {
         AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
         VerticalPanel bodyPanel = new VerticalPanel();
+        
+        HorizontalPanel selectPanel = new HorizontalPanel();
+        Label labelEntityType = new Label ("Selectionner un type d'entité :");
+        final ListBox listEntityType = creéListEncylopedie ();
+        selectPanel.add(labelEntityType);
+        selectPanel.add(listEntityType);
+        
+        bodyPanel.add(selectPanel);
+        
+        HorizontalPanel editOptionEntityPanel = new HorizontalPanel();
+        VerticalPanel editOptionEntityLeftPanel = new VerticalPanel();
+        ListBox listOptionCreat = new ListBox();
+        listOptionCreat.setVisibleItemCount(10);
+        ListBox listGetter = new ListBox();
+        ListBox listPredicate = new ListBox();
+        Button addButton = new Button("Ajouter l'option");
+        
+        editOptionEntityPanel.add(listOptionCreat);
+        editOptionEntityLeftPanel.add(listGetter);
+        editOptionEntityLeftPanel.add(listPredicate);
+        editOptionEntityLeftPanel.add(addButton);
+        editOptionEntityPanel.add(editOptionEntityLeftPanel);
+        
+        bodyPanel.add(editOptionEntityPanel);
+        
+        Button genButton = new Button("Generer RDF");
+        
         
         body.add(bodyPanel, DockPanel.CENTER);
         
