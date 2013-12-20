@@ -49,13 +49,19 @@
                                         <h:outputText value="#{test.prod.productibleType.descriptionDetails}"/>
                                     </td>
                                     <td>
-                                        <h:outputText value="#{test.prod.getRealPrice()}"/> 
+                                        <h:outputText value="#{test.prod.getRealPrice()}"/> €
                                     </td>
                                     <td>
+                                        <h:form>
+                                            <h:commandLink action="#{CartView.addOneToCardFromCard(test.prod.id)}" value="+" styleClass="bouton"/>
+                                        </h:form>
                                         <h:outputText value="#{test.quantity}"/>
+                                        <h:form>
+                                            <h:commandLink action="#{CartView.deleteOneToCard(test.prod.id)}" value="-" styleClass="bouton"/>
+                                        </h:form>
                                     </td>
                                     <td>
-                                        <h:outputText value="#{test.getPrixTotal()}"/>
+                                        <h:outputText value="#{test.getPrixTotal()}"/> €
                                     </td>
                                     <td>
                                         <h:form>
@@ -64,6 +70,14 @@
                                     </td>
                                 </tr>
                             </c:forEach>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Prix total de la commande : <h:outputText value="#{CartView.cart.getPriceOfCart()}"/> €</td>
+                            </tr>
                         </table>
                     </c:if>
                     <c:if test="#{not empty UserView.user.id}">
@@ -92,13 +106,19 @@
                                         <h:outputText value="#{test.prod.productibleType.descriptionDetails}"/>
                                     </td>
                                     <td>
-                                        <h:outputText value="#{test.prod.getRealPrice()}"/> 
+                                        <h:outputText value="#{test.prod.getRealPrice()}"/> €
                                     </td>
                                     <td>
-                                        <h:outputText value="#{test.quantity}"/>
+                                        <h:form>
+                                            <h:commandLink action="#{UserView.addOneToCardFromCard(test.prod.id)}" value="+" styleClass="bouton"/>
+                                        </h:form>
+                                        <h:outputText value="#{test.quantity}"/><br/>
+                                        <h:form>
+                                            <h:commandLink action="#{UserView.deleteOneToCard(test.prod.id)}" value="-" styleClass="bouton"/>
+                                        </h:form>
                                     </td>
                                     <td>
-                                        <h:outputText value="#{test.getPrixTotal()}"/>
+                                        <h:outputText value="#{test.getPrixTotal()}"/> €
                                     </td>
                                     <td>
                                         <h:form>
@@ -107,6 +127,14 @@
                                     </td>
                                 </tr>
                             </c:forEach>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Prix total de la commande : <h:outputText value="#{UserView.user.cart.getPriceOfCart()}"/> €</td>
+                            </tr>
                         </table>
                     </c:if>
                 </div>
