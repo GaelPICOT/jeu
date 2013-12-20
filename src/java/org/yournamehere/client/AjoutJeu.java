@@ -36,7 +36,7 @@ import java.util.logging.Logger;
  */
 public class AjoutJeu implements EntryPoint {
     
-    final static Logger logger = Logger.getLogger("log");
+//    final static Logger logger = Logger.getLogger("log");
 
     /**
      * Creates a new instance of Main
@@ -93,7 +93,7 @@ public class AjoutJeu implements EntryPoint {
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("game created");
-                        logger.log(Level.INFO, "game created");
+//                        logger.log(Level.INFO, "game created");
 //                        Window.alert("jeu créé" + result);
                 }
 //
@@ -112,7 +112,7 @@ public class AjoutJeu implements EntryPoint {
                 @Override
                 public void onClick(ClickEvent event) {
                         System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-                        logger.log(Level.INFO, listIds.toString());
+//                        logger.log(Level.INFO, listIds.toString());
                         Game game = new Game();
                         game.setName(gameNameValue.getText());
                         game.setDescription(gameDescriptionValue.getText());
@@ -120,7 +120,7 @@ public class AjoutJeu implements EntryPoint {
                         gameNameValue.setText("");
                         gameDescriptionValue.setText("");
                 }
-        });
+        }); 
         RootPanel.get().add(page);
     }
 }

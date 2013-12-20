@@ -15,11 +15,15 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.encyclopedia.Accessory;
+import entity.encyclopedia.Game;
 import entity.semantic.SemanticNode;
 import entity.user.UserStatu;
+import java.util.ArrayList;
+import java.util.logging.Level;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 //import com.sencha.gxt.core.client.util.Margins;
@@ -56,62 +60,71 @@ public class AjoutAccessoire implements EntryPoint {
 		DockPanel page = new DockPanel();
 		DockPanel body = new DockPanel();
 		AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
-		HorizontalPanel form = new HorizontalPanel();
-		VerticalPanel fieldName = new VerticalPanel();
-		VerticalPanel fieldValue = new VerticalPanel();
+		VerticalPanel formPanel = new VerticalPanel();
+                HorizontalPanel form = new HorizontalPanel();
+                VerticalPanel fieldName = new VerticalPanel();
+                VerticalPanel fieldValue = new VerticalPanel();
 
-		Label accessoryNameLabel = new Label("Nom de l'accessoire: ");
-		Label accessoryDescriptionLabel = new Label("Description de l'accessoire: ");
-		Button createAccessory = new Button("Creer accessoire");
+                Label accessoryNameLabel = new Label("Nom de l'accessoire: ");
+                Label accessoryDescriptionLabel = new Label("Description de l'accessoire: ");
+                Button createGame = new Button("Créer accessoire");
 
-		fieldName.add(accessoryNameLabel);
-		fieldName.add(accessoryDescriptionLabel);
-		fieldName.add(createAccessory);
 
-		form.add(fieldName);
+                fieldName.add(accessoryNameLabel);
+                fieldName.add(accessoryDescriptionLabel);
 
-		final TextBox accessoryNameValue = new TextBox();
-		final TextBox accessoryDescriptionValue = new TextBox();
-		fieldValue.add(accessoryNameValue);
-		fieldValue.add(accessoryDescriptionValue);
+                form.add(fieldName);
 
-		form.add(fieldValue);
+                final TextBox accessoryNameValue = new TextBox();
+                final TextArea accessoryDescriptionValue = new TextArea();
+                fieldValue.add(accessoryNameValue);
+                fieldValue.add(accessoryDescriptionValue);
 
-		Label label = new Label("Bonjour, je suis un test et je dois arriver au bout de la ligne ou au moins quasiment");
-		body.add(form, DockPanel.CENTER);
-                
+
+                form.add(fieldValue);
+
+
+                form.add(new CopyrightComponent());
+
+                formPanel.add(form);
+                final ArrayList<Long> listIds = new ArrayList<Long>();
+                ImagePanel imagePanel = new ImagePanel(listIds);
+                formPanel.add(imagePanel.getConcretPanel());
+                formPanel.add(createGame);
+
+                body.add(formPanel, DockPanel.CENTER);
+
                 final AsyncCallback<String> callback = new AsyncCallback<String>() {
                         public void onSuccess(String result) {
                                 System.out.println("accessory created");
-                                Window.alert("accesoire créé");
+//                                logger.log(Level.INFO, "accessory created");
+            //                        Window.alert("jeu créé" + result);
                         }
-//
+            //
                         public void onFailure(Throwable caught) {
-                                System.out.println("error while creating accessory");
-                                Window.alert("erreur lors de la création de l'accessoire");
+                                System.out.println("error while creating accessory\n"+caught);
+                                Window.alert("erreur lors de la création de l'accessoire : "+caught);
                         }
+
                 };
 
-		createAccessory.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				System.out.println("creation accessoire: " + accessoryNameValue.getText() + " description: "
-						+ accessoryDescriptionValue.getText());
-                                Accessory acc = new Accessory();
-                                acc.setName(accessoryNameValue.getText());
-                                acc.setDescription(accessoryDescriptionValue.getText());
-//                                service.createEncyclopediaNode((SemanticNode)acc, listIds, callback);
-//                                Window.alert("accessoire créé");
+
+
+
+                createGame.addClickHandler(new ClickHandler() {
+                        @Override
+                        public void onClick(ClickEvent event) {
+                                System.out.println("creation accessoire: " + accessoryNameValue.getText() + " description: " + accessoryDescriptionValue.getText());
+//                                logger.log(Level.INFO, listIds.toString());
+                                Accessory accessory = new Accessory();
+                                accessory.setName(accessoryNameValue.getText());
+                                accessory.setDescription(accessoryDescriptionValue.getText());
+                                service.createEncyclopediaNode(accessory, listIds, callback);
                                 accessoryNameValue.setText("");
                                 accessoryDescriptionValue.setText("");
-				// TODO Auto-generated method stub
-
-			}
-		});
-		// body.setCellHorizontalAlignment(form, HasAlignment.ALIGN_CENTER);
-		// body.add(label);
-		// page.add(label, DockPanel.CENTER);
+                        }
+                }); 
 		RootPanel.get().add(page);
 	}
 }

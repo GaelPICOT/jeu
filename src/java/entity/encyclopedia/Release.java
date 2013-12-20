@@ -66,6 +66,10 @@ public class Release extends SemanticNode implements Serializable, SemanticResso
     public void setImages(List<Image> images) {
         this.images = images;
     }
+    
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
 
     public Copyright getCopyright() {
         return copyright;

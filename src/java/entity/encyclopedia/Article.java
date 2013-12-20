@@ -38,6 +38,10 @@ public class Article extends SemanticNode implements Serializable, SemanticResso
     public void setImages(List<Image> images) {
         this.images = images;
     }
+    
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
 
     public String getTitle() {
         return title;

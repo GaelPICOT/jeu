@@ -109,6 +109,10 @@
         <servlet-name>GWTServiceAddImage</servlet-name>
         <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtserviceaddimage</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddImage</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleservice/gwtserviceaddimage</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceCopyright</servlet-name>
         <servlet-class>org.yournamehere.server.sampleService.GWTServiceCopyrightImpl</servlet-class>
@@ -118,12 +122,8 @@
         <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicecopyright</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GWTService</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutJeu/gwtservice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GWTService</servlet-name>
-        <url-pattern>/org.yournamehere.AjoutAccessoire/gwtservice</url-pattern>
+        <servlet-name>GWTServiceCopyright</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleservice/gwtservicecopyright</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>uploadServlet</servlet-name>
