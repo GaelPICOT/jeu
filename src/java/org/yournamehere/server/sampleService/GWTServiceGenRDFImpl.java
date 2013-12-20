@@ -11,12 +11,14 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.Resource;
+import entity.option.RDFGenerator;
 import entity.semantic.Predicate;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import entity.semantic.Triple;
 import facade.PredicateFacade;
+import facade.RDFGeneratorFacade;
 import facade.SemanticNodeFacade;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -39,6 +41,8 @@ public class GWTServiceGenRDFImpl extends RemoteServiceServlet implements GWTSer
     private SemanticNodeFacade semanticNodeFacade;
     @EJB
     private PredicateFacade predicateFacade;
+    @EJB
+    private RDFGeneratorFacade rDFGeneratorFacade;
     
     @Override
     public String genRDF() {
@@ -83,5 +87,17 @@ public class GWTServiceGenRDFImpl extends RemoteServiceServlet implements GWTSer
             retour.put(pred.getId(), pred.getLabel());
         }
         return retour;
+    }
+
+    @Override
+    public String creatRDFGenOpt(String entityName, String columnName, Long predicateId) {
+        RDFGenerator RDFopt = new RDFGenerator();
+        RDFopt.setEntityName(entityName);
+        RDFopt.setColumnName(columnName);
+        rDFGeneratorFacade.create(RDFopt);
+        RDFopt.setToGenerate(predicateFacade.find(predicateId));
+        rDFGeneratorFacade.edit(RDFopt);
+        
+        return "Ok";
     }
 }
