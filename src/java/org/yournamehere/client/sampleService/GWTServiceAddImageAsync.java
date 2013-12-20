@@ -14,6 +14,4 @@ import entity.encyclopedia.Image;
 public interface GWTServiceAddImageAsync { 
 
     public void addImage(Image image, AsyncCallback<String> callback);
-
-//    public void updateURL();
 }

@@ -22,6 +22,9 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import entity.encyclopedia.Game;
 import entity.user.UserStatu;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import com.sencha.gxt.widget.core.client.container.MarginData;
 //import com.gwtext.client.widgets.layout.BorderLayout; 
 //import java.awt.BorderLayout; 
@@ -32,6 +35,8 @@ import entity.user.UserStatu;
  * @author Anthony
  */
 public class AjoutJeu implements EntryPoint {
+    
+    final static Logger logger = Logger.getLogger("log");
 
     /**
      * Creates a new instance of Main
@@ -78,7 +83,8 @@ public class AjoutJeu implements EntryPoint {
         form.add(new CopyrightComponent());
         
         formPanel.add(form);
-        ImagePanel imagePanel = new ImagePanel();
+        final ArrayList<Long> listIds = new ArrayList<Long>();
+        ImagePanel imagePanel = new ImagePanel(listIds);
         formPanel.add(imagePanel.getConcretPanel());
         formPanel.add(createGame);
         
@@ -87,7 +93,8 @@ public class AjoutJeu implements EntryPoint {
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("game created");
-                        Window.alert("jeu créé" + result);
+                        logger.log(Level.INFO, "game created");
+//                        Window.alert("jeu créé" + result);
                 }
 //
                 public void onFailure(Throwable caught) {
@@ -105,10 +112,11 @@ public class AjoutJeu implements EntryPoint {
                 @Override
                 public void onClick(ClickEvent event) {
                         System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
+                        logger.log(Level.INFO, listIds.toString());
                         Game game = new Game();
                         game.setName(gameNameValue.getText());
                         game.setDescription(gameDescriptionValue.getText());
-                        service.createEncyclopediaNode(game, callback);
+                        service.createEncyclopediaNode(game, listIds, callback);
                         gameNameValue.setText("");
                         gameDescriptionValue.setText("");
                 }

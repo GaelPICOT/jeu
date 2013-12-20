@@ -5,6 +5,8 @@
 package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -12,5 +14,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface GWTServiceGenRDFAsync {
 
-    public void myMethod(String s, AsyncCallback<String> callback);
+    public void genRDF(AsyncCallback<String> callback);
+    public void getAllGetterFromType (String Type, AsyncCallback<ArrayList<String>> callback);
+    public void getAllPredicate (AsyncCallback<HashMap<Long, String>> callback);
+    
 }

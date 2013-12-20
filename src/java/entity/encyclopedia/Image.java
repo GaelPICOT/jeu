@@ -49,6 +49,10 @@ public class Image extends SemanticNode implements Serializable, SemanticRessour
     public void setProductibles(List<Productible> productibles) {
         this.productibles = productibles;
     }
+    
+    public void addProductible(Productible productible) {
+        this.productibles.add(productible);
+    }
 
     public Copyright getCopyright() {
         return copyright;

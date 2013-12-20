@@ -49,6 +49,9 @@ import facade.ReleaseFacade;
 import facade.RuleFacade;
 import facade.SemanticLiteralFacade;
 import facade.ThemeFacade;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
@@ -100,10 +103,12 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
     private User user;
     private ModarateStatu MS;
     
+    Logger loggerJava = Logger.getLogger("log");
+    
     
     @Override
-    public String createEncyclopediaNode(SemanticNode nodeAdd) {
-        createSemNode (nodeAdd);
+    public String createEncyclopediaNode(SemanticNode nodeAdd, ArrayList<Long> listIds) {
+        createSemNode (nodeAdd, listIds);
         user = ((UserView) (getThreadLocalRequest().getSession().getAttribute("UserView"))).getUser();
         switch(user.getType()) {
             case ADMIN :
@@ -126,7 +131,7 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
         return "";
     }
     
-    public void createSemNode (SemanticNode nodeAdd) {
+    public void createSemNode (SemanticNode nodeAdd, ArrayList<Long> listIds) {
         //On crée un objet Class correspondant a la class du bean a traiter
         Class beanClass = nodeAdd.getClass();
         if(nodeAdd.getId()==null) {
@@ -146,6 +151,14 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
                 entrepriseFacade.create((Entreprise)nodeAdd);
             } else if (beanClass.getName().equals(Game.class.getName())) {
                 gameFacade.create((Game)nodeAdd);
+                Image image;
+                for(Long id : listIds) {
+                    image = imageFacade.find(id);
+                    loggerJava.log(Level.INFO, "avant add" + image.getProductibles().toString());
+                    image.addProductible((Productible) nodeAdd);
+                    loggerJava.log(Level.INFO, "apres add" + image.getProductibles().toString());
+                    imageFacade.edit(image);
+                }
             } else if (beanClass.getName().equals(Image.class.getName())) {
                 imageFacade.create((Image)nodeAdd);
             } else if (beanClass.getName().equals(Licence.class.getName())) {
@@ -172,7 +185,7 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
         }
     }
     
-    public void editSemNode (SemanticNode nodeAdd) {
+        public void editSemNode (SemanticNode nodeAdd) {
         //On crée un objet Class correspondant a la class du bean a traiter
         Class beanClass = nodeAdd.getClass();
             if (beanClass.getName().equals(Accessory.class.getName())) {

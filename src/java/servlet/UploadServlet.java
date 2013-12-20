@@ -21,7 +21,7 @@ public class UploadServlet extends UploadAction {
 	 * 
 	 */
     private static final long serialVersionUID = 1L;
-    Logger loggerJava = Logger.getLogger("log");
+//    Logger loggerJava = Logger.getLogger("log");
 //    private static String id;
 //        
 //    public static void setId(String idString) {
@@ -57,7 +57,7 @@ public class UploadServlet extends UploadAction {
                   File file = new File("/home/anthony/images/" + request.getParameter("id") + ".png");
                   item.write(file);
                   
-                  loggerJava.log(Level.SEVERE, "upload fichier: " + file.getAbsolutePath());
+//                  loggerJava.log(Level.SEVERE, "upload fichier: " + file.getAbsolutePath());
 
     //              response =   fileName;
     //              System.out.println("fichier: " + fileName + ", dest: " + file.getAbsolutePath());

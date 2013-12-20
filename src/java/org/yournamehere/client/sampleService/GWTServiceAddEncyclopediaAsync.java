@@ -8,6 +8,7 @@ package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import entity.semantic.SemanticNode;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,6 @@ import entity.semantic.SemanticNode;
  */
 public interface GWTServiceAddEncyclopediaAsync {
 
-    public void createEncyclopediaNode(SemanticNode nodeAdd, AsyncCallback<String> callback);
+    public void createEncyclopediaNode(SemanticNode nodeAdd, ArrayList<Long> listIds, AsyncCallback<String> callback);
     public void editEncyclopediaNode(SemanticNode nodeAdd, AsyncCallback<String> callback);
 }

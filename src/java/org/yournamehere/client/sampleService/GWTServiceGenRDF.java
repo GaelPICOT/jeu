@@ -6,6 +6,8 @@ package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -14,5 +16,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("sampleService/gwtservicegenrdf")
 public interface GWTServiceGenRDF extends RemoteService {
 
-    public String myMethod(String s);
+    public String genRDF();
+    public ArrayList<String> getAllGetterFromType (String Type);
+    public HashMap<Long, String> getAllPredicate ();
 }
