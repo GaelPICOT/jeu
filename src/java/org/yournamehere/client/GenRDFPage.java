@@ -99,6 +99,28 @@ public class GenRDFPage implements EntryPoint {
         };
         service.getAllPredicate(listPredicatCallback);
         
+        final AsyncCallback<String> genRDFCallback = new AsyncCallback<String>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                System.out.println("game created");
+                Window.alert("jeu créé" + caught);
+            }
+
+            @Override
+            public void onSuccess(String  result) {
+                Window.alert(result);
+            }
+        };
+        
+        genButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                service.genRDF(genRDFCallback);
+            }
+        });
+        
         
         body.add(bodyPanel, DockPanel.CENTER);
         
