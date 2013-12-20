@@ -67,10 +67,10 @@ public class Cart implements Serializable {
     
     /**
      * supprimer un produit du panier
-     * @param prod produit à supprimer.
+     * @param index produit à supprimer.
      */
-    public void removeProduct (NodeCart prod) {
-        this.list.remove(prod);
+    public void removeProduct (int index) {
+        this.list.remove(index);
     }
 
     public Long getId() {

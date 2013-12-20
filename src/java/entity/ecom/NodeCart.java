@@ -53,4 +53,8 @@ public class NodeCart implements Serializable{
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    
+    public int getPrixTotal(){
+        return (this.quantity * this.prod.getRealPrice());
+    }
 }

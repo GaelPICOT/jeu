@@ -156,6 +156,13 @@ public class UserView implements Serializable {
         return "article";
     }
     
+    public String deleteOfCard(Long id){
+        int i = this.cart.isInCart(id);
+        this.user.getCart().removeProduct(i);
+        userFacade.edit(this.user);
+        return "panier";
+    }
+    
     public String disconnect() {
         ((HttpSession) FacesContext.getCurrentInstance()
          .getExternalContext()

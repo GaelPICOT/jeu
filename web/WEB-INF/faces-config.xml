@@ -50,6 +50,11 @@
 		<to-view-id>/jsf/panier.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
+        <navigation-case>
+		<from-outcome>creationCompte</from-outcome>
+		<to-view-id>/jsf/creationCompte.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
     </navigation-rule>
     <navigation-rule>
 	<from-view-id>/jsf/recherche.xhtml</from-view-id>
@@ -68,6 +73,11 @@
 		<to-view-id>/index.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
+        <navigation-case>
+		<from-outcome>creationCompte</from-outcome>
+		<to-view-id>/jsf/creationCompte.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
     </navigation-rule>
     <navigation-rule>
 	<from-view-id>/jsf/article.xhtml</from-view-id>
@@ -82,6 +92,16 @@
 	<navigation-case>
 		<from-outcome>index</from-outcome>
 		<to-view-id>/index.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>paieEtape1</from-outcome>
+		<to-view-id>/jsf/paieEtape1.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>paieEtape2</from-outcome>
+		<to-view-id>/jsf/paieEtape2.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
     </navigation-rule>

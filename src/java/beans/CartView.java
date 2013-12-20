@@ -107,4 +107,11 @@ public class CartView implements Serializable{
         return "article";
     }
     
+    public String deleteOfCard(Long id){
+        int i = this.cart.isInCart(id);
+        this.cart.removeProduct(i);
+        cartFacade.edit(cart);
+        return "panier";
+    }
+    
 }

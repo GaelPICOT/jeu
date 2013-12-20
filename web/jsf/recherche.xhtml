@@ -54,6 +54,7 @@
                                                             <tr>
                                                                 <td class="tdGauche">
                                                                 <h:form>
+                                                                    <h:graphicImage value="../#{real.images.get(0).getURL()}" height="100px" width="100px"/>
                                                                     <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
                                                                 </h:form>
                                                                 </td>
@@ -64,7 +65,7 @@
                                                                                 <h:form>
                                                                                     <h:commandLink action="#{DynamicView.createPage(prod.id, real.nom, prod.class.getName())}" value="#{real.toString()}"/>
                                                                                 </h:form>
-                                                                                Prix : <h:outputText value="#{prod.prix}"/><br/>
+                                                                                Prix : <h:outputText value="#{prod.getRealPrice()}"/><br/>
                                                                                 Vendu par : <h:outputText value="#{prod.vendor}"/><br/>
                                                                                 Stock restant : <h:outputText value="#{prod.stock}"/><br/>
                                                                             </li>

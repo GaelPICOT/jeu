@@ -27,27 +27,105 @@
                         <c:if test="#{empty CartView.cart.list}">
                             <h2>Votre panier est vide</h2>
                         </c:if>
-                        <c:forEach var="test" items="#{CartView.cart.list}">
-                            Produit : <h:outputText value="#{test.prod}"/> 
-                            quantité : <h:outputText value="#{test.quantity}"/><br/>
-                        </c:forEach>
+                        <table class="panier">
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom du produit</th>
+                                <th>Description</th>
+                                <th>Prix Unitaire</th>
+                                <th>Quantité</th>
+                                <th>Prix total</th>
+                                <th></th>
+                            </tr>
+                            <c:forEach var="test" items="#{CartView.cart.list}">
+                                <tr>
+                                    <td>
+                                        <h:graphicImage value="../#{test.prod.productibleType.images.get(0).getURL()}" height="100px" width="100px"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.productibleType.nom}"/> 
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.productibleType.descriptionDetails}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.getRealPrice()}"/> 
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.quantity}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.getPrixTotal()}"/>
+                                    </td>
+                                    <td>
+                                        <h:form>
+                                            <h:commandLink action="#{CartView.deleteOfCard(test.prod.id)}" value="Supprimer" styleClass="bouton"/>
+                                        </h:form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </c:if>
                     <c:if test="#{not empty UserView.user.id}">
                         <c:if test="#{empty UserView.user.cart.list}">
                             <h2>Votre panier est vide</h2>
                         </c:if>
-                        <c:forEach var="test" items="#{UserView.user.cart.list}">
-                            Produit : <h:outputText value="#{test.prod}"/> 
-                            quantité : <h:outputText value="#{test.quantity}"/><br/>
-                        </c:forEach>
+                        <table class="panier">
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom du produit</th>
+                                <th>Description</th>
+                                <th>Prix Unitaire</th>
+                                <th>Quantité</th>
+                                <th>Prix total</th>
+                                <th></th>
+                            </tr>
+                            <c:forEach var="test" items="#{UserView.user.cart.list}">
+                                <tr>
+                                    <td>
+                                        <h:graphicImage value="../#{test.prod.productibleType.images.get(0).getURL()}" height="100px" width="100px"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.productibleType.nom}"/> 
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.productibleType.descriptionDetails}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.prod.getRealPrice()}"/> 
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.quantity}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{test.getPrixTotal()}"/>
+                                    </td>
+                                    <td>
+                                        <h:form>
+                                            <h:commandLink action="#{UserView.deleteOfCard(test.prod.id)}" value="Supprimer" styleClass="bouton"/>
+                                        </h:form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </c:if>
                 </div>
             </div>
         </div>
-        <div id="bottom">
+        <div id="bottomPanier">
             <ui:insert name="bottom">Bottom</ui:insert>
+            <c:if test="#{empty UserView.user.id}">
+                <h:form>
+                    <h:link outcome="paieEtape1" value="Commander" styleClass="boutonPanier"/>
+                </h:form>
+            </c:if>
+            <c:if test="#{not empty UserView.user.id}">
+                <h:form>
+                    <h:link outcome="paieEtape2" value="Commander" styleClass="boutonPanier"/>
+                </h:form>
+            </c:if>
             <h:form>
-                <h:link outcome="paieEtape1.xhtml" value="Paiement de la commande" styleClass="bouton"/>
+                <h:link outcome="index" value="Continuer mes achats" styleClass="boutonPanier"/>
             </h:form>
         </div>
         
