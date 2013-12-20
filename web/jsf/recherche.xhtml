@@ -17,6 +17,9 @@
         <div id="top">
             <ui:include src="../template/top.xhtml"/>
         </div>
+        <div id="menu">
+            <ui:include src="../template/menu.xhtml"/>
+        </div>
         <div>
             <div id="left">
                 <ui:insert name="left">Catégorie de recherche</ui:insert>
@@ -27,45 +30,48 @@
                 </div>
                 <div id="content" class="right_content">
                     <h2>Résultats de la recherche:</h2>
+                    <c:if test="#{empty ResearchView.nodeList}">
+                        <h3>Votre recherche n'a pas donné de résultat. Veuillez réessayer avec un autre mot clé.</h3>
+                    </c:if>
                     <ul>
                         <c:forEach var="titre" items="#{ResearchView.nodeList}">
                             <h3><h:outputText value="#{titre.nomClass}"/></h3>
                             <table>
                                 <c:forEach var="item" items="#{titre.listeRetour}">
                                     <tr>
-                                        <td>
+                                        <td class="tdGauche">
                                         <li>
                                             <h:form>
                                                 <h:commandLink action="#{DynamicView.createPage(item.id, item.toString(), item.class.getName())}" value="#{item.toString()}"/>
                                             </h:form>
                                         </li>
                                         </td>
-                                        <td>
+                                        <td class="tdDroite">
                                             <c:if test="#{Controler.isProductible(item)}">
                                                 <ul>
                                                     <table>
                                                         <c:forEach var="real" items="#{item.releases}">
                                                             <tr>
-                                                                    <td>
-                                                                    <h:form>
-                                                                        <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
-                                                                    </h:form>
-                                                                    </td>
-                                                                    <td>
-                                                                        <ul>
-                                                                            <c:forEach var="prod" items="#{real.products}">
-                                                                                <li>
-                                                                                    <h:form>
-                                                                                        <h:commandLink action="#{DynamicView.createPage(prod.id, real.nom, prod.class.getName())}" value="#{real.toString()}"/>
-                                                                                    </h:form>
-                                                                                    Prix : <h:outputText value="#{prod.prix}"/><br/>
-                                                                                    Vendu par : <h:outputText value="#{prod.vendor}"/><br/>
-                                                                                    Stock restant : <h:outputText value="#{prod.stock}"/><br/>
-                                                                                </li>
-                                                                            </c:forEach>
-                                                                        </ul>
-                                                                    </td>
-                                                                </tr>
+                                                                <td class="tdGauche">
+                                                                <h:form>
+                                                                    <h:commandLink action="#{DynamicView.createPage(real.id, real.toString(), real.class.getName())}" value="#{real.toString()}"/>
+                                                                </h:form>
+                                                                </td>
+                                                                <td class="tdDroite">
+                                                                    <ul>
+                                                                        <c:forEach var="prod" items="#{real.products}">
+                                                                            <li>
+                                                                                <h:form>
+                                                                                    <h:commandLink action="#{DynamicView.createPage(prod.id, real.nom, prod.class.getName())}" value="#{real.toString()}"/>
+                                                                                </h:form>
+                                                                                Prix : <h:outputText value="#{prod.prix}"/><br/>
+                                                                                Vendu par : <h:outputText value="#{prod.vendor}"/><br/>
+                                                                                Stock restant : <h:outputText value="#{prod.stock}"/><br/>
+                                                                            </li>
+                                                                        </c:forEach>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
                                                         </c:forEach>
                                                     </table>
                                                 </ul>

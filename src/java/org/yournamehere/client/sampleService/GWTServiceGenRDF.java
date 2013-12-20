@@ -4,9 +4,10 @@
  */
 package org.yournamehere.client.sampleService;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -16,4 +17,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface GWTServiceGenRDF extends RemoteService {
 
     public String genRDF();
+    public ArrayList<String> getAllGetterFromType (String Type);
+    public HashMap<Long, String> getAllPredicate ();
+    public String creatRDFGenOpt (String entityName, String columnName, Long predicateId);
 }
