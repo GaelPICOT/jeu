@@ -140,7 +140,14 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
             } else if (beanClass.getName().equals(Actor.class.getName())) {
                 actorFacade.create((Actor)nodeAdd);
             } else if (beanClass.getName().equals(Article.class.getName())) {
-                articleFacade.create((Article)nodeAdd);
+                Article article = (Article) nodeAdd;
+                articleFacade.create(article);
+                Image image;
+                for(Long id : listIds) {
+                    image = imageFacade.find(id);
+                    article.addImage(image);
+                    articleFacade.edit(article);
+                }
             } else if (beanClass.getName().equals(Association.class.getName())) {
                 associationFacade.create((Association)nodeAdd);
             } else if (beanClass.getName().equals(Book.class.getName())) {
@@ -150,13 +157,14 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
             } else if (beanClass.getName().equals(Entreprise.class.getName())) {
                 entrepriseFacade.create((Entreprise)nodeAdd);
             } else if (beanClass.getName().equals(Game.class.getName())) {
-                gameFacade.create((Game)nodeAdd);
+                Game game = (Game) nodeAdd;
+                gameFacade.create(game);
                 Image image;
                 for(Long id : listIds) {
                     image = imageFacade.find(id);
-                    loggerJava.log(Level.INFO, "avant add" + image.getProductibles().toString());
-                    image.addProductible((Productible) nodeAdd);
-                    loggerJava.log(Level.INFO, "apres add" + image.getProductibles().toString());
+//                    loggerJava.log(Level.INFO, "avant add" + image.getProductibles().toString());
+                    image.addProductible(game);
+//                    loggerJava.log(Level.INFO, "apres add" + image.getProductibles().toString());
                     imageFacade.edit(image);
                 }
             } else if (beanClass.getName().equals(Image.class.getName())) {
@@ -168,13 +176,27 @@ public class GWTServiceAddEncyclopediaImpl extends RemoteServiceServlet implemen
             } else if (beanClass.getName().equals(Productible.class.getName())) {
                 productibleFacade.create((Productible)nodeAdd);
             } else if (beanClass.getName().equals(Release.class.getName())) {
-                releaseFacade.create((Release)nodeAdd);
+                Release release = (Release) nodeAdd;
+                releaseFacade.create(release);
+                Image image;
+                for(Long id : listIds) {
+                    image = imageFacade.find(id);
+                    release.addImage(image);
+                    releaseFacade.edit(release);
+                }
             } else if (beanClass.getName().equals(Rule.class.getName())) {
                 ruleFacade.create((Rule)nodeAdd);
             } else if (beanClass.getName().equals(Theme.class.getName())) {
                 themeFacade.create((Theme)nodeAdd);
             } else if (beanClass.getName().equals(Person.class.getName())) {
-                personFacade.create((Person)nodeAdd);
+                Person person = (Person) nodeAdd;
+                personFacade.create(person);
+                Image image;
+                for(Long id : listIds) {
+                    image = imageFacade.find(id);
+                    person.addImage(image);
+                    personFacade.edit(person);
+                }
             } else if (beanClass.getName().equals(PureSemanticRessource.class.getName())) {
                 pureSemanticRessourceFacade.create((PureSemanticRessource)nodeAdd);
             } else if (beanClass.getName().equals(SemanticLiteral.class.getName())) {

@@ -79,6 +79,7 @@ public class ImagePanel extends SemanticPanel<Image> {
         
 //        final SingleUploader uploader = new SingleUploader(null, new Button());
         final SingleUploader uploader = new SingleUploader();
+        final String servletPath = uploader.getServletPath();
         uploader.setVisible(false);
         
         final Image image = new Image();
@@ -86,7 +87,7 @@ public class ImagePanel extends SemanticPanel<Image> {
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
                         System.out.println("image created");
-                        uploader.setServletPath(uploader.getServletPath() + "?id=" + result);
+                        uploader.setServletPath(servletPath + "?id=" + result);
                         listIds.add(Long.parseLong(result));
                         uploader.setVisible(true);
                 }

@@ -32,6 +32,10 @@ public class Person extends Actor implements Serializable, SemanticRessource {
         this.images = images;
     }
 
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
+
     public String getFirstName() {
         return firstName;
     }
