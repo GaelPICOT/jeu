@@ -6,6 +6,7 @@ package org.yournamehere.client.sampleService;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import entity.user.UserStatu;
 
 /**
  *
@@ -15,4 +16,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface GWTService extends RemoteService {
 
     public void disconnect();
+    public UserStatu getUserStatus();
 }

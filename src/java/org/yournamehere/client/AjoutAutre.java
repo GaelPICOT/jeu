@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.user.UserStatu;
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
@@ -82,7 +83,8 @@ public class AjoutAutre implements EntryPoint {
 
             @Override
             public void onClick(ClickEvent event) {
-                service.createEncyclopediaNode(map.get(Integer.parseInt(listChoix.getValue(listChoix.getSelectedIndex()))).getSemanticObject(), callback);
+                service.createEncyclopediaNode(map.get(Integer.parseInt(listChoix.getValue(listChoix.getSelectedIndex()))).getSemanticObject(), new ArrayList<Long>(), callback);
+//                service.createEncyclopediaNode(map.get(Integer.parseInt(listChoix.getValue(listChoix.getSelectedIndex()))).getSemanticObject(), listIds, callback);
             }
         });
         

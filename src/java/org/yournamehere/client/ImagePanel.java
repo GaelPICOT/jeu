@@ -25,6 +25,7 @@ import entity.semantic.SemanticNode;
 import gwtupload.client.IUploadStatus;
 import gwtupload.client.IUploader;
 import gwtupload.client.SingleUploader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import org.yournamehere.client.sampleService.GWTServiceAddImage;
@@ -40,7 +41,7 @@ public class ImagePanel extends SemanticPanel<Image> {
 //    public abstract T getSemanticObject();
 
     
-    public ImagePanel() {
+    public ImagePanel(final ArrayList<Long> listIds) {
         final GWTServiceAddImageAsync service = GWT.create(GWTServiceAddImage.class);
         
         final VerticalPanel panel = new VerticalPanel();
@@ -86,6 +87,7 @@ public class ImagePanel extends SemanticPanel<Image> {
                 public void onSuccess(String result) {
                         System.out.println("image created");
                         uploader.setServletPath(uploader.getServletPath() + "?id=" + result);
+                        listIds.add(Long.parseLong(result));
                         uploader.setVisible(true);
                 }
 //
@@ -104,6 +106,9 @@ public class ImagePanel extends SemanticPanel<Image> {
                 image.setTextAlt(imageTextAltValue.getText());
                 service.addImage(image, callback); 
                 createImage.setEnabled(false);
+                imageNameValue.setEnabled(false);
+                imageDescriptionValue.setEnabled(false);
+                imageTextAltValue.setEnabled(false);
             }
         });
         
@@ -116,11 +121,16 @@ public class ImagePanel extends SemanticPanel<Image> {
             public void onFinish(IUploader iUploader) {
                 if (iUploader.getStatus() == IUploadStatus.Status.SUCCESS) {
                     createImage.setEnabled(true);
+                    imageNameValue.setEnabled(true);
+                    imageDescriptionValue.setEnabled(true);
+                    imageTextAltValue.setEnabled(true);
                     imageNameValue.setText("");
                     imageDescriptionValue.setText("");
                     imageTextAltValue.setText("");
                     panel.add(new Label(iUploader.getFileName()));
                     uploader.setVisible(false);
+                } else {
+                    listIds.remove(listIds.size() -1);
                 }
             }
         });

@@ -90,11 +90,6 @@ public class AjoutAccessoire implements EntryPoint {
                                 System.out.println("error while creating accessory");
                                 Window.alert("erreur lors de la création de l'accessoire");
                         }
-
-//                    @Override
-//                    public void onSuccess(Void result) {
-//                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//                    }
                 };
 
 		createAccessory.addClickHandler(new ClickHandler() {
@@ -106,7 +101,7 @@ public class AjoutAccessoire implements EntryPoint {
                                 Accessory acc = new Accessory();
                                 acc.setName(accessoryNameValue.getText());
                                 acc.setDescription(accessoryDescriptionValue.getText());
-                                service.createEncyclopediaNode((SemanticNode)acc, callback);
+//                                service.createEncyclopediaNode((SemanticNode)acc, listIds, callback);
 //                                Window.alert("accessoire créé");
                                 accessoryNameValue.setText("");
                                 accessoryDescriptionValue.setText("");

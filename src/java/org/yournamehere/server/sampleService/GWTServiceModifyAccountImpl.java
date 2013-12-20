@@ -8,6 +8,7 @@ import beans.UserView;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import entity.ecom.Command;
 import entity.ecom.NodeCart;
+import entity.ecom.Product;
 import entity.user.Adress;
 import entity.user.User;
 import facade.UserFacade;
