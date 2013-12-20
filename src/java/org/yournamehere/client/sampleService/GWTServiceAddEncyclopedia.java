@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  *
  * @author picotg
- */
+ */ 
 @RemoteServiceRelativePath("sampleService/gwtserviceaddencyclopedia")
 public interface GWTServiceAddEncyclopedia extends RemoteService {
 
