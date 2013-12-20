@@ -245,3 +245,10 @@
   width: 50%;
   /*background-color: red;*/
 }
+
+.panier td{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
