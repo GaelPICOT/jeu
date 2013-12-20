@@ -108,14 +108,18 @@ public class AdminTemplate {
 		});
 		encyclopediaMenu.addItem("Ajouter autre", new Command() {
                     public void execute() {
-                        Window.Location.replace("../gwt/ajouterAutre.html"); //To change body of generated methods, choose Tools | Templates.
+                        Window.Location.replace("../gwt/ajouterAutre.html");
                     }
                 });
 		encyclopediaMenu.addItem("Proposer modification", cmd);
 		encyclopediaMenu.getElement().setClassName("menu");
 
 		MenuBar salesMenu = new MenuBar(true);
-		salesMenu.addItem("Vendre article", cmd);
+		salesMenu.addItem("Vendre article", new Command() {
+                    public void execute() {
+                        Window.Location.replace("../gwt/vendreArticle.html");
+                    }
+                });
 		salesMenu.addItem("Gestion stock", cmd);
 		salesMenu.getElement().setClassName("menu");
 

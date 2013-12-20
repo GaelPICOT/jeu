@@ -47,6 +47,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GWTService</servlet-name>
+        <url-pattern>/org.yournamehere.VendreArticle/gwtservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTService</servlet-name>
         <url-pattern>/org.yournamehere.SupprimerCompte/gwtservice</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -80,6 +84,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
         <url-pattern>/org.yournamehere.AjoutAutre/sampleService/gwtserviceaddencyclopedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceAddEncyclopedia</servlet-name>
+        <url-pattern>/org.yournamehere.VendreArticle/sampleService/gwtserviceaddencyclopedia</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceAddTriple</servlet-name>
@@ -124,6 +132,10 @@
     <servlet-mapping>
         <servlet-name>GWTServiceModifyAccount</servlet-name>
         <url-pattern>/org.yournamehere.SupprimerCompte/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.VendreArticle/sampleservice/gwtservicemodifyaccount</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceAddImage</servlet-name>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.7.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.7.0/distro-source/core/src/gwt-module.dtd">
+
+<module>
+<!--<module rename-to="/faces/org.yournamehere.client.AjoutJeu">-->
+    <inherits name="com.google.gwt.user.User"/>
+
+    <!-- Inherit the default GWT style sheet. You can change -->
+    <!-- the theme of your GWT application by uncommenting -->
+    <!-- any one of the following lines. -->
+    <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+    <!-- <inherits name="com.google.gwt.user.theme.chrome.Chrome"/> -->
+    <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/> -->
+
+    <entry-point class="org.yournamehere.client.VendreArticle"/>
+    
+    <!--<inherits name="com.google.gwt.logging.Logging"/>-->
+    <inherits name='entity.user.User'/>
+    <inherits name="gwtupload.GWTUpload"/>
+    <inherits name='entity.encyclopedia.Accessory'/>
+    <inherits name='entity.encyclopedia.Book'/>
+    <inherits name='entity.encyclopedia.Game'/>
+    <inherits name='entity.encyclopedia.Person'/>
+    <inherits name='entity.user.UserStatu'/>
+
+
+
+
+<!--    <inherits name='entity.encyclopedia.Image'/>
+    <inherits name='entity.encyclopedia.Copyright'/>
+    <inherits name='entity.encyclopedia.Licence'/>
+    <inherits name='entity.encyclopedia.Actor'/>
+    <inherits name='entity.encyclopedia.Game'/>    -->
+    <!--<inherits name='com.sencha.gxt.ui.GXT'/>-->
+    <!--<entry-point class="org.yournamehere.client.MainEntryPoint"/>-->
+
+    <!-- Do not define servlets here, use web.xml -->
+</module>

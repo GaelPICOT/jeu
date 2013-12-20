@@ -39,7 +39,6 @@ public class AjoutAutre implements EntryPoint {
 
         final DockPanel page = new DockPanel();
 	final DockPanel body = new DockPanel();
-	AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
         
         final VerticalPanel formPanel = new VerticalPanel();
         
@@ -69,13 +68,13 @@ public class AjoutAutre implements EntryPoint {
         });
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
                 public void onSuccess(String result) {
-                        System.out.println("game created");
-                        Window.alert("jeu créé" + result);
+                        System.out.println("other created");
+//                        Window.alert("jeu créé" + result);
                 }
 
                 public void onFailure(Throwable caught) {
-                        System.out.println("error while creating game\n"+caught);
-                        Window.alert("erreur lors de la création du jeu : "+caught);
+                        System.out.println("error while creating other\n"+caught);
+                        Window.alert("erreur lors de la création autre : "+caught);
                 }
         };
         okButton.addClickHandler(new ClickHandler() {
@@ -83,7 +82,6 @@ public class AjoutAutre implements EntryPoint {
             @Override
             public void onClick(ClickEvent event) {
                 service.createEncyclopediaNode(map.get(Integer.parseInt(listChoix.getValue(listChoix.getSelectedIndex()))).getSemanticObject(), new ArrayList<Long>(), callback);
-//                service.createEncyclopediaNode(map.get(Integer.parseInt(listChoix.getValue(listChoix.getSelectedIndex()))).getSemanticObject(), listIds, callback);
             }
         });
         
