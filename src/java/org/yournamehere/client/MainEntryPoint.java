@@ -44,13 +44,7 @@ public class MainEntryPoint implements EntryPoint {
         
         final GWTServiceModifyAccountAsync service = GWT.create(GWTServiceModifyAccount.class);
         
-//        final User user = new User();
-//        String name = "";
-//        String firstName = "";
         final ArrayList<Adress> addresses = new ArrayList<Adress>();
-        final UserStatu status = UserStatu.CLIENT;
-//        status.
-        
         
         final DockPanel page = new DockPanel();
         final DockPanel body = new DockPanel();
@@ -101,125 +95,37 @@ public class MainEntryPoint implements EntryPoint {
         fieldConfirmNewPassword.add(userConfirmNewPasswordLabel);
         fieldConfirmNewPassword.add(userConfirmNewPasswordValue);
         form.add(fieldConfirmNewPassword);
-//        Button createGame = new Button("Creer jeu");
-
-        
-//        fieldName.add(createGame);
-
-//        form.add(fieldName);
-        
-//        fieldValue.add(userNameValue);
-//        fieldValue.add(userFirstNameValue);
-//        fieldValue.add(userMailValue);
-//        fieldValue.add(userOldPasswordValue);
-//        fieldValue.add(userNewPasswordValue);
-//        fieldValue.add(userConfirmNewPasswordValue);
-//        final Label temp = new Label();
         final VerticalPanel addressesPanel = new VerticalPanel();
         addressesPanel.setHorizontalAlignment(HasAlignment.ALIGN_CENTER);
         addressesPanel.setWidth("50%");
-//        addressesPanel.getElement().setId("addresses");
         
         AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
 
             @Override
             public void onFailure(Throwable caught) {
-//                Window.alert("fail");
             }
 
             @Override
             public void onSuccess(User result) {
-//                name = result.getName();
-//                firstname = result.getFirstName();
                 userNameValue.setText(result.getName());
                 userFirstNameValue.setText(result.getFirstName());
                 userMailValue.setText(result.getMail());
-//                if (result.getAdresses() != null) {
                 ArrayList<Adress> addressesTemp = (ArrayList<Adress>) result.getAdresses();
                 for (Adress address : addressesTemp) {
                     addressesPanel.add(new AddressComponent(address));
                     addresses.add(address);
                 }
                 AdminTemplate.createTemplate(page, body, result.getType());
-//                status = result.getType();
-//                temp.setText("nombre d'adresses: " + addresses.size());
-////                    addresses.add(result.getAdresses().get(0));
-//                }
-//                addresses = new ArrayList<Adress>(result.getAdresses());
-//                Window.alert("success: " + result.getFirstName());
-//                Window.alert("success: ");
             }
         };
         
         service.getUser(callbackUser);
         
-
-        
-//        form.add(fieldValue);
-        
         HorizontalPanel bodyPanel = new HorizontalPanel();
         bodyPanel.setWidth("100%");
         bodyPanel.add(form);
-//        temp.setText("nombre d'adresses: " + addresses.size());
-        
-//        for(Adress address : addresses) {
-//            Window.alert(address.toString());
-//            temp.setText(temp.getText() + "address: " + address.getAdress() + " " + address.getZipCode());
-//            addressesPanel.add(new AddressComponent(address));
-//        }
-//        bodyPanel.add(temp);
         bodyPanel.add(addressesPanel);
-        
         body.add(bodyPanel, DockPanel.CENTER);
-//        body.setWidth("100%");
-        
-//        final AsyncCallback<Void> callback = new AsyncCallback<String>() {
-//                public void onSuccess(String result) {
-//                        System.out.println("game created");
-//                        Window.alert("jeu créé");
-//                }
-//
-//                public void onFailure(Throwable caught) {
-//                        System.out.println("error while creating game\n"+caught);
-//                        Window.alert("erreur lors de la création du jeu");
-//                }
-//        };
-        
-//        AsyncCallback<List<CopyrightClient>> callbackCopyright;
-//        callbackCopyright = new AsyncCallback<List<CopyrightClient>>() {
-//            
-//            @Override
-//            public void onFailure(Throwable caught) {
-//                System.out.println("error load copyright");
-//                Window.alert("erreur lors du chargement copyright\n"+caught);
-//            }
-//            
-//            @Override
-//            public void onSuccess(List<CopyrightClient> result) {
-//                List<CopyrightClient> listCopyright;
-//                listCopyright = result;
-//                if (result != null)
-//                for (CopyrightClient cr : listCopyright) {
-//                    gameCopyrightValue.addItem(cr.getCopychaine());
-//                }
-//            }
-//        };
-//        
-//        service.getCopyright(callbackCopyright);
-        
-        
-//        createGame.addClickHandler(new ClickHandler() {
-//                @Override
-//                public void onClick(ClickEvent event) {
-//                        System.out.println("creation jeu: " + gameNameValue.getText() + " description: " + gameDescriptionValue.getText());
-//                        service.createGame(gameNameValue.getText(), gameDescriptionValue.getText(), callback);
-////                        Window.alert("jeu créé");
-//                        gameNameValue.setText("");
-//                        gameDescriptionValue.setText("");
-//                        // TODO Auto-generated method stub
-//
-//                }
-//        });
         RootPanel.get().add(page);
     }
 }

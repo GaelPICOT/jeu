@@ -30,14 +30,14 @@ public class AdminTemplate {
 		homeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 //				System.out.println("Acceuil");
-				 Window.Location.replace("../");
+				 Window.Location.replace("/jeu");
 			}
 		});
 
 		final AsyncCallback<String> callback = new AsyncCallback<String>() {
 			public void onSuccess(String result) {
 				System.out.println("disconnected");
-				Window.Location.replace("../");
+				Window.Location.replace("/jeu");
 			}
 
 			public void onFailure(Throwable caught) {
@@ -70,17 +70,17 @@ public class AdminTemplate {
 		MenuBar accountMenu = new MenuBar(true);
 		accountMenu.addItem("Modifier", new Command() {
 			public void execute() {
-				Window.Location.replace("../welcomeGWT.html");
+				Window.Location.replace("../gwt/welcomeGWT.html");
 			}
 		});
 		accountMenu.addItem("Supprimer", new Command() {
 			public void execute() {
-				Window.Location.replace("../supprimerCompte.html");
+				Window.Location.replace("../gwt/supprimerCompte.html");
 			}
 		});
 		accountMenu.addItem("Gestion des commandes", new Command() {
 			public void execute() {
-				Window.Location.replace("../gestionCommandes.html");
+				Window.Location.replace("../gwt/gestionCommandes.html");
 			}
 		});
 		accountMenu.getElement().setClassName("menu");
@@ -88,27 +88,27 @@ public class AdminTemplate {
 		MenuBar encyclopediaMenu = new MenuBar(true);
 		encyclopediaMenu.addItem("Ajouter jeu", new Command() {
 			public void execute() {
-				Window.Location.replace("../ajouterJeu.html");
+				Window.Location.replace("../gwt/ajouterJeu.html");
 			}
 		});
 		encyclopediaMenu.addItem("Ajouter accessoire", new Command() {
 			public void execute() {
-				Window.Location.replace("../ajouterAccessoire.html");
+				Window.Location.replace("../gwt/ajouterAccessoire.html");
 			}
 		});
                 encyclopediaMenu.addItem("Ajouter image", new Command() {
 			public void execute() {
-				Window.Location.replace("../ajouterImage.html");
+				Window.Location.replace("../gwt/ajouterImage.html");
 			}
 		});
                 encyclopediaMenu.addItem("Ajouter triple", new Command() {
 			public void execute() {
-				Window.Location.replace("../ajouterTriple.html");
+				Window.Location.replace("../gwt/ajouterTriple.html");
 			}
 		});
 		encyclopediaMenu.addItem("Ajouter autre", new Command() {
                     public void execute() {
-                        Window.Location.replace("../ajouterAutre.html"); //To change body of generated methods, choose Tools | Templates.
+                        Window.Location.replace("../gwt/ajouterAutre.html"); //To change body of generated methods, choose Tools | Templates.
                     }
                 });
 		encyclopediaMenu.addItem("Proposer modification", cmd);
@@ -153,7 +153,8 @@ public class AdminTemplate {
 		DockPanel footer = new DockPanel();
 		footer.setSize("100%", "100%");
 		footer.getElement().setId("footer");
-		Label footerLabel = new Label("Pied de page");
+//		Label footerLabel = new Label("Pied de page");
+		Label footerLabel = new Label();
 		footer.add(footerLabel, DockPanel.CENTER);
 		footer.setCellHorizontalAlignment(footerLabel, HasAlignment.ALIGN_CENTER);
 		footer.setCellVerticalAlignment(footerLabel, HasAlignment.ALIGN_MIDDLE);

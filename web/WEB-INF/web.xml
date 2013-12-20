@@ -95,7 +95,35 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAccessoire/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutAutre/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutImage/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutJeu/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.AjoutTriple/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
         <url-pattern>/org.yournamehere.Main/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.GestionCommandes/sampleservice/gwtservicemodifyaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GWTServiceModifyAccount</servlet-name>
+        <url-pattern>/org.yournamehere.SupprimerCompte/sampleservice/gwtservicemodifyaccount</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>GWTServiceAddImage</servlet-name>

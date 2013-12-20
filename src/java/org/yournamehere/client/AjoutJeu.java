@@ -21,10 +21,13 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import entity.encyclopedia.Game;
+import entity.user.User;
 import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 //import com.sencha.gxt.widget.core.client.container.MarginData;
 //import com.gwtext.client.widgets.layout.BorderLayout; 
 //import java.awt.BorderLayout; 
@@ -50,12 +53,11 @@ public class AjoutJeu implements EntryPoint {
      */
     @Override
     public void onModuleLoad() {
-//        RootPanel.get().clear();
         final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
+        final GWTServiceModifyAccountAsync service2 = GWT.create(GWTServiceModifyAccount.class);
         
-        DockPanel page = new DockPanel();
-        DockPanel body = new DockPanel();
-        AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+        final DockPanel page = new DockPanel();
+        final DockPanel body = new DockPanel();
         VerticalPanel formPanel = new VerticalPanel();
         HorizontalPanel form = new HorizontalPanel();
         VerticalPanel fieldName = new VerticalPanel();
@@ -121,6 +123,21 @@ public class AjoutJeu implements EntryPoint {
                         gameDescriptionValue.setText("");
                 }
         }); 
+        
+        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(User result) {
+                AdminTemplate.createTemplate(page, body, result.getType());
+            }
+        };
+        
+        service2.getUser(callbackUser);
+        
         RootPanel.get().add(page);
     }
 }

@@ -21,11 +21,15 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.encyclopedia.Accessory;
 import entity.encyclopedia.Game;
 import entity.semantic.SemanticNode;
+import entity.user.Adress;
+import entity.user.User;
 import entity.user.UserStatu;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 //import com.sencha.gxt.core.client.util.Margins;
 //import com.sencha.gxt.widget.core.client.ContentPanel;
 //import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -56,10 +60,11 @@ public class AjoutAccessoire implements EntryPoint {
 	public void onModuleLoad() {
 //		RootPanel.get().clear();
 		final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
+		final GWTServiceModifyAccountAsync service2 = GWT.create(GWTServiceModifyAccount.class);
         
-		DockPanel page = new DockPanel();
-		DockPanel body = new DockPanel();
-		AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+		final DockPanel page = new DockPanel();
+		final DockPanel body = new DockPanel();
+                
 		VerticalPanel formPanel = new VerticalPanel();
                 HorizontalPanel form = new HorizontalPanel();
                 VerticalPanel fieldName = new VerticalPanel();
@@ -91,16 +96,29 @@ public class AjoutAccessoire implements EntryPoint {
                 ImagePanel imagePanel = new ImagePanel(listIds);
                 formPanel.add(imagePanel.getConcretPanel());
                 formPanel.add(createGame);
+                
+                AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+                    @Override
+                    public void onFailure(Throwable caught) {
+        //                Window.alert("fail");
+                    }
+
+                    @Override
+                    public void onSuccess(User result) {
+                        AdminTemplate.createTemplate(page, body, result.getType());
+                    }
+                };
+
+                service2.getUser(callbackUser);
 
                 body.add(formPanel, DockPanel.CENTER);
 
                 final AsyncCallback<String> callback = new AsyncCallback<String>() {
                         public void onSuccess(String result) {
                                 System.out.println("accessory created");
-//                                logger.log(Level.INFO, "accessory created");
-            //                        Window.alert("jeu créé" + result);
                         }
-            //
+            
                         public void onFailure(Throwable caught) {
                                 System.out.println("error while creating accessory\n"+caught);
                                 Window.alert("erreur lors de la création de l'accessoire : "+caught);
@@ -108,15 +126,10 @@ public class AjoutAccessoire implements EntryPoint {
 
                 };
 
-
-
-
-
                 createGame.addClickHandler(new ClickHandler() {
                         @Override
                         public void onClick(ClickEvent event) {
                                 System.out.println("creation accessoire: " + accessoryNameValue.getText() + " description: " + accessoryDescriptionValue.getText());
-//                                logger.log(Level.INFO, listIds.toString());
                                 Accessory accessory = new Accessory();
                                 accessory.setName(accessoryNameValue.getText());
                                 accessory.setDescription(accessoryDescriptionValue.getText());

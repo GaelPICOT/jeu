@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import entity.encyclopedia.Image;
+import entity.user.User;
 import entity.user.UserStatu;
 import gwtupload.client.IUploadStatus.Status;
 import gwtupload.client.IUploader;
@@ -38,6 +39,8 @@ import org.yournamehere.client.sampleService.GWTServiceAddEncyclopedia;
 import org.yournamehere.client.sampleService.GWTServiceAddEncyclopediaAsync;
 import org.yournamehere.client.sampleService.GWTServiceAddImage;
 import org.yournamehere.client.sampleService.GWTServiceAddImageAsync;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccount;
+import org.yournamehere.client.sampleService.GWTServiceModifyAccountAsync;
 import servlet.UploadServlet;
 
 /**
@@ -52,14 +55,26 @@ public class AjoutImage implements EntryPoint {
     public void onModuleLoad() {
         final GWTServiceAddEncyclopediaAsync service = GWT.create(GWTServiceAddEncyclopedia.class);
         final GWTServiceAddImageAsync service2 = GWT.create(GWTServiceAddImage.class);
+        final GWTServiceModifyAccountAsync service3 = GWT.create(GWTServiceModifyAccount.class);
 
-        DockPanel page = new DockPanel();
-	DockPanel body = new DockPanel();
-	AdminTemplate.createTemplate(page, body, UserStatu.ADMIN);
+        final DockPanel page = new DockPanel();
+	final DockPanel body = new DockPanel();
         ImagePanel imagePanel = new ImagePanel(new ArrayList<Long>());
         body.add(imagePanel.getConcretPanel(), DockPanel.CENTER);
+        
+        AsyncCallback<User> callbackUser = new AsyncCallback<User>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(User result) {
+                AdminTemplate.createTemplate(page, body, result.getType());
+            }
+        };
+        service3.getUser(callbackUser);
+        
 	RootPanel.get().add(page);
-		
     }
-    
 }
