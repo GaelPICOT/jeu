@@ -11,13 +11,17 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.Resource;
+import entity.semantic.Predicate;
 import entity.semantic.SemanticLiteral;
 import entity.semantic.SemanticNode;
 import entity.semantic.SemanticRessource;
 import entity.semantic.Triple;
+import facade.PredicateFacade;
 import facade.SemanticNodeFacade;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +37,8 @@ public class GWTServiceGenRDFImpl extends RemoteServiceServlet implements GWTSer
 
     @EJB
     private SemanticNodeFacade semanticNodeFacade;
+    @EJB
+    private PredicateFacade predicateFacade;
     
     @Override
     public String genRDF() {
@@ -62,5 +68,20 @@ public class GWTServiceGenRDFImpl extends RemoteServiceServlet implements GWTSer
             Logger.getLogger(GWTServiceGenRDFImpl.class.getName()).log(Level.SEVERE, null, ex);
             return "";
         }
+    }
+
+    @Override
+    public ArrayList<String> getAllGetterFromType(String Type) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public HashMap<Long, String> getAllPredicate() {
+        List<Predicate> preds = predicateFacade.findAll();
+        HashMap<Long, String> retour = new HashMap<>();
+        for(Predicate pred : preds) {
+            retour.put(pred.getId(), pred.getLabel());
+        }
+        return retour;
     }
 }

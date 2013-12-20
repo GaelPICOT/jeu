@@ -6,6 +6,8 @@ package org.yournamehere.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -30,8 +32,11 @@ import entity.encyclopedia.Rule;
 import entity.encyclopedia.Theme;
 import entity.semantic.PureSemanticRessource;
 import entity.user.UserStatu;
+import java.util.HashMap;
 import org.yournamehere.client.sampleService.GWTServiceAddTriple;
 import org.yournamehere.client.sampleService.GWTServiceAddTripleAsync;
+import org.yournamehere.client.sampleService.GWTServiceGenRDF;
+import org.yournamehere.client.sampleService.GWTServiceGenRDFAsync;
 
 /**
  *
@@ -41,7 +46,7 @@ public class GenRDFPage implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        final GWTServiceAddTripleAsync service = GWT.create(GWTServiceAddTriple.class);
+        final GWTServiceGenRDFAsync service = GWT.create(GWTServiceGenRDF.class);
         
         DockPanel page = new DockPanel();
         DockPanel body = new DockPanel();
@@ -62,7 +67,7 @@ public class GenRDFPage implements EntryPoint {
         ListBox listOptionCreat = new ListBox();
         listOptionCreat.setVisibleItemCount(10);
         ListBox listGetter = new ListBox();
-        ListBox listPredicate = new ListBox();
+        final ListBox listPredicate = new ListBox();
         Button addButton = new Button("Ajouter l'option");
         
         editOptionEntityPanel.add(listOptionCreat);
@@ -76,6 +81,25 @@ public class GenRDFPage implements EntryPoint {
         Button genButton = new Button("Generer RDF");
         
         bodyPanel.add(genButton);
+        
+        final AsyncCallback<HashMap<Long, String>> listPredicatCallback = new AsyncCallback<HashMap<Long, String> >() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                System.out.println("game created");
+                Window.alert("jeu créé" + caught);
+            }
+
+            @Override
+            public void onSuccess(HashMap<Long, String>  result) {
+                for (Long i : result.keySet()) {
+                    listPredicate.addItem(result.get(i), i.toString());
+                }
+            }
+        };
+        service.getAllPredicate(listPredicatCallback);
+        
+        
         body.add(bodyPanel, DockPanel.CENTER);
         
         RootPanel.get().add(page);
