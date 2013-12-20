@@ -30,8 +30,8 @@
                 <h:form>
                     <input type="radio" name="g1" value="CB" class="radioButton"/>
                     <label class='radio'>Carte Bancaire</label>
-                    <h:graphicImage value="../img/mastercard.png" width="30" height="20"/>
-                    <h:graphicImage value="../img/visa.png" width="30" height="20"/><br/>
+                    <h:graphicImage value="../img/mastercard.png" width="30" height="30"/>
+                    <h:graphicImage value="../img/visa.png" width="30" height="30"/><br/>
                     <input type="radio" name="g1" value="Chèque" class="radioButton"/>       
                     <label class='radio'>Chèque</label><span id="cheque">Envoyez votre chèque à l'ordre de **********<br/> à l'adresse suivante : 1 rue de la paix 12345 MonopolyLand</span><br/>
                     <h:commandButton action="null" value="Valider" class="bouton"/>
@@ -40,28 +40,115 @@
             <div id="rightPaie">
                 <h2>Récapitulatif de votre commande</h2>
                 <h3>Votre panier</h3>
+                <c:if test="#{empty UserView.user.id}">
+                    <c:forEach var="test" items="#{CartView.cart.list}">
+                        <tr>
+                            <td>
+                                <h:outputText value="#{test.prod.productibleType.nom}"/> 
+                            </td>
+                            <td>
+                                <h:outputText value="#{test.quantity}"/>
+                            </td>
+                            <td>
+                                <h:outputText value="#{test.getPrixTotal()}"/> €
+                            </td>
+                        </tr>
+                        <tr>
+                            total : <h:outputText value="#{CartView.cart.getPriceOfCart()}"/> €
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="#{not empty UserView.user.id}">
+                    <c:forEach var="test" items="#{UserView.user.cart.list}"> 
+                        <tr>
+                            <td>
+                                <h:outputText value="#{test.prod.productibleType.nom}"/> 
+                            </td>
+                            <td>
+                                <h:outputText value="#{test.quantity}"/> 
+                            </td>
+                            <td>
+                                <h:outputText value="#{test.getPrixTotal()}"/> € 
+                            </td>
+                        </tr>
+                        <tr>
+                            <br/>total : <h:outputText value="#{UserView.user.cart.getPriceOfCart()}"/> € 
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                
                 <h3>Adresse de livraison</h3>
-                    <label class="form">Nom : </label>
-                    <h:outputText value="#{AdressView.adress.name}" styleClass="form"/>
-                    <label class="form">Prénom : </label>
-                    <h:outputText value="#{AdressView.adress.firstname}" styleClass="form"/>
-                    <label class="form">Adresse : </label>
-                    <h:outputText value="#{AdressView.adress.adress}" styleClass="form"/>
-                    <label class="form">Complément d'adresse : </label>
-                    <h:outputText value="#{AdressView.adress.complement}" styleClass="form"/>
-                    <label class="form">Ville : </label>
-                    <h:outputText value="#{AdressView.adress.city}" styleClass="form"/>
-                    <label class="form">Code postal : </label>
-                    <h:outputText value="#{AdressView.adress.zipCode}" styleClass="form"/>
-                    <label class="form">Téléphone : </label>
-                    <h:outputText value="#{AdressView.adress.phoneNumber}" styleClass="form"/>
-                    <label class="form">Code d'accès : </label>
-                    <h:outputText value="#{AdressView.adress.accessCode}"  styleClass="form"/>
+                <table>
+                    <tr>
+                        <td>
+                            <label class="form">Nom : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.name}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Prénom : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.firstname}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Adresse : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.adress}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Complément d'adresse : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.complement}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Ville : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.city}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Code postal : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.zipCode}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Téléphone : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.phoneNumber}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="form">Code d'accès : </label>
+                        </td>
+                        <td>
+                            <h:outputText value="#{AdressView.adress.accessCode}"/>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div id="bottomPaie">
             <h:form>
-                <h:link outcome="/index.xhtml" value="retour a l'index" class="bouton"/>
+                <h:link outcome="index" value="retour a l'index" class="bouton"/>
             </h:form>
         </div>
     </h:body>

@@ -105,6 +105,30 @@
 		<redirect />
 	</navigation-case>
     </navigation-rule>
+    <navigation-rule>
+	<from-view-id>/jsf/paieEtape1.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index</from-outcome>
+		<to-view-id>/index.xhtml</to-view-id>
+		<redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+	<from-view-id>/jsf/paieEtape2.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index</from-outcome>
+		<to-view-id>/index.xhtml</to-view-id>
+		<redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+	<from-view-id>/jsf/paieEtape3.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index</from-outcome>
+		<to-view-id>/index.xhtml</to-view-id>
+		<redirect />
+        </navigation-case>
+    </navigation-rule>
 <!--    <navigation-rule>
 	<from-view-id>*index.xhtml</from-view-id>
 	<navigation-case>
