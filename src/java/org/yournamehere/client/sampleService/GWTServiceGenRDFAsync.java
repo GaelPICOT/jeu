@@ -17,5 +17,6 @@ public interface GWTServiceGenRDFAsync {
     public void genRDF(AsyncCallback<String> callback);
     public void getAllGetterFromType (String Type, AsyncCallback<ArrayList<String>> callback);
     public void getAllPredicate (AsyncCallback<HashMap<Long, String>> callback);
+    public void creatRDFGenOpt (String entityName, String columnName, Long predicateId, AsyncCallback<String> callback);
     
 }

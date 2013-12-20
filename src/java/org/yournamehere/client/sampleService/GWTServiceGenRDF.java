@@ -19,4 +19,5 @@ public interface GWTServiceGenRDF extends RemoteService {
     public String genRDF();
     public ArrayList<String> getAllGetterFromType (String Type);
     public HashMap<Long, String> getAllPredicate ();
+    public String creatRDFGenOpt (String entityName, String columnName, Long predicateId);
 }
