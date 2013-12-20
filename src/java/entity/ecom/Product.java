@@ -104,6 +104,10 @@ public class Product implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public int getRealPrice(){
+        return(this.prix - this.reduction);
+    }
 
     @Override
     public int hashCode() {

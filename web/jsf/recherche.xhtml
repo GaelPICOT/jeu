@@ -65,7 +65,7 @@
                                                                                 <h:form>
                                                                                     <h:commandLink action="#{DynamicView.createPage(prod.id, real.nom, prod.class.getName())}" value="#{real.toString()}"/>
                                                                                 </h:form>
-                                                                                Prix : <h:outputText value="#{prod.prix}"/><br/>
+                                                                                Prix : <h:outputText value="#{prod.getRealPrice()}"/><br/>
                                                                                 Vendu par : <h:outputText value="#{prod.vendor}"/><br/>
                                                                                 Stock restant : <h:outputText value="#{prod.stock}"/><br/>
                                                                             </li>

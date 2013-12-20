@@ -30,7 +30,7 @@
                             <c:if test="#{DynamicView.bean.reduction != 0}">
                                 <h:outputText value="#{DynamicView.bean.prix}" style="text-decoration: line-through;"/><br/>
                             </c:if>
-                            <h:outputText value="#{DynamicView.bean.prix}"/> €<br/>
+                            <h:outputText value="#{DynamicView.bean.getRealPrice()}"/> €<br/>
                             <h:form>
                                 <c:if test="#{empty UserView.user.id}">
                                 <h:selectOneMenu value="#{CartView.quantiteVoulue}">
