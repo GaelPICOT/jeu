@@ -63,6 +63,11 @@
 		<to-view-id>/jsf/panier.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
+        <navigation-case>
+		<from-outcome>index</from-outcome>
+		<to-view-id>/index.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
     </navigation-rule>
     <navigation-rule>
 	<from-view-id>/jsf/article.xhtml</from-view-id>
@@ -76,7 +81,7 @@
 	<from-view-id>/jsf/panier.xhtml</from-view-id>
 	<navigation-case>
 		<from-outcome>index</from-outcome>
-		<to-view-id>/jsf/index.xhtml</to-view-id>
+		<to-view-id>/index.xhtml</to-view-id>
 		<redirect />
 	</navigation-case>
     </navigation-rule>

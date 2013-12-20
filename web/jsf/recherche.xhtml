@@ -30,6 +30,9 @@
                 </div>
                 <div id="content" class="right_content">
                     <h2>Résultats de la recherche:</h2>
+                    <c:if test="#{empty ResearchView.nodeList}">
+                        <h3>Votre recherche n'a pas donné de résultat. Veuillez réessayer avec un autre mot clé.</h3>
+                    </c:if>
                     <ul>
                         <c:forEach var="titre" items="#{ResearchView.nodeList}">
                             <h3><h:outputText value="#{titre.nomClass}"/></h3>
