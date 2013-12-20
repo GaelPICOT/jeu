@@ -75,7 +75,7 @@ public class GenRDFPage implements EntryPoint {
         
         Button genButton = new Button("Generer RDF");
         
-        
+        bodyPanel.add(genButton);
         body.add(bodyPanel, DockPanel.CENTER);
         
         RootPanel.get().add(page);
