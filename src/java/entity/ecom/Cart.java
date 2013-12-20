@@ -72,6 +72,14 @@ public class Cart implements Serializable {
     public void removeProduct (int index) {
         this.list.remove(index);
     }
+    
+    public int getPriceOfCart(){
+        int tot = 0;
+        for (int i = 0; i < this.list.size(); i++) {
+            tot += this.list.get(i).getPrixTotal();
+        }
+        return tot;
+    }
 
     public Long getId() {
         return id;

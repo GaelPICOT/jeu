@@ -156,6 +156,25 @@ public class UserView implements Serializable {
         return "article";
     }
     
+    public String addOneToCardFromCard(Long id){
+        int i = this.user.getCart().isInCart(id);
+        this.user.getCart().majProd(i, this.user.getCart().getList().get(i).getQuantity()+1);
+        userFacade.edit(this.user);
+        return "panier";
+    }
+    
+    public String deleteOneToCard(Long id){
+        int i = this.user.getCart().isInCart(id);
+        if(this.user.getCart().getList().get(i).getQuantity()-1 == 0){
+            this.user.getCart().removeProduct(i);
+            userFacade.edit(this.user);
+            return "panier";
+        }
+        this.user.getCart().majProd(i, this.user.getCart().getList().get(i).getQuantity()-1);
+        userFacade.edit(this.user);
+        return "panier";
+    }
+    
     public String deleteOfCard(Long id){
         int i = this.cart.isInCart(id);
         this.user.getCart().removeProduct(i);

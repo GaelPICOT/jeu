@@ -107,6 +107,25 @@ public class CartView implements Serializable{
         return "article";
     }
     
+    public String addOneToCardFromCart(Long id){
+        int i = this.cart.isInCart(id);
+        this.cart.majProd(i, this.cart.getList().get(i).getQuantity()+1);
+        cartFacade.edit(cart);
+        return "panier";
+    }
+    
+    public String deleteOneToCard(Long id){
+        int i = this.cart.isInCart(id);
+        if(this.cart.getList().get(i).getQuantity()-1 == 0){
+           this.cart.removeProduct(i);
+            cartFacade.edit(cart);
+            return "panier"; 
+        }
+        this.cart.majProd(i, this.cart.getList().get(i).getQuantity()-1);
+        cartFacade.edit(cart);
+        return "panier";
+    }
+    
     public String deleteOfCard(Long id){
         int i = this.cart.isInCart(id);
         this.cart.removeProduct(i);
